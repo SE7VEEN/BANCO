@@ -1,28 +1,25 @@
-# Compilación del Proyecto
+# BANCO DEL BENITO
+![Static Badge](https://img.shields.io/badge/licence-BUAP-blue?style=for-the-badge&link=https://buap.mx/)
+![Static Badge](https://img.shields.io/badge/release%20date-MAYO%202025-blue?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/status-en%20desarrollo-green?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/stable%20version-%20-green?style=for-the-badge)
 
-## Agregar nuevos archivos
+## Índice
 
-Cuando agreguen otro archivo, deben incluir lo siguiente en el `Makefile`:
+- [BANCO DEL BENITO](#banco-del-benito)
+  - [Índice](#índice)
+  - [Presentación](#presentación)
+  - [Miembros](#miembros)
 
-```makefile
-$(SRC_DIR)/$(CARPETA)/archivo.c \
+- - -
 
-#Para compilar solo deben ir ya sea a la carpeta del servidor o cliente desde la terminal y ejecutar el siguiente comando:
+## Presentación
+Repositorio dónde se encuentran las prácticas universitarias de Arduino BUAP. 
 
--make
+- - -
 
-#Si quieren limpiar usen:
+## Miembros
+![Static Badge](https://img.shields.io/badge/Jose%20Antonio%20Rodriguez%20Maldonado--blue?style=for-the-badge&link=https://github.com/rodriguezmldo) 
+![Static Badge](https://img.shields.io/badge/Jose%20Luis%20Santiago%20Ibanez--blue?style=for-the-badge&link=https://github.com/Jolu-Santii) 
+![Static Badge](https://img.shields.io/badge/Jorge%20Vergara%20Mora%20--blue?style=for-the-badge&link=https://github.com/JLVM17)
 
--make clean
-
-#El ejecutable es el de la respectiva carpeta bin
-
-```
-## Agregar carpetas
-
-```makefile
-
-#Solo deben agregar actualizar el subdirectorio y agregar lo siguiente en la parte de flags 
--I$(INC_DIR)/$(CARPETA)
-
-```
