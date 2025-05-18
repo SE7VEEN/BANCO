@@ -1,0 +1,123 @@
+[
+    {
+        "PID": "82378",
+        "PPID": null,
+        "Estado": "Finalizado",
+        "TipoUsuario": "Cliente",
+        "IDUsuario": 2,
+        "IDCuenta": "ACC478",
+        "TipoCuenta": "Corriente",
+        "Operaci\u00f3n": "Dep\u00f3sito",
+        "Timestamp": "2025-05-18T16:47:59.144868"
+    },
+    {
+        "PID": "28585",
+        "PPID": null,
+        "Estado": "Finalizado",
+        "TipoUsuario": "Visitante",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoCuenta": null,
+        "Operaci\u00f3n": "Consulta de servicios",
+        "Timestamp": "2025-05-18T16:48:00.639864"
+    },
+    {
+        "PID": "20001",
+        "PPID": null,
+        "Estado": "Finalizado",
+        "TipoUsuario": "Visitante",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoCuenta": null,
+        "Operaci\u00f3n": "Creaci\u00f3n de cuenta",
+        "Timestamp": "2025-05-18T16:48:00.138981"
+    },
+    {
+        "PID": "19282",
+        "PPID": null,
+        "Estado": "En espera",
+        "TipoUsuario": "Cliente",
+        "IDUsuario": 1,
+        "IDCuenta": "ACD123",
+        "TipoCuenta": "Corriente",
+        "Operaci\u00f3n": "Retiro",
+        "Timestamp": "2025-05-18T16:51:44.027398"
+    },
+    {
+        "PID": "37786",
+        "PPID": null,
+        "Estado": "En espera",
+        "TipoUsuario": "Cliente",
+        "IDUsuario": 2,
+        "IDCuenta": "ACC478",
+        "TipoCuenta": "Corriente",
+        "Operaci\u00f3n": "Dep\u00f3sito",
+        "Timestamp": "2025-05-18T16:51:44.549431"
+    },
+    {
+        "PID": "11832",
+        "PPID": null,
+        "Estado": "En espera",
+        "TipoUsuario": "Visitante",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoCuenta": null,
+        "Operaci\u00f3n": "Creaci\u00f3n de cuenta",
+        "Timestamp": "2025-05-18T16:51:45.571061"
+    },
+    {
+        "PID": "34011",
+        "PPID": null,
+        "Estado": "En espera",
+        "TipoUsuario": "Visitante",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoCuenta": null,
+        "Operaci\u00f3n": "Consulta de servicios",
+        "Timestamp": "2025-05-18T16:51:46.084242"
+    },
+    {
+        "PID": "19282",
+        "PPID": null,
+        "Estado": "Finalizado",
+        "TipoUsuario": "Cliente",
+        "IDUsuario": 1,
+        "IDCuenta": "ACD123",
+        "TipoCuenta": "Corriente",
+        "Operaci\u00f3n": "Retiro",
+        "Timestamp": "2025-05-18T16:51:44.027398"
+    },
+    {
+        "PID": "37786",
+        "PPID": null,
+        "Estado": "Finalizado",
+        "TipoUsuario": "Cliente",
+        "IDUsuario": 2,
+        "IDCuenta": "ACC478",
+        "TipoCuenta": "Corriente",
+        "Operaci\u00f3n": "Dep\u00f3sito",
+        "Timestamp": "2025-05-18T16:51:44.549431"
+    },
+    {
+        "PID": "34011",
+        "PPID": null,
+        "Estado": "Finalizado",
+        "TipoUsuario": "Visitante",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoCuenta": null,
+        "Operaci\u00f3n": "Consulta de servicios",
+        "Timestamp": "2025-05-18T16:51:46.084242"
+    },
+    {
+        "PID": "11832",
+        "PPID": null,
+        "Estado": "Finalizado",
+        "TipoUsuario": "Visitante",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoCuenta": null,
+        "Operaci\u00f3n": "Creaci\u00f3n de cuenta",
+        "Timestamp": "2025-05-18T16:51:45.571061"
+    }
+]
