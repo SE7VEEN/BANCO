@@ -1,0 +1,10 @@
+PCB = {
+    "PID": int,
+    "PPID": int,
+    "Estado": ["En espera", "En ejecución", "Finalizado", "Nuevo", "Listo"],
+    "Tipo": ["Cliente", "Visitante"],
+    "Registro": ["Sí", "No"],
+    "Cuenta": ["Estándar", "Premium", "N/A"],
+    "Turno": int,
+    "Operación": str
+}
