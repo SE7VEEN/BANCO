@@ -1,0 +1,24 @@
+[
+    {
+        "id_cuenta": "ACD123",
+        "estado_cuenta": "Activa",
+        "tipo_cuenta": "Corriente",
+        "tarjetas": [
+            "VISA-1234",
+            "MC-5678"
+        ],
+        "saldo": true,
+        "adeudos": "0"
+    },
+    {
+        "id_cuenta": "ACC478",
+        "estado_cuenta": "Activa",
+        "tipo_cuenta": "Corriente",
+        "tarjetas": [
+            "VISA-1234",
+            "MC-5678"
+        ],
+        "saldo": true,
+        "adeudos": "0"
+    }
+]
