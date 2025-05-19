@@ -9,7 +9,11 @@ class Cuenta:
         self.id_cuenta = id_cuenta or self._generar_id_cuenta()
         self.id_usuario = int(id_usuario) if id_usuario is not None else None
         self.estado_cuenta = estado_cuenta
-        self.tipo_cuenta = tipo_cuenta or random.choice(["estandar", "premium"])
+        self.tipo_cuenta = tipo_cuenta or random.choices(
+    ["estandar", "premium"],
+    weights=[70, 30],
+    k=1
+)[0]
         self.tarjetas = tarjetas if tarjetas is not None else self._generar_tarjetas()
         self.saldo = float(saldo)
         self.adeudos = float(adeudos)
@@ -164,3 +168,5 @@ def crear_cuentas_automaticamente_por_clientes():
 # Ejecutar si se llama directamente
 if __name__ == "__main__":
     crear_cuentas_automaticamente_por_clientes()
+
+
