@@ -1,7 +1,6 @@
 [
     {
         "id_usuario": 1,
-        "id_cuenta": "ACD123",
         "nombre": "Juan P\u00e9rez Garc\u00eda",
         "contrasena": "segura123",
         "num_telefono": "5559876543",
@@ -13,7 +12,6 @@
     },
     {
         "id_usuario": 2,
-        "id_cuenta": "ACC478",
         "nombre": "Pedro",
         "contrasena": "segura123",
         "num_telefono": "5551234567",

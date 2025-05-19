@@ -2,9 +2,10 @@ import json
 import os
 
 class Cuenta:
-    def __init__(self, id_cuenta="", estado_cuenta="", tipo_cuenta="", tarjetas=None, saldo=True, adeudos="0"):
+    def __init__(self, id_usuario, id_cuenta="", estado_cuenta="", tipo_cuenta="", tarjetas=None, saldo=True, adeudos="0"):
+        self.id_usuario = id_usuario
         self.id_cuenta = id_cuenta
-        self.estado_cuenta = estado_cuenta
+        self.estado_cuenta = estado_cuenta 
         self.tipo_cuenta = tipo_cuenta
         self.tarjetas = tarjetas if tarjetas is not None else []
         self.saldo = saldo
@@ -133,27 +134,3 @@ def gestionar_cuenta(accion, cuenta=None, id_cuenta=None, nuevos_datos=None):
     except Exception as e:
         print(f"Error al gestionar cuenta: {str(e)}")
         return False
-
-if __name__ == "__main__":
-    # Ejemplo de uso
-    generar_cuentas_desde_clientes()
-    
-    # Agregar cuenta manualmente
-    nueva_cuenta = Cuenta(
-        id_cuenta="ACC999",
-        estado_cuenta="Activa",
-        tipo_cuenta="Ahorros",
-        tarjetas=["VISA-9999"]
-    )
-    gestionar_cuenta('agregar', cuenta=nueva_cuenta)
-    
-    # Modificar cuenta (no puede cambiar el ID)
-    gestionar_cuenta('modificar', 
-                    id_cuenta="ACC999",
-                    nuevos_datos={
-                        'estado_cuenta': 'Inactiva',
-                        'adeudos': '500.00'
-                    })
-    
-    # Eliminar cuenta
-    gestionar_cuenta('eliminar', id_cuenta="ACC999")

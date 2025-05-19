@@ -1,8 +1,9 @@
 [
     {
+        "id_usuario": 1,   
         "id_cuenta": "ACD123",
         "estado_cuenta": "Activa",
-        "tipo_cuenta": "Corriente",
+        "tipo_cuenta": "Premium",
         "tarjetas": [
             "VISA-1234",
             "MC-5678"
@@ -11,9 +12,10 @@
         "adeudos": "0"
     },
     {
+        "id_usuario": 1, 
         "id_cuenta": "ACC478",
         "estado_cuenta": "Activa",
-        "tipo_cuenta": "Corriente",
+        "tipo_cuenta": "Estandar",
         "tarjetas": [
             "VISA-1234",
             "MC-5678"

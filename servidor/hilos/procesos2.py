@@ -15,23 +15,23 @@ class Proceso:
         self.pid = pid or str(uuid4().int)[:5]  # ID único de 5 dígitos
         self.ppid = ppid                        # Parent PID
         self.estado = estado
-        self.tipo_usuario = tipo_usuario        # "Cliente" o "Visitante"
-        self.id_usuario = id_usuario
         self.id_cuenta = id_cuenta
+        self.id_usuario = id_usuario
+        self.tipo_usuario = tipo_usuario        # "Cliente" o "Visitante"
         self.tipo_cuenta = tipo_cuenta          # "Estándar", "Premium", None
         self.operacion = operacion
-        self.timestamp = datetime.now().isoformat()
+        self.timestamp = datetime.now().strftime("%H:%M:%S")
 
     def to_dict(self):
         return {
             "PID": self.pid,
             "PPID": self.ppid,
             "Estado": self.estado,
+            "IDUsuario" : self.id_usuario,
+            "IDCuenta": self.id_cuenta,
             "TipoUsuario": self.tipo_usuario,
-            "IDUsuario": self.id_usuario,
-            "IDCuenta": self.id_cuenta, 
             "TipoCuenta": self.tipo_cuenta,
-            "Operación": self.operacion,
+            "Operacion": self.operacion,
             "Timestamp": self.timestamp
         }
 
@@ -98,6 +98,7 @@ def obtener_datos_cliente(id_usuario):
             return None
 
 def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
+    
     """
     Crea y registra un nuevo proceso en el sistema
     
@@ -109,6 +110,7 @@ def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
     Returns:
         Objeto Proceso creado
     """
+
     if tipo_usuario == "Cliente":
         if not id_usuario:
             raise ValueError("Se requiere ID de usuario para clientes")
@@ -126,9 +128,9 @@ def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
         id_cuenta = None
 
     proceso = Proceso(
+        id_cuenta=id_cuenta,  
         tipo_usuario=tipo_usuario,
-        id_usuario=id_usuario,
-        id_cuenta=id_cuenta,          # Pasamos el id_cuenta al proceso
+    
         tipo_cuenta=tipo_cuenta,
         operacion=operacion
     )
@@ -158,7 +160,7 @@ def ejecutar_operacion(tipo_usuario, id_usuario=None, operacion=None):
         print(f"[Proceso {proceso.pid}] {operacion} completada exitosamente")
         
     except Exception as e:
-        print(f"[Error] En operación {operacion}: {str(e)}")
+        print(f"[Error] En operacion {operacion}: {str(e)}")
 
 def monitor_procesos():
     """Muestra el estado actual de los procesos"""
@@ -172,7 +174,7 @@ def monitor_procesos():
         print(f"Procesos totales: {len(procesos)}")
         print("Últimos 5 procesos:")
         for p in procesos[-5:]:
-            print(f"PID: {p['PID']} | Estado: {p['Estado']} | Operación: {p['Operación']}")
+            print(f"PID: {p['PID']} | Estado: {p['Estado']} | Operación: {p['Operacion']}")
     except Exception as e:
         print(f"Error en monitor: {str(e)}")
 
@@ -193,7 +195,7 @@ def obtener_tipo_cuenta(id_cuenta):
             return 'Estándar'
 
 if __name__ == "__main__":
-    
+
     # Inicialización de archivos
     for f in ['pcb.json', 'clientes.json', 'cuentas.json']:
         inicializar_archivo(f)
@@ -201,9 +203,9 @@ if __name__ == "__main__":
     # Datos de prueba (ahora necesitamos id_cuenta en clientes.json)
     solicitudes = [
         ("Cliente", 1, "Retiro"),      # ID 1 debe existir en clientes.json con id_cuenta
-        ("Cliente", 2, "Depósito"),
+        ("Cliente", 2, "Deposito"),
         ("Cliente", 3, "Consulta de saldo"),
-        ("Visitante", None, "Creación de cuenta"),
+        ("Visitante", None, "Creacion de cuenta"),
         ("Visitante", None, "Consulta de servicios")
     ]
     
