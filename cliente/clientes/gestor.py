@@ -2,7 +2,8 @@ import os
 import json
 import sys
 
-from clientes import Client
+from .clientes import Client
+
 
 def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
     archivo = 'clientes.json'
