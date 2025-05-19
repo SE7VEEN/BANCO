@@ -10,6 +10,16 @@ def quitar_acentos(texto):
         c for c in unicodedata.normalize('NFKD', texto)
         if not unicodedata.combining(c)
     )
+    
+def formatear_telefono(numero):
+    """Convierte un número a formato 3-3-4 si tiene al menos 10 dígitos"""
+    digitos = ''.join(filter(str.isdigit, numero))
+    if len(digitos) >= 10:
+        return f"{digitos[-10:-7]}-{digitos[-7:-4]}-{digitos[-4:]}"
+    else:
+        return numero  # Si tiene menos de 10 dígitos, se deja como está
+
+        
 
 class Client:
     def __init__(self, id_usuario=None, nombre=None, contrasena=None, num_telefono=None, direccion=None):
@@ -21,7 +31,7 @@ class Client:
         self.id_usuario = id_usuario or self._generar_id_unico()
         self.nombre = nombre or quitar_acentos(fake.name())
         self.contrasena = contrasena or self._generar_contrasena()
-        self.num_telefono = num_telefono or fake.phone_number()
+        self.num_telefono = num_telefono or formatear_telefono(fake.phone_number())
         self.direccion = direccion or quitar_acentos(fake.address().replace('\n', ', '))
 
     def _generar_id_unico(self):
@@ -36,10 +46,12 @@ class Client:
             nuevo_id = random.randint(1000, 9999)
             if nuevo_id not in existentes:
                 return nuevo_id
+            
+  
 
     def _generar_contrasena(self):
         """Genera una contraseña aleatoria segura"""
-        caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()'
+        caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!^*'
         return ''.join(random.choice(caracteres) for _ in range(12))
 
 
