@@ -5,7 +5,7 @@ import random
 import sys
 
 
-from cuenta2 import Cuenta
+from cliente.cuentas.cuenta2 import Cuenta
 
 # Corregido: doble guion bajo en __file__ y cierre del paréntesis
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))

@@ -1,4 +1,8 @@
 import sys
+import os
+
+# Añade el directorio padre al path de Python
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from cliente.clientes.clientes import Client
 from cliente.clientes.gestor import gestionar_clientes
