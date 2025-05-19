@@ -1,14 +1,56 @@
 import json
 import os
+import random
+import unicodedata
+from faker import Faker  # Librería para generar datos ficticios
+
+def quitar_acentos(texto):
+    """Elimina acentos y caracteres especiales de un texto"""
+    return ''.join(
+        c for c in unicodedata.normalize('NFKD', texto)
+        if not unicodedata.combining(c)
+    )
 
 class Client:
-    def __init__(self, id_usuario, id_cuenta, nombre, contrasena, num_telefono, tarjetas, direccion):
-        self.id_usuario = id_usuario
-        self.nombre = nombre
-        self.contrasena = contrasena
-        self.num_telefono = num_telefono
-        self.tarjetas = tarjetas
-        self.direccion = direccion
+    def _init_(self, id_usuario=None, nombre=None, contrasena=None, num_telefono=None, 
+                 tarjetas=None, direccion=None):
+        """
+        Inicializa un cliente con datos aleatorios si no se proporcionan valores
+        """
+        fake = Faker('es_MX')  # Configuración para datos en español
+        
+        self.id_usuario = id_usuario or self._generar_id_unico()
+        self.nombre = nombre or quitar_acentos(fake.name())
+        self.contrasena = contrasena or self._generar_contrasena()
+        self.num_telefono = num_telefono or fake.phone_number()
+        self.tarjetas = tarjetas or self._generar_tarjetas()
+        self.direccion = direccion or quitar_acentos(fake.address().replace('\n', ', '))
+
+    def _generar_id_unico(self):
+        """Genera un ID de usuario único numérico"""
+        existentes = set()
+        if os.path.exists('clientes.json'):
+            with open('clientes.json', 'r') as f:
+                clientes = json.load(f)
+                existentes = {c['id_usuario'] for c in clientes}
+        
+        while True:
+            nuevo_id = random.randint(1000, 9999)
+            if nuevo_id not in existentes:
+                return nuevo_id
+
+    def _generar_contrasena(self):
+        """Genera una contraseña aleatoria segura"""
+        caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()'
+        return ''.join(random.choice(caracteres) for _ in range(12))
+
+    def _generar_tarjetas(self):
+        """Genera números de tarjetas aleatorios"""
+        tipos = ['VISA', 'MC', 'AMEX']
+        return [
+            f"{random.choice(tipos)}-{random.randint(1000, 9999)}-{random.randint(1000, 9999)}-{random.randint(1000, 9999)}"
+            for _ in range(random.randint(1, 3))
+        ]
 
     def to_dict(self):
         return {
@@ -25,7 +67,7 @@ def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
     Gestiona clientes en un archivo JSON
     
     Parámetros:
-    - accion: 'agregar', 'eliminar' o 'modificar'
+    - accion: 'agregar', 'eliminar', 'modificar' o 'generar'
     - cliente: Objeto Client (necesario para agregar)
     - id_usuario: ID del usuario a eliminar o modificar
     - nuevo_data: Diccionario con nuevos datos (necesario para modificar)
@@ -37,14 +79,12 @@ def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
     archivo = 'clientes.json'
     
     try:
-        # Cargar clientes existentes
         if os.path.exists(archivo):
             with open(archivo, 'r') as f:
                 clientes = json.load(f)
         else:
             clientes = []
             
-        # Convertir la lista a un diccionario para fácil acceso por ID
         clientes_dict = {c['id_usuario']: c for c in clientes}
         
         if accion == 'agregar':
@@ -68,20 +108,25 @@ def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
                 print(f"Error: El ID de usuario {id_usuario} no existe.")
                 return False
                 
-            # Actualizar solo los campos proporcionados en nuevo_data
             for key, value in nuevo_data.items():
                 if key in clientes_dict[id_usuario]:
                     clientes_dict[id_usuario][key] = value
                     
             print(f"Cliente con ID {id_usuario} modificado correctamente.")
             
+        elif accion == 'generar':
+            cantidad = nuevo_data.get('cantidad', 1)
+            for _ in range(cantidad):
+                cliente = Client()
+                clientes_dict[cliente.id_usuario] = cliente.to_dict()
+                print(f"Cliente {cliente.nombre} generado con ID {cliente.id_usuario}")
+            
         else:
-            print("Error: Acción no válida. Use 'agregar', 'eliminar' o 'modificar'.")
+            print("Error: Acción no válida. Use 'agregar', 'eliminar', 'modificar' o 'generar'.")
             return False
             
-        # Guardar los cambios
-        with open(archivo, 'w') as f:
-            json.dump(list(clientes_dict.values()), f, indent=4)
+        with open(archivo, 'w', encoding='utf-8') as f:
+            json.dump(list(clientes_dict.values()), f, indent=4, ensure_ascii=False)
             
         return True
         
@@ -89,4 +134,9 @@ def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
         print(f"Error al gestionar clientes: {str(e)}")
         return False
 
-
+if _name_ == "_main_":
+    cliente_aleatorio = Client()
+    gestionar_clientes('agregar', cliente=cliente_aleatorio)
+    gestionar_clientes('eliminar', id_usuario=9819)
+  
+    gestionar_clientes('generar', nuevo_data={'cantidad': 5})
