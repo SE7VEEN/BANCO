@@ -194,6 +194,7 @@ def obtener_tipo_cuenta(id_cuenta):
 
 if __name__ == "__main__":
 
+    operaciones = ["Deposito", "Retiro", "Transferencia", "Consulta de saldo"]
     # Inicialización de archivos
     for f in ['pcb.json', 'clientes.json', 'cuentas.json']:
         inicializar_archivo(f)
