@@ -13,14 +13,14 @@ cuentas_lock = Lock()
 
 class Proceso:
     def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None):
-        self.pid = pid or str(uuid4().int)[:5]  # ID único de 5 dígitos
-        self.ppid = ppid or str(uuid4().int)[:5]                      # Parent PID
+        self.pid = pid or str(os.getpid())   # ID único de 5 dígitos
+        self.ppid = ppid or str(os.getppid())                      # Parent PID
         self.estado = estado
         self.id_cuenta = id_cuenta
         self.id_usuario = id_usuario
         self.tipo_usuario = tipo_usuario        # "Cliente" o "Visitante"
         self.tipo_cuenta = tipo_cuenta          # "Estándar", "Premium", None
-        self.operacion = operacion
+        self.operacion = operacion or str("NULL")
         self.timestamp = datetime.now().strftime("%H:%M:%S")
 
     def to_dict(self):
@@ -110,6 +110,11 @@ def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
     guardar_en_pcb(proceso)
     return proceso
 
+def terminar_proceso(self, proceso):
+    # Actualizar estado
+    proceso.estado = "Finalizado"
+    guardar_en_pcb(proceso)
+
 def ejecutar_operacion(tipo_usuario, id_usuario=None, operacion=None):
     """
     Ejecuta una operación bancaria en un proceso independiente
@@ -119,16 +124,17 @@ def ejecutar_operacion(tipo_usuario, id_usuario=None, operacion=None):
         id_usuario: Para clientes registrados
         operacion: Tipo de operación
     """
+
+
     try:
         proceso = crear_proceso(tipo_usuario, id_usuario, operacion)
         print(f"[Proceso {proceso.pid}] Iniciando {operacion}...")
         
         # Simulación de tiempo de procesamiento
         time.sleep(2 if "Consulta" in operacion else 3)
-        
-        # Actualizar estado
-        proceso.estado = "Finalizado"
-        guardar_en_pcb(proceso)
+
+        terminar_proceso(proceso)
+
         print(f"[Proceso {proceso.pid}] {operacion} completada exitosamente")
         
     except Exception as e:
@@ -152,8 +158,10 @@ def monitor_procesos():
 
 def generar_solicitudes_automaticas():
     """Genera solicitudes automáticas basadas en cuentas existentes"""
-    operaciones_clientes = ["Deposito", "Retiro", "Transferencia", "Consulta de saldo"]
-    operaciones_visitantes = ["Creacion de cuenta", "Consulta de servicios", "Informacion de productos"]
+    #operaciones_clientes = ["Deposito", "Retiro", "Transferencia", "Consulta de saldo"]
+    operaciones_clientes = ["NULL"]
+    #operaciones_visitantes = ["Creacion de cuenta", "Consulta de servicios", "Informacion de productos"]
+    operaciones_visitantes = ["NULL"]
     
     solicitudes = []
     
@@ -173,7 +181,7 @@ def generar_solicitudes_automaticas():
                 solicitudes.append(("Cliente", id_usuario, operacion))
     
     # Generar solicitudes para visitantes (1-3)
-    for _ in range(random.randint(1, 3)):
+    for _ in range(random.randint(2, 6)):
         operacion = random.choice(operaciones_visitantes)
         solicitudes.append(("Visitante", None, operacion))
     
