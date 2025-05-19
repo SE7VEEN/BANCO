@@ -134,9 +134,8 @@ def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
         print(f"Error al gestionar clientes: {str(e)}")
         return False
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     cliente_aleatorio = Client()
     gestionar_clientes('agregar', cliente=cliente_aleatorio)
     gestionar_clientes('eliminar', id_usuario=9819)
-  
-    gestionar_clientes('generar', nuevo_data={'cantidad': 5})
+    gestionar_clientes('generar', nuevo_data={'cantidad': 5})
