@@ -1,5 +1,5 @@
 from .base_operacion import BaseOperacion
-
+#transferencia
 class Transferencia:
     def __init__(self, id_origen, id_destino, monto):
         self.origen = BaseOperacion(id_origen)
