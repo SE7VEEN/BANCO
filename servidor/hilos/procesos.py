@@ -14,7 +14,7 @@ cuentas_lock = Lock()
 class Proceso:
     def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None):
         self.pid = pid or str(uuid4().int)[:5]  # ID único de 5 dígitos
-        self.ppid = ppid                        # Parent PID
+        self.ppid = ppid or str(uuid4().int)[:5]                      # Parent PID
         self.estado = estado
         self.id_cuenta = id_cuenta
         self.id_usuario = id_usuario
