@@ -1,38 +1,56 @@
 [
     {
-        "id_usuario": 1,   
-        "id_cuenta": "ACD123",
-        "estado_cuenta": "Activa",
-        "tipo_cuenta": "Premium",
-        "tarjetas": [
-            "VISA-1234",
-            "MC-5678"
-        ],
-        "saldo": true,
-        "adeudos": "0"
+        "id_cuenta": "CTA-632E586B",
+        "id_usuario": 2249,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [],
+        "saldo": 952.63,
+        "adeudos": 415.43
     },
     {
-        "id_usuario": 2, 
-        "id_cuenta": "ACC478",
-        "estado_cuenta": "Activa",
-        "tipo_cuenta": "Estandar",
-        "tarjetas": [
-            "VISA-1234",
-            "MC-5678"
-        ],
-        "saldo": true,
-        "adeudos": "0"
+        "id_cuenta": "CTA-1D400227",
+        "id_usuario": 3674,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [],
+        "saldo": 1611.11,
+        "adeudos": 127.13
     },
     {
-        "id_usuario": 3, 
-        "id_cuenta": "A90CV3",
-        "estado_cuenta": "Inactiva",
-        "tipo_cuenta": "Estandar",
-        "tarjetas": [
-            "VISA-1909",
-            "MC-5468"
-        ],
-        "saldo": true,
-        "adeudos": "0"
+        "id_cuenta": "CTA-4B9BB31E",
+        "id_usuario": 9360,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [],
+        "saldo": 3557.85,
+        "adeudos": 301.68
+    },
+    {
+        "id_cuenta": "CTA-B5279605",
+        "id_usuario": 4664,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [],
+        "saldo": 4940.82,
+        "adeudos": 93.08
+    },
+    {
+        "id_cuenta": "CTA-8F3F7511",
+        "id_usuario": 2090,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "est\u00e1ndar",
+        "tarjetas": [],
+        "saldo": 2707.92,
+        "adeudos": 159.61
+    },
+    {
+        "id_cuenta": "CTA-E2EB4C7A",
+        "id_usuario": 5849,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "est\u00e1ndar",
+        "tarjetas": [],
+        "saldo": 1627.55,
+        "adeudos": 268.64
     }
 ]
