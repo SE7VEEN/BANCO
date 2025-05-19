@@ -47,3 +47,5 @@ if __name__ == "__main__":
 ejecutar_operacion('transferencia', 'CTA-BF50CC88', 'CTA-C7C60B2A', 100))
     
     
+
+    #cambiar el id de cuenta a los nuevos del json

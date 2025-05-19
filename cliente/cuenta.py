@@ -159,3 +159,4 @@ def crear_cuentas_automaticamente_por_clientes():
 # Ejecutar si se llama directamente
 if __name__ == "__main__":
     crear_cuentas_automaticamente_por_clientes()
+#

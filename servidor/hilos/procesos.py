@@ -1,137 +1,207 @@
+import json
+from uuid import uuid4
+from datetime import datetime
+from multiprocessing import Process, Lock
+import time
+import os
 import random
-from time import sleep
+
+# Lock global para sincronizar acceso a recursos compartidos
+pcb_lock = Lock()
+clientes_lock = Lock()
+cuentas_lock = Lock()
 
 class Proceso:
-    def __init__(self, pid, ppid, cuenta, operacion, estado, tipo, prioridad=0):
-        self.pid = pid           # ID del proceso
-        self.ppid = ppid         # ID del proceso padre
-        self.estado = estado     # "nuevo", "listo", "ejecutando", "bloqueado", "terminado"
-        self.tipo = tipo         # "cliente", "visitante"
-        self.cuenta = cuenta     # "Estandar", "Premium"
-        self.prioridad = prioridad
-        self.operacionActual = operacion  # En que operacion se encuentra el proceso
-    
-    def mostrar_info(self):
-        print(f"Proceso ID: {self.pid}")
-        print(f"Proceso Padre ID: {self.ppid}")
-        print(f"Estado: {self.estado}")
-        print(f"Tipo: {self.tipo}")
-        print(f"Cuenta: {self.cuenta}")
-        print(f"Prioridad: {self.prioridad}")
-        print(f"Operación actual: {self.operacionActual}")
-        print("-" * 30)
+    def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None):
+        self.pid = pid or str(uuid4().int)[:5]  # ID único de 5 dígitos
+        self.ppid = ppid or str(uuid4().int)[:5]                      # Parent PID
+        self.estado = estado
+        self.id_cuenta = id_cuenta
+        self.id_usuario = id_usuario
+        self.tipo_usuario = tipo_usuario        # "Cliente" o "Visitante"
+        self.tipo_cuenta = tipo_cuenta          # "Estándar", "Premium", None
+        self.operacion = operacion
+        self.timestamp = datetime.now().strftime("%H:%M:%S")
 
-def generar_proceso_automatico(pid_counter):
-    # Datos aleatorios para el proceso
-    estados = ["nuevo", "listo", "ejecutando", "bloqueado", "terminado"]
-    tipos = ["cliente", "visitante"]
-    cuentas = ["Estandar", "Premium"]
-    operaciones = ["Lectura", "Escritura", "Cálculo", "Consulta", "Actualización"]
-    
-    pid = f"P{pid_counter}"
-    ppid = f"P{random.randint(0, pid_counter-1)}" if pid_counter > 0 else "0"
-    cuenta = random.choice(cuentas)
-    operacion = random.choice(operaciones)
-    estado = random.choice(estados)
-    tipo = random.choice(tipos)
-    prioridad = random.randint(0, 5)
-    
-    return Proceso(pid, ppid, cuenta, operacion, estado, tipo, prioridad)
+    def to_dict(self):
+        return {
+            "PID": self.pid,
+            "PPID": self.ppid,
+            "Estado": self.estado,
+            "IDUsuario": self.id_usuario,
+            "IDCuenta": self.id_cuenta,
+            "TipoUsuario": self.tipo_usuario,
+            "TipoCuenta": self.tipo_cuenta,
+            "Operacion": self.operacion,
+            "Timestamp": self.timestamp
+        }
 
-def crear_proceso_manual():
-    print("\nCreando nuevo proceso...")
-    pid = input("Ingrese el ID del proceso: ")
-    ppid = input("Ingrese el ID del proceso padre: ")
-    cuenta = input("Tipo de cuenta (Estandar/Premium): ").capitalize()
-    operacion = input("Operación actual: ")
-    estado = input("Estado (nuevo/listo/ejecutando/bloqueado/terminado): ").lower()
-    tipo = input("Tipo (cliente/visitante): ").lower()
-    prioridad = input("Prioridad (número, 0 por defecto): ")
-    
-    try:
-        prioridad = int(prioridad) if prioridad else 0
-    except ValueError:
-        print("Prioridad no válida, se establecerá a 0")
-        prioridad = 0
-    
-    return Proceso(pid, ppid, cuenta, operacion, estado, tipo, prioridad)
+def inicializar_archivo(filename, default=[]):
+    """Asegura que el archivo JSON exista"""
+    if not os.path.exists(filename):
+        with open(filename, 'w') as f:
+            json.dump(default, f)
 
-def mostrar_procesos(procesos):
-    if not procesos:
-        print("\nNo hay procesos registrados.")
-    else:
-        print("\nListado de procesos:")
-        for proceso in procesos:
-            proceso.mostrar_info()
+def guardar_en_pcb(proceso):
+    """Guarda el proceso en PCB.json con sincronización"""
+    with pcb_lock:
+        try:
+            inicializar_archivo('pcb.json')
+            with open('pcb.json', 'r+') as f:
+                pcb = json.load(f)
+                pcb.append(proceso.to_dict())
+                f.seek(0)
+                json.dump(pcb, f, indent=4)
+        except Exception as e:
+            print(f"Error crítico al actualizar PCB: {str(e)}")
+            raise
 
-def simular_procesos(procesos):
-    if not procesos:
-        print("No hay procesos para simular")
-        return
-    
-    print("\nSimulando estados de procesos...")
-    estados = ["listo", "ejecutando", "bloqueado", "terminado"]
-    
-    for proceso in procesos:
-        if proceso.estado != "terminado":
-            nuevo_estado = random.choice(estados)
-            print(f"Proceso {proceso.pid} cambió de {proceso.estado} a {nuevo_estado}")
-            proceso.estado = nuevo_estado
-            sleep(0.5)  # Pequeña pausa para efecto de simulación
+def obtener_datos_cliente(id_usuario):
+    """Obtiene todos los datos del cliente incluyendo id_cuenta"""
+    with cuentas_lock:
+        try:
+            inicializar_archivo('cuentas.json')
+            with open('cuentas.json', 'r') as f:
+                cuentas = json.load(f)
+            for cuenta in cuentas:
+                if cuenta.get('id_usuario') == id_usuario:
+                    return cuenta
+            return None
+        except Exception as e:
+            print(f"Error obteniendo datos del cliente: {str(e)}")
+            return None
 
-# Programa principal
-if __name__ == "__main__":
-    procesos = []
-    pid_counter = 0
+def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
+    """
+    Crea y registra un nuevo proceso en el sistema
     
-    while True:
-        print("\nSistema de Gestión de Procesos")
-        print("1. Crear proceso manual")
-        print("2. Crear proceso automático")
-        print("3. Crear múltiples procesos automáticos")
-        print("4. Mostrar todos los procesos")
-        print("5. Simular cambios de estado")
-        print("6. Salir")
-        
-        opcion = input("Seleccione una opción: ")
-        
-        if opcion == "1":
-            nuevo_proceso = crear_proceso_manual()
-            procesos.append(nuevo_proceso)
-            pid_counter += 1
-            print("\nProceso creado exitosamente!")
-        
-        elif opcion == "2":
-            nuevo_proceso = generar_proceso_automatico(pid_counter)
-            procesos.append(nuevo_proceso)
-            pid_counter += 1
-            print("\nProceso automático creado:")
-            nuevo_proceso.mostrar_info()
-        
-        elif opcion == "3":
-            cantidad = input("¿Cuántos procesos desea crear? (default 5): ")
-            try:
-                cantidad = int(cantidad) if cantidad else 5
-            except ValueError:
-                cantidad = 5
+    Args:
+        tipo_usuario: "Cliente" o "Visitante"
+        id_usuario: Requerido para clientes
+        operacion: Tipo de operación bancaria
+    
+    Returns:
+        Objeto Proceso creado
+    """
+    if tipo_usuario == "Cliente":
+        if not id_usuario:
+            raise ValueError("Se requiere ID de usuario para clientes")
             
-            print(f"\nCreando {cantidad} procesos automáticos...")
-            for _ in range(cantidad):
-                nuevo_proceso = generar_proceso_automatico(pid_counter)
-                procesos.append(nuevo_proceso)
-                pid_counter += 1
-                nuevo_proceso.mostrar_info()
-                sleep(0.3)
+        datos_cliente = obtener_datos_cliente(id_usuario)
+        if not datos_cliente:
+            raise ValueError("Cliente no registrado o ID inválido")
+            
+        tipo_cuenta = datos_cliente.get('tipo_cuenta', 'Estándar')
+        id_cuenta = datos_cliente.get('id_cuenta')
+    else:
+        if id_usuario is not None:
+            raise ValueError("Visitante no debe tener ID de usuario")
+        tipo_cuenta = None
+        id_cuenta = None
+
+    proceso = Proceso(
+        id_usuario=id_usuario,
+        id_cuenta=id_cuenta,
+        tipo_usuario=tipo_usuario,
+        tipo_cuenta=tipo_cuenta,
+        operacion=operacion
+    )
+    
+    guardar_en_pcb(proceso)
+    return proceso
+
+def ejecutar_operacion(tipo_usuario, id_usuario=None, operacion=None):
+    """
+    Ejecuta una operación bancaria en un proceso independiente
+    
+    Args:
+        tipo_usuario: "Cliente" o "Visitante"
+        id_usuario: Para clientes registrados
+        operacion: Tipo de operación
+    """
+    try:
+        proceso = crear_proceso(tipo_usuario, id_usuario, operacion)
+        print(f"[Proceso {proceso.pid}] Iniciando {operacion}...")
         
-        elif opcion == "4":
-            mostrar_procesos(procesos)
+        # Simulación de tiempo de procesamiento
+        time.sleep(2 if "Consulta" in operacion else 3)
         
-        elif opcion == "5":
-            simular_procesos(procesos)
+        # Actualizar estado
+        proceso.estado = "Finalizado"
+        guardar_en_pcb(proceso)
+        print(f"[Proceso {proceso.pid}] {operacion} completada exitosamente")
         
-        elif opcion == "6":
-            print("Saliendo del sistema...")
-            break
+    except Exception as e:
+        print(f"[Error] En operacion {operacion}: {str(e)}")
+
+def monitor_procesos():
+    """Muestra el estado actual de los procesos"""
+    try:
+        with pcb_lock:
+            inicializar_archivo('pcb.json')
+            with open('pcb.json', 'r') as f:
+                procesos = json.load(f)
         
-        else:
-            print("Opción no válida. Intente nuevamente.")
+        print("\n=== MONITOR DE PROCESOS ===")
+        print(f"Procesos totales: {len(procesos)}")
+        print("Últimos 5 procesos:")
+        for p in procesos[-5:]:
+            print(f"PID: {p['PID']} | Estado: {p['Estado']} | Operación: {p['Operacion']}")
+    except Exception as e:
+        print(f"Error en monitor: {str(e)}")
+
+def generar_solicitudes_automaticas():
+    """Genera solicitudes automáticas basadas en cuentas existentes"""
+    operaciones_clientes = ["Deposito", "Retiro", "Transferencia", "Consulta de saldo"]
+    operaciones_visitantes = ["Creacion de cuenta", "Consulta de servicios", "Informacion de productos"]
+    
+    solicitudes = []
+    
+    # Cargar cuentas existentes
+    with cuentas_lock:
+        inicializar_archivo('cuentas.json')
+        with open('cuentas.json', 'r') as f:
+            cuentas = json.load(f)
+    
+    # Generar solicitudes para clientes existentes
+    for cuenta in cuentas:
+        id_usuario = cuenta.get('id_usuario')
+        if id_usuario:
+            # 1-3 operaciones por cliente
+            for _ in range(random.randint(1, 3)):
+                operacion = random.choice(operaciones_clientes)
+                solicitudes.append(("Cliente", id_usuario, operacion))
+    
+    # Generar solicitudes para visitantes (1-3)
+    for _ in range(random.randint(1, 3)):
+        operacion = random.choice(operaciones_visitantes)
+        solicitudes.append(("Visitante", None, operacion))
+    
+    return solicitudes
+
+if __name__ == "__main__":
+    # Inicialización de archivos
+    for f in ['pcb.json', 'clientes.json', 'cuentas.json']:
+        inicializar_archivo(f)
+    
+    # Generar solicitudes automáticas
+    solicitudes = generar_solicitudes_automaticas()
+    
+    # Mostrar las solicitudes generadas
+    print("Solicitudes generadas automáticamente:")
+    for i, solicitud in enumerate(solicitudes, 1):
+        print(f"{i}. Tipo: {solicitud[0]}, ID: {solicitud[1]}, Operación: {solicitud[2]}")
+    
+    # Lanzamiento de procesos
+    procesos = []
+    for args in solicitudes:
+        p = Process(target=ejecutar_operacion, args=args)
+        p.start()
+        procesos.append(p)
+        time.sleep(0.5)  # Pequeña pausa entre procesos
+    
+    for p in procesos:
+        p.join()
+    
+    monitor_procesos()
+    print("\nSistema bancario: Todas las operaciones completadas")
