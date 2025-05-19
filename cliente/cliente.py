@@ -12,7 +12,7 @@ def quitar_acentos(texto):
     )
 
 class Client:
-    def _init_(self, id_usuario=None, nombre=None, contrasena=None, num_telefono=None, 
+    def __init__(self, id_usuario=None, nombre=None, contrasena=None, num_telefono=None, 
                  tarjetas=None, direccion=None):
         """
         Inicializa un cliente con datos aleatorios si no se proporcionan valores
@@ -138,4 +138,5 @@ if __name__ == "__main__":
     cliente_aleatorio = Client()
     gestionar_clientes('agregar', cliente=cliente_aleatorio)
     gestionar_clientes('eliminar', id_usuario=9819)
+  
     gestionar_clientes('generar', nuevo_data={'cantidad': 5})
