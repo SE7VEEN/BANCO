@@ -12,8 +12,7 @@ def quitar_acentos(texto):
     )
 
 class Client:
-    def __init__(self, id_usuario=None, nombre=None, contrasena=None, num_telefono=None, 
-                 tarjetas=None, direccion=None):
+    def __init__(self, id_usuario=None, nombre=None, contrasena=None, num_telefono=None, direccion=None):
         """
         Inicializa un cliente con datos aleatorios si no se proporcionan valores
         """
@@ -23,7 +22,6 @@ class Client:
         self.nombre = nombre or quitar_acentos(fake.name())
         self.contrasena = contrasena or self._generar_contrasena()
         self.num_telefono = num_telefono or fake.phone_number()
-        self.tarjetas = tarjetas or self._generar_tarjetas()
         self.direccion = direccion or quitar_acentos(fake.address().replace('\n', ', '))
 
     def _generar_id_unico(self):
@@ -44,13 +42,6 @@ class Client:
         caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()'
         return ''.join(random.choice(caracteres) for _ in range(12))
 
-    def _generar_tarjetas(self):
-        """Genera números de tarjetas aleatorios"""
-        tipos = ['VISA', 'MC', 'AMEX']
-        return [
-            f"{random.choice(tipos)}-{random.randint(1000, 9999)}-{random.randint(1000, 9999)}-{random.randint(1000, 9999)}"
-            for _ in range(random.randint(1, 3))
-        ]
 
     def to_dict(self):
         return {
@@ -58,7 +49,6 @@ class Client:
             'nombre': self.nombre,
             'contrasena': self.contrasena,
             'num_telefono': self.num_telefono,
-            'tarjetas': self.tarjetas,
             'direccion': self.direccion
         }
 
