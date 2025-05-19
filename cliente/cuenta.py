@@ -13,6 +13,7 @@ class Cuenta:
 
     def to_dict(self):
         return {
+            'id_usuario' : self.id_usuario,
             'id_cuenta': self.id_cuenta,
             'estado_cuenta': self.estado_cuenta,
             'tipo_cuenta': self.tipo_cuenta,

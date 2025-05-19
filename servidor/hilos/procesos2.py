@@ -71,7 +71,6 @@ def obtener_tipo_cuenta(id_usuario):
     """Obtiene el tipo de cuenta desde cuentas.json"""
     with cuentas_lock:
         try:
-            inicializar_archivo('cuentas.json')
             with open('cuentas.json', 'r') as f:
                 cuentas = json.load(f)
             for cuenta in cuentas:
@@ -84,14 +83,13 @@ def obtener_tipo_cuenta(id_usuario):
         
 def obtener_datos_cliente(id_usuario):
     """Obtiene todos los datos del cliente incluyendo id_cuenta"""
-    with clientes_lock:
+    with cuentas_lock:
         try:
-            inicializar_archivo('clientes.json')
-            with open('clientes.json', 'r') as f:
-                clientes = json.load(f)
-            for cliente in clientes:
-                if cliente.get('id_usuario') == id_usuario:
-                    return cliente
+            with open('cuentas.json', 'r') as f:
+                cuentas = json.load(f)
+            for cuenta in cuentas:
+                if cuenta.get('id_usuario') == id_usuario:
+                    return cuenta
             return None
         except Exception as e:
             print(f"Error obteniendo datos del cliente: {str(e)}")
@@ -128,9 +126,9 @@ def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
         id_cuenta = None
 
     proceso = Proceso(
+        id_usuario=id_usuario,
         id_cuenta=id_cuenta,  
         tipo_usuario=tipo_usuario,
-    
         tipo_cuenta=tipo_cuenta,
         operacion=operacion
     )

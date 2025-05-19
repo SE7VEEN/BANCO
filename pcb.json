@@ -1,28 +1,39 @@
 [
     {
-        "PID": "24615",
+        "PID": "26985",
         "PPID": null,
         "Estado": "En espera",
-        "IDUsuario": null,
+        "IDUsuario": 1,
         "IDCuenta": "ACD123",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "Premium",
         "Operacion": "Retiro",
-        "Timestamp": "18:52:18"
+        "Timestamp": "19:14:19"
     },
     {
-        "PID": "24034",
+        "PID": "71127",
         "PPID": null,
         "Estado": "En espera",
-        "IDUsuario": null,
+        "IDUsuario": 2,
         "IDCuenta": "ACC478",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "Estandar",
         "Operacion": "Deposito",
-        "Timestamp": "18:52:18"
+        "Timestamp": "19:14:20"
     },
     {
-        "PID": "63385",
+        "PID": "30104",
+        "PPID": null,
+        "Estado": "En espera",
+        "IDUsuario": 3,
+        "IDCuenta": "A90CV3",
+        "TipoUsuario": "Cliente",
+        "TipoCuenta": "Estandar",
+        "Operacion": "Consulta de saldo",
+        "Timestamp": "19:14:20"
+    },
+    {
+        "PID": "12552",
         "PPID": null,
         "Estado": "En espera",
         "IDUsuario": null,
@@ -30,10 +41,10 @@
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Operacion": "Creacion de cuenta",
-        "Timestamp": "18:52:19"
+        "Timestamp": "19:14:21"
     },
     {
-        "PID": "26016",
+        "PID": "17097",
         "PPID": null,
         "Estado": "En espera",
         "IDUsuario": null,
@@ -41,32 +52,43 @@
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Operacion": "Consulta de servicios",
-        "Timestamp": "18:52:20"
+        "Timestamp": "19:14:21"
     },
     {
-        "PID": "24615",
+        "PID": "26985",
         "PPID": null,
         "Estado": "Finalizado",
-        "IDUsuario": null,
+        "IDUsuario": 1,
         "IDCuenta": "ACD123",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "Premium",
         "Operacion": "Retiro",
-        "Timestamp": "18:52:18"
+        "Timestamp": "19:14:19"
     },
     {
-        "PID": "24034",
+        "PID": "30104",
         "PPID": null,
         "Estado": "Finalizado",
-        "IDUsuario": null,
+        "IDUsuario": 3,
+        "IDCuenta": "A90CV3",
+        "TipoUsuario": "Cliente",
+        "TipoCuenta": "Estandar",
+        "Operacion": "Consulta de saldo",
+        "Timestamp": "19:14:20"
+    },
+    {
+        "PID": "71127",
+        "PPID": null,
+        "Estado": "Finalizado",
+        "IDUsuario": 2,
         "IDCuenta": "ACC478",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "Estandar",
         "Operacion": "Deposito",
-        "Timestamp": "18:52:18"
+        "Timestamp": "19:14:20"
     },
     {
-        "PID": "26016",
+        "PID": "17097",
         "PPID": null,
         "Estado": "Finalizado",
         "IDUsuario": null,
@@ -74,10 +96,10 @@
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Operacion": "Consulta de servicios",
-        "Timestamp": "18:52:20"
+        "Timestamp": "19:14:21"
     },
     {
-        "PID": "63385",
+        "PID": "12552",
         "PPID": null,
         "Estado": "Finalizado",
         "IDUsuario": null,
@@ -85,6 +107,6 @@
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Operacion": "Creacion de cuenta",
-        "Timestamp": "18:52:19"
+        "Timestamp": "19:14:21"
     }
 ]
