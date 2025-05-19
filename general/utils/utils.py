@@ -2,7 +2,7 @@ import unicodedata
 
 import json
 import os
-from cliente.cuentas import Cuenta
+from cliente.cuentas.cuenta2 import Cuenta
 
 
 CUENTAS_PATH = 'datos/cuentas.json'

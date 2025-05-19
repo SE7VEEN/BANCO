@@ -1,7 +1,4 @@
 import sys
-import os
-# Corregido: doble guion bajo en __file__ y cierre del paréntesis
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from clientes.clientes import Client
 from clientes.gestor import gestionar_clientes
