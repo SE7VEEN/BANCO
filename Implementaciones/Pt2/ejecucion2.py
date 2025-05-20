@@ -4,6 +4,7 @@ import time, sys, os
 from queue import PriorityQueue
 from multiprocessing import Process, Semaphore, Lock
 
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from servidor.hilos.procesos import crear_proceso

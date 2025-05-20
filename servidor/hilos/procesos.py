@@ -7,7 +7,7 @@ from servidor.hilos.pcb import obtener_datos_cliente, guardar_en_pcb
 from general.utils.utils import CUENTAS_PATH, inicializar_archivo
 
 class Proceso:
-    def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, prioridad = None, operacion=None ):
+    def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None):
         self.pid = pid or str(os.getpid())
         self.ppid = ppid or str(os.getppid())
         self.estado = estado
@@ -15,6 +15,8 @@ class Proceso:
         self.id_usuario = id_usuario
         self.tipo_usuario = tipo_usuario
         self.tipo_cuenta = tipo_cuenta
+        self.prioridad = prioridad
+        self.destino = destino
         self.operacion = operacion or "NULL"
         self.prioridad = prioridad
         self.timestamp = datetime.now().strftime("%H:%M:%S")
@@ -33,7 +35,7 @@ class Proceso:
             "Timestamp": self.timestamp
         }
 
-def crear_proceso(tipo_usuario, id_usuario=None, operacion=None, prioridad = None):
+def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
     from .pcb import obtener_datos_cliente
 
     if tipo_usuario == "Cliente":
@@ -55,8 +57,7 @@ def crear_proceso(tipo_usuario, id_usuario=None, operacion=None, prioridad = Non
         id_cuenta=id_cuenta,
         tipo_usuario=tipo_usuario,
         tipo_cuenta=tipo_cuenta,
-        prioridad=prioridad,
-        operacion=operacion,
+        operacion=operacion
     )
     guardar_en_pcb(proceso)
     return proceso
