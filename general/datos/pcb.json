@@ -53,6 +53,16 @@
         "TipoCuenta": "premium",
         "Operacion": "NULL",
         "Timestamp": "14:50:18"
+    },
+    {
+        "PID": "1608",
+        "PPID": "18980",
+        "Estado": "En espera",
+        "IDUsuario": 2351,
+        "IDCuenta": "CTA-B865B102",
+        "TipoUsuario": "Cliente",
+        "TipoCuenta": "premium",
+        "Operacion": "Dep\u00f3sito",
+        "Timestamp": "15:44:20"
     }
-]
 ]
