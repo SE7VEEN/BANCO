@@ -70,8 +70,8 @@ def guardar_en_pcb(proceso):
             pcb.append(proceso.to_dict())
             f.seek(0)
             json.dump(pcb, f, indent=4)
-            f.truncate()  # Limpia el archivo si el nuevo JSON es más corto que el anterior
-
+            f.truncate() 
+            
 def obtener_datos_cliente(id_usuario):
     with cuentas_lock:
         inicializar_archivo(CUENTAS_PATH)
