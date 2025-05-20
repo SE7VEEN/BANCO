@@ -14,9 +14,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # Esto te lleva a 'genera
 DATA_DIR = os.path.join(BASE_DIR, 'Datos')
 PCB_PATH = os.path.join(DATA_DIR, 'pcb.json')
 
+import os
 
-CUENTAS_PATH = 'datos/cuentas.json'
+# 1. __file__ apunta a BANCO/general/utils/utils.py
+# 2. Subimos 3 niveles para llegar a BANCO/
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
+# 3. Construimos ruta hacia BANCO/cliente/datos
+DATOS_DIR = os.path.join(BASE_DIR, 'cliente', 'datos')
+
+# Archivos JSON dentro de cliente/datos
+CUENTAS_PATH = os.path.join(DATOS_DIR, 'cuentas.json')
+CLIENTES_PATH = os.path.join(DATOS_DIR, 'clientes.json')
 
 def quitar_acentos(texto):
     return ''.join(
@@ -41,6 +50,7 @@ def cargar_cuentas():
     return []
 
 def guardar_cuentas(cuentas):
+    os.makedirs(os.path.dirname(CUENTAS_PATH), exist_ok=True) 
     with open(CUENTAS_PATH, 'w') as f:
         json.dump([c.to_dict() for c in cuentas], f, indent=4)
 
@@ -52,13 +62,13 @@ def inicializar_archivo(filename, default=[]):
 
 def guardar_en_pcb(proceso):
     with pcb_lock:
-        inicializar_archivo(PCB_PATH)
-        with open(PCB_PATH, 'r+') as f:
+        inicializar_archivo('pcb.json')
+        with open('pcb.json', 'r+') as f:
             pcb = json.load(f)
             pcb.append(proceso.to_dict())
             f.seek(0)
             json.dump(pcb, f, indent=4)
-
+    
 def obtener_datos_cliente(id_usuario):
     with cuentas_lock:
         inicializar_archivo('cuentas.json')

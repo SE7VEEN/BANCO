@@ -15,3 +15,4 @@ if __name__ == "__main__":
     gestionar_clientes('generar', nuevo_data={'cantidad': 5})
 
     crear_cuentas_automaticamente_por_clientes()
+####

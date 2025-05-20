@@ -4,13 +4,17 @@ import sys
 
 from .clientes import Client
 
+# Obtener ruta absoluta a cliente/datos/clientes.json
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))  # carpeta 'cliente'
+DATOS_DIR = os.path.join(BASE_DIR, 'datos')
+os.makedirs(DATOS_DIR, exist_ok=True)  # Asegura que la carpeta exista
+archivo = os.path.join(DATOS_DIR, 'clientes.json')
+
 
 def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
-    archivo = 'clientes.json'
-    
     try:
         if os.path.exists(archivo):
-            with open(archivo, 'r') as f:
+            with open(archivo, 'r', encoding='utf-8') as f:
                 clientes = json.load(f)
         else:
             clientes = []
