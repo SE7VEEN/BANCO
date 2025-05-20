@@ -50,30 +50,26 @@ def inicializar_archivo(filename, default=[]):
         with open(filename, 'w') as f:
             json.dump(default, f)
 
-def guardar_en_pcb(proceso_dict):
-    with pcb_lock:
+def guardar_en_pcb(proceso_dict, lock):
+    with lock:
         try:
-            # Crear directorio si no existe
             os.makedirs(os.path.dirname(PCB_PATH), exist_ok=True)
-            
-            # Leer contenido actual
             try:
                 with open(PCB_PATH, 'r') as f:
                     pcb = json.load(f)
             except (FileNotFoundError, json.JSONDecodeError):
                 pcb = []
-            
-            # Agregar nuevo proceso
+
             pcb.append(proceso_dict)
-            
-            # Escribir de nuevo todo el contenido
+
             with open(PCB_PATH, 'w') as f:
                 json.dump(pcb, f, indent=4)
-                
+
             print(f"Proceso {proceso_dict.get('PID')} guardado correctamente en PCB")
         except Exception as e:
             print(f"Error al guardar en PCB: {str(e)}")
             raise
+
             
 def obtener_datos_cliente(id_usuario):
     with cuentas_lock:
