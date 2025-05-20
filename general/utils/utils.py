@@ -9,6 +9,11 @@ from multiprocessing import Lock
 pcb_lock = Lock()
 cuentas_lock = Lock()
 
+# Ruta absoluta al archivo pcb.json dentro de banco/general/datos/
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # Esto te lleva a 'general'
+DATA_DIR = os.path.join(BASE_DIR, 'Datos')
+PCB_PATH = os.path.join(DATA_DIR, 'pcb.json')
+
 
 CUENTAS_PATH = 'datos/cuentas.json'
 
@@ -47,13 +52,13 @@ def inicializar_archivo(filename, default=[]):
 
 def guardar_en_pcb(proceso):
     with pcb_lock:
-        inicializar_archivo('pcb.json')
-        with open('pcb.json', 'r+') as f:
+        inicializar_archivo(PCB_PATH)
+        with open(PCB_PATH, 'r+') as f:
             pcb = json.load(f)
             pcb.append(proceso.to_dict())
             f.seek(0)
             json.dump(pcb, f, indent=4)
-    
+
 def obtener_datos_cliente(id_usuario):
     with cuentas_lock:
         inicializar_archivo('cuentas.json')

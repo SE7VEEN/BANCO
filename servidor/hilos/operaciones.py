@@ -1,7 +1,12 @@
 #from models import Proceso
-from clase_procesos import Proceso
-from general.utils import guardar_en_pcb, obtener_datos_cliente
+import sys
+import os
 import time
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from servidor.hilos.clase_procesos import Proceso
+from general.utils import guardar_en_pcb, obtener_datos_cliente
+
 
 def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
     if tipo_usuario == "Cliente":
