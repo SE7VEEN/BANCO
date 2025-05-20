@@ -1,5 +1,5 @@
 import sys
-import os
+import os, sys
 
 # Añade el directorio padre al path de Python
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

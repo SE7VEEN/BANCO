@@ -41,7 +41,7 @@ def obtener_datos_cliente(id_usuario):
             print(f"Error obteniendo datos del cliente: {str(e)}")
             return None
 
-def monitor_procesos():
+""" def monitor_procesos():
     try:
         with pcb_lock:
             inicializar_archivo(PCB_PATH)
@@ -53,4 +53,4 @@ def monitor_procesos():
         for p in procesos[-5:]:
             print(f"PID: {p['PID']} | Estado: {p['Estado']} | Operación: {p['Operacion']}")
     except Exception as e:
-        print(f"Error en monitor: {str(e)}")
+        print(f"Error en monitor: {str(e)}") """
