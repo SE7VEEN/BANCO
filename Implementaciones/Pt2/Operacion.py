@@ -1,6 +1,9 @@
 import time
-import json
-from servidor.hilos.pcb import actualizar_estado_pcb  # asegúrate de tener esta función
+import json, sys, os
+
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from Implementaciones.Pt2.actualizar import actualizar_estado_pcb  # asegúrate de tener esta función
 from general.utils.utils import CUENTAS_PATH
 
 def operacion_deposito(proceso, monto, cuentas_lock):

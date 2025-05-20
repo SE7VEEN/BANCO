@@ -1,12 +1,15 @@
 import json
 import random
-import time
+import time, sys, os
 from queue import PriorityQueue
 from multiprocessing import Process, Semaphore, Lock
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from servidor.hilos.procesos import crear_proceso
-from servidor.hilos.pcb import actualizar_estado_pcb
+from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from general.utils.utils import CUENTAS_PATH, inicializar_archivo
-from operaciones.operaciones_bancarias import operacion_deposito  # Debes tener esta función implementada
+from Implementaciones.Pt2.Operacion import operacion_deposito  # Debes tener esta función implementada
 
 # Configuraciones de concurrencia
 cuentas_lock = Lock()

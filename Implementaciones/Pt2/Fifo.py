@@ -1,5 +1,6 @@
 from queue import PriorityQueue
-from multiprocessing import Semaphore, Lock
+from multiprocessing import Semaphore, Lock, Process
+from despachar import despachar_proceso
 
 ventanillas = Semaphore(2)  # 2 ventanillas
 asesores = Semaphore(2)     # 2 asesores
