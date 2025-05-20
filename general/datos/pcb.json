@@ -1,68 +1,90 @@
 [
     {
-        "PID": "2808",
-        "PPID": "23848",
+        "PID": "23428",
+        "PPID": "2776",
+        "Estado": "En espera",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoUsuario": "Visitante",
+        "TipoCuenta": null,
+        "Operacion": "Consulta de servicios",
+        "Timestamp": "19:41:26"
+    },
+    {
+        "PID": "8020",
+        "PPID": "2776",
         "Estado": "En espera",
         "IDUsuario": null,
         "IDCuenta": null,
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Operacion": "Creaci\u00f3n de cuenta",
-        "Timestamp": "19:32:32"
+        "Timestamp": "19:41:26"
     },
     {
-        "PID": "6748",
-        "PPID": "23848",
+        "PID": "10812",
+        "PPID": "2776",
+        "Estado": "En espera",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoUsuario": "Visitante",
+        "TipoCuenta": null,
+        "Operacion": "Consulta de servicios",
+        "Timestamp": "19:41:27"
+    },
+    {
+        "PID": "9844",
+        "PPID": "2776",
         "Estado": "En espera",
         "IDUsuario": null,
         "IDCuenta": null,
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Operacion": "Creaci\u00f3n de cuenta",
-        "Timestamp": "19:32:33"
+        "Timestamp": "19:41:27"
     },
     {
-        "PID": "24560",
-        "PPID": "23848",
-        "Estado": "En espera",
+        "PID": "23428",
+        "PPID": "2776",
+        "Estado": "Finalizado",
         "IDUsuario": null,
         "IDCuenta": null,
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
-        "Operacion": "Creaci\u00f3n de cuenta",
-        "Timestamp": "19:32:33"
+        "Operacion": "Consulta de servicios",
+        "Timestamp": "19:41:26"
     },
     {
-        "PID": "2808",
-        "PPID": "23848",
+        "PID": "10812",
+        "PPID": "2776",
+        "Estado": "Finalizado",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoUsuario": "Visitante",
+        "TipoCuenta": null,
+        "Operacion": "Consulta de servicios",
+        "Timestamp": "19:41:27"
+    },
+    {
+        "PID": "8020",
+        "PPID": "2776",
         "Estado": "Finalizado",
         "IDUsuario": null,
         "IDCuenta": null,
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Operacion": "Creaci\u00f3n de cuenta",
-        "Timestamp": "19:32:32"
+        "Timestamp": "19:41:26"
     },
     {
-        "PID": "6748",
-        "PPID": "23848",
+        "PID": "9844",
+        "PPID": "2776",
         "Estado": "Finalizado",
         "IDUsuario": null,
         "IDCuenta": null,
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Operacion": "Creaci\u00f3n de cuenta",
-        "Timestamp": "19:32:33"
-    },
-    {
-        "PID": "24560",
-        "PPID": "23848",
-        "Estado": "Finalizado",
-        "IDUsuario": null,
-        "IDCuenta": null,
-        "TipoUsuario": "Visitante",
-        "TipoCuenta": null,
-        "Operacion": "Creaci\u00f3n de cuenta",
-        "Timestamp": "19:32:33"
+        "Timestamp": "19:41:27"
     }
 ]
