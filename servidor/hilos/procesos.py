@@ -7,7 +7,7 @@ from servidor.hilos.pcb import obtener_datos_cliente, guardar_en_pcb
 from general.utils.utils import CUENTAS_PATH, inicializar_archivo
 
 class Proceso:
-    def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None):
+    def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None, prioridad = None, destino = None):
         self.pid = pid or str(os.getpid())
         self.ppid = ppid or str(os.getppid())
         self.estado = estado
@@ -30,11 +30,12 @@ class Proceso:
             "TipoUsuario": self.tipo_usuario,
             "TipoCuenta": self.tipo_cuenta,
             "Prioridad": self.prioridad,
+            "Destino": self.destino,
             "Operacion": self.operacion,
             "Timestamp": self.timestamp
         }
 
-def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
+def crear_proceso(tipo_usuario, id_usuario=None, operacion=None, prioridad = None, destino = None):
     from .pcb import obtener_datos_cliente
 
     if tipo_usuario == "Cliente":
@@ -56,6 +57,8 @@ def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
         id_cuenta=id_cuenta,
         tipo_usuario=tipo_usuario,
         tipo_cuenta=tipo_cuenta,
+        prioridad=prioridad,
+        destino= destino,
         operacion=operacion
     )
     guardar_en_pcb(proceso)
