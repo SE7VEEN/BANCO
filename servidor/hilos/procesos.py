@@ -61,3 +61,4 @@ def crear_proceso(tipo_usuario, id_usuario=None, operacion=None, prioridad = Non
     )
     guardar_en_pcb(proceso)
     return proceso
+#
