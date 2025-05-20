@@ -1,0 +1,86 @@
+[
+    {
+        "id_cuenta": "CTA-01203E71",
+        "id_usuario": 4445,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "7927-1670-3101-8398",
+                "cvv": "498"
+            }
+        ],
+        "saldo": 4291.2,
+        "adeudos": 1836.18
+    },
+    {
+        "id_cuenta": "CTA-2BF4087F",
+        "id_usuario": 3982,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "6231-6114-3251-7153",
+                "cvv": "244"
+            }
+        ],
+        "saldo": 39653.04,
+        "adeudos": 1883.29
+    },
+    {
+        "id_cuenta": "CTA-E87A088A",
+        "id_usuario": 2565,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "0754-9902-3672-8805",
+                "cvv": "917"
+            }
+        ],
+        "saldo": 7648.74,
+        "adeudos": 1615.28
+    },
+    {
+        "id_cuenta": "CTA-C65B9438",
+        "id_usuario": 3027,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "3710-7932-9998-4026",
+                "cvv": "964"
+            }
+        ],
+        "saldo": 81428.92,
+        "adeudos": 1295.43
+    },
+    {
+        "id_cuenta": "CTA-623FF8EB",
+        "id_usuario": 4949,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "9687-5548-6154-2394",
+                "cvv": "152"
+            }
+        ],
+        "saldo": 67403.09,
+        "adeudos": 1287.57
+    },
+    {
+        "id_cuenta": "CTA-29EE7D08",
+        "id_usuario": 7278,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "1012-9810-3950-4835",
+                "cvv": "306"
+            }
+        ],
+        "saldo": 84615.28,
+        "adeudos": 1848.3
+    }
+]

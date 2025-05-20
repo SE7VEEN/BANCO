@@ -1,0 +1,44 @@
+[
+    {
+        "id_usuario": 4445,
+        "nombre": "Ing. Abraham Abrego",
+        "contrasena": "px9HDWPcJJIK",
+        "num_telefono": "861-017-8384",
+        "direccion": "Avenida Norte Perea 578 269, Nueva Paraguay, TAB 75614"
+    },
+    {
+        "id_usuario": 3982,
+        "nombre": "Luis Barajas",
+        "contrasena": "StoNjs45Xduv",
+        "num_telefono": "436-077-1413",
+        "direccion": "Continuacion Noruega 359 541, San Elvia de la Montana, TAMPS 32771-9443"
+    },
+    {
+        "id_usuario": 2565,
+        "nombre": "Ursula Blanco Leyva",
+        "contrasena": "D^8qG2GfxIIJ",
+        "num_telefono": "238-398-8217",
+        "direccion": "Peatonal Guinea 821 Interior 170, San Elena de la Montana, MEX 64170"
+    },
+    {
+        "id_usuario": 3027,
+        "nombre": "Pedro Quezada Sarabia",
+        "contrasena": "xQ845gXpX6fa",
+        "num_telefono": "853-121-6108",
+        "direccion": "Calle Durango 544 Interior 756, Vieja Suecia, HGO 53774-0221"
+    },
+    {
+        "id_usuario": 4949,
+        "nombre": "Conchita Anabel Calderon Padron",
+        "contrasena": "q4!cMZt14eHL",
+        "num_telefono": "823-100-3834",
+        "direccion": "Circunvalacion Garica 461 800, Nueva Kirguistan, SIN 03616-4095"
+    },
+    {
+        "id_usuario": 7278,
+        "nombre": "Jose Carlos Varela",
+        "contrasena": "bDo7UtyDHF6K",
+        "num_telefono": "666-877-0436",
+        "direccion": "Pasaje Rivas 679 861, San Alonso de la Montana, COAH 10460-1367"
+    }
+]

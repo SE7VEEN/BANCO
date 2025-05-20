@@ -1,27 +1,27 @@
-from datetime import datetime
+from datetime import *
 import os
 
 class Proceso:
-    def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None):
-        self.pid = pid or str(os.getpid())
-        self.ppid = ppid or str(os.getppid())
-        self.estado = estado
-        self.id_cuenta = id_cuenta
-        self.id_usuario = id_usuario
+    def __init__(self, tipo_usuario, id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None):
+        self.pid = os.getpid()
         self.tipo_usuario = tipo_usuario
+        self.id_usuario = id_usuario
+        self.id_cuenta = id_cuenta
         self.tipo_cuenta = tipo_cuenta
-        self.operacion = operacion or "Ninguna"
-        self.timestamp = datetime.now().strftime("%H:%M:%S")
+        self.operacion = operacion
+        self.estado = "En ejecución"
+        self.tiempo_inicio = time.time()
+        self.tiempo_fin = None
 
     def to_dict(self):
         return {
             "PID": self.pid,
-            "PPID": self.ppid,
-            "Estado": self.estado,
+            "TipoUsuario": self.tipo_usuario,
             "IDUsuario": self.id_usuario,
             "IDCuenta": self.id_cuenta,
-            "TipoUsuario": self.tipo_usuario,
             "TipoCuenta": self.tipo_cuenta,
             "Operacion": self.operacion,
-            "Timestamp": self.timestamp
+            "Estado": self.estado,
+            "TiempoInicio": self.tiempo_inicio,
+            "TiempoFin": self.tiempo_fin
         }

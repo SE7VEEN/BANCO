@@ -31,12 +31,13 @@ def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
         operacion=operacion
     )
 
-    guardar_en_pcb(proceso)
+    guardar_en_pcb(proceso.to_dict())
     return proceso
 
 def terminar_proceso(proceso):
     proceso.estado = "Finalizado"
-    guardar_en_pcb(proceso)
+    proceso.tiempo_fin = time.time()
+    guardar_en_pcb(proceso.to_dict())  # Asegúrate de pasar el dict
 
 def ejecutar_operacion(tipo_usuario, id_usuario=None, operacion=None):
     try:

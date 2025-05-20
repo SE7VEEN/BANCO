@@ -1,9 +1,7 @@
 import unicodedata
-
 import json
 import os
 from cliente.cuentas.cuenta2 import Cuenta
-from servidor.hilos.models import Proceso
 from multiprocessing import Lock
 
 pcb_lock = Lock()
@@ -47,28 +45,38 @@ def guardar_cuentas(cuentas):
     with open(CUENTAS_PATH, 'w') as f:
         json.dump([c.to_dict() for c in cuentas], f, indent=4)
 
-
 def inicializar_archivo(filename, default=[]):
     if not os.path.exists(filename):
         with open(filename, 'w') as f:
             json.dump(default, f)
 
-def guardar_en_pcb(proceso):
+def guardar_en_pcb(proceso_dict):
     with pcb_lock:
-        inicializar_archivo(PCB_PATH)
-        with open(PCB_PATH, 'r+') as f:
+        try:
+            # Crear directorio si no existe
+            os.makedirs(os.path.dirname(PCB_PATH), exist_ok=True)
+            
+            # Leer contenido actual
             try:
-                pcb = json.load(f)
-            except json.JSONDecodeError:
+                with open(PCB_PATH, 'r') as f:
+                    pcb = json.load(f)
+            except (FileNotFoundError, json.JSONDecodeError):
                 pcb = []
-            pcb.append(proceso.to_dict())
-            f.seek(0)
-            json.dump(pcb, f, indent=4)
-            f.truncate() 
+            
+            # Agregar nuevo proceso
+            pcb.append(proceso_dict)
+            
+            # Escribir de nuevo todo el contenido
+            with open(PCB_PATH, 'w') as f:
+                json.dump(pcb, f, indent=4)
+                
+            print(f"Proceso {proceso_dict.get('PID')} guardado correctamente en PCB")
+        except Exception as e:
+            print(f"Error al guardar en PCB: {str(e)}")
+            raise
             
 def obtener_datos_cliente(id_usuario):
     with cuentas_lock:
-        inicializar_archivo(CUENTAS_PATH)
         with open(CUENTAS_PATH, 'r') as f:
             try:
                 cuentas = json.load(f)
@@ -78,5 +86,3 @@ def obtener_datos_cliente(id_usuario):
             if cuenta.get('id_usuario') == id_usuario:
                 return cuenta
     return None
-
-
