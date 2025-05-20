@@ -5,7 +5,7 @@ import time
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from servidor.hilos.clase_procesos import Proceso
-from general.utils import guardar_en_pcb, obtener_datos_cliente
+from general.utils.utils import guardar_en_pcb, obtener_datos_cliente
 
 
 def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):

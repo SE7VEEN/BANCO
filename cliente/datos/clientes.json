@@ -1,0 +1,44 @@
+[
+    {
+        "id_usuario": 3674,
+        "nombre": "Helena Zarate",
+        "contrasena": "CMAdYMErx0Ds",
+        "num_telefono": "963-277-2792",
+        "direccion": "Pasaje Mora 269 Interior 478, San Maria Teresa de la Montana, GTO 90028-0914"
+    },
+    {
+        "id_usuario": 5579,
+        "nombre": "Francisco Javier Luisa Brito",
+        "contrasena": "qhKnSt6MoAhx",
+        "num_telefono": "371-414-7557",
+        "direccion": "Ampliacion Coahuila de Zaragoza 082 608, Vieja Nueva Zelandia, DGO 86397"
+    },
+    {
+        "id_usuario": 7760,
+        "nombre": "Homero Carvajal Espino",
+        "contrasena": "lq2LKcqzybBB",
+        "num_telefono": "361-755-8184",
+        "direccion": "Peatonal Norte Espinosa 419 550, Vieja Botswana, SON 11082-7985"
+    },
+    {
+        "id_usuario": 3193,
+        "nombre": "Miriam Gilberto Tafoya Aponte",
+        "contrasena": "jvpym92ioFDl",
+        "num_telefono": "269-253-5025",
+        "direccion": "Callejon Ordonez 860 Interior 534, Nueva Belarus, COL 09736"
+    },
+    {
+        "id_usuario": 4952,
+        "nombre": "Dr. Maria Jose Prado",
+        "contrasena": "pJAVD4NL3S3g",
+        "num_telefono": "885-706-4294",
+        "direccion": "Circunvalacion Fierro 242 278, Vieja Timor-Leste, HGO 98324-6710"
+    },
+    {
+        "id_usuario": 7443,
+        "nombre": "Socorro Liliana Monroy",
+        "contrasena": "6jJD!IyRbiyU",
+        "num_telefono": "784-887-2126",
+        "direccion": "Eje vial Gabon 945 154, San Sonia los bajos, NL 45976-0547"
+    }
+]
