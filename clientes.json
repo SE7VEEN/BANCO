@@ -82,5 +82,47 @@
         "contrasena": "KKAOduhrUE8Y",
         "num_telefono": "967-020-0764",
         "direccion": "Calle Sur Sepulveda 284 Edif. 201 , Depto. 714, San Luisa los altos, OAX 44065"
+    },
+    {
+        "id_usuario": 8969,
+        "nombre": "Amanda Elisa Miranda",
+        "contrasena": "rmejprPqSJ7D",
+        "num_telefono": "212-689-3258",
+        "direccion": "Avenida Sudafrica 448 408, San Graciela los bajos, MEX 98329-9240"
+    },
+    {
+        "id_usuario": 8091,
+        "nombre": "Linda Tamez Montes",
+        "contrasena": "cfVemaZ3^VGT",
+        "num_telefono": "759-537-9123",
+        "direccion": "Eje vial Tovar 462 262, Vieja Polonia, BC 14811-8752"
+    },
+    {
+        "id_usuario": 2015,
+        "nombre": "Mayte Aurora Ontiveros Morales",
+        "contrasena": "1GyPgfzl8AHb",
+        "num_telefono": "590-591-9998",
+        "direccion": "Periferico Segovia 955 028, San Asuncion los altos, OAX 29627"
+    },
+    {
+        "id_usuario": 3123,
+        "nombre": "Irene Anel Luevano Negrete",
+        "contrasena": "fUPB^T*tXkTk",
+        "num_telefono": "474-987-4790",
+        "direccion": "Callejon Patino 602 Edif. 621 , Depto. 341, Vieja Japon, NAY 29856-6699"
+    },
+    {
+        "id_usuario": 9152,
+        "nombre": "Ruby Alma Rascon Zamudio",
+        "contrasena": "*m*whyILAhFi",
+        "num_telefono": "695-800-6572",
+        "direccion": "Continuacion Rodriguez 240 Interior 358, Vieja Cabo Verde, DGO 79936-8326"
+    },
+    {
+        "id_usuario": 7822,
+        "nombre": "Emilio Antonia Najera",
+        "contrasena": "lfTFXGt8m*Z4",
+        "num_telefono": "075-720-5520",
+        "direccion": "Avenida Betancourt 416 Edif. 024 , Depto. 752, Vieja Eritrea, ZAC 49920"
     }
 ]
