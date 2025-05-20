@@ -1,12 +1,15 @@
-from multiprocessing import Process
-from utils import inicializar_archivo, pcb_lock
-from operaciones import ejecutar_operacion
+import sys
+import os
 import json
 import random
 import time
 
+from multiprocessing import Process
+from general.utils.utils import inicializar_archivo, pcb_lock, cuentas_lock
+from servidor.hilos.operaciones import ejecutar_operacion
+
+
 def generar_solicitudes_automaticas():
-    from utils import cuentas_lock
     operaciones_clientes = ["Consulta de saldo", "Transferencia", "Depósito", "Retiro"]
     operaciones_visitantes = ["Consulta de servicios", "Creación de cuenta"]
     solicitudes = []
