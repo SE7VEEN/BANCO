@@ -23,9 +23,9 @@ def guardar_en_pcb(proceso):
             print(f"Error crítico al actualizar PCB: {str(e)}")
             raise
 
-def terminar_proceso(proceso):
-    proceso.estado = "Finalizado"
-    guardar_en_pcb(proceso)
+# def terminar_proceso(proceso):
+#     proceso.estado = "Finalizado"
+#     guardar_en_pcb(proceso)
 
 def obtener_datos_cliente(id_usuario):
     with cuentas_lock:
