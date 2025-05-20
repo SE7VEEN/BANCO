@@ -12,3 +12,5 @@ def lanzar_solicitudes():
         procesos.append(p)
     for p in procesos:
         p.join()
+
+    return solicitudes

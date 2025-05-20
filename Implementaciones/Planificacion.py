@@ -14,3 +14,4 @@ def planificador():
             atender_en_ventanilla(proceso)
         else:
             atender_con_asesor(proceso)
+

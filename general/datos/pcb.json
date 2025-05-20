@@ -1,0 +1,24 @@
+[
+    {
+        "PID": "25376",
+        "PPID": "3540",
+        "Estado": "En espera",
+        "IDUsuario": 2754,
+        "IDCuenta": "CTA-3AD42868",
+        "TipoUsuario": "Cliente",
+        "TipoCuenta": "estandar",
+        "Operacion": "NULL",
+        "Timestamp": "03:08:23"
+    },
+    {
+        "PID": "3076",
+        "PPID": "3540",
+        "Estado": "En espera",
+        "IDUsuario": 3365,
+        "IDCuenta": "CTA-15B70E40",
+        "TipoUsuario": "Cliente",
+        "TipoCuenta": "estandar",
+        "Operacion": "NULL",
+        "Timestamp": "03:08:23"
+    }
+]]
