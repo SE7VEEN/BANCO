@@ -3,6 +3,8 @@ import json
 import os
 from cliente.cuentas.cuenta2 import Cuenta
 from multiprocessing import Lock
+import shutil
+from pathlib import Path
 
 pcb_lock = Lock()
 cuentas_lock = Lock()
@@ -23,6 +25,13 @@ def quitar_acentos(texto):
         c for c in unicodedata.normalize('NFKD', texto)
         if not unicodedata.combining(c)
     )
+
+def eliminar_carpeta_datos():
+    datos_dir = DATOS_PATH
+    if datos_dir is None:
+        datos_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'general', 'datos')
+    
+    datos_path = Path(datos_dir).resolve()
 
 def formatear_telefono(numero):
     digitos = ''.join(filter(str.isdigit, numero))
@@ -51,7 +60,6 @@ def inicializar_archivo(filename, default=[]):
     if not os.path.exists(filename):
         with open(filename, 'w') as f:
             json.dump(default, f)
-
 
 def guardar_en_pcb(proceso_dict, lock):
     with lock:

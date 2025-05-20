@@ -1,44 +1,58 @@
 [
     {
-        "id_usuario": 4445,
-        "nombre": "Ing. Abraham Abrego",
-        "contrasena": "px9HDWPcJJIK",
-        "num_telefono": "861-017-8384",
-        "direccion": "Avenida Norte Perea 578 269, Nueva Paraguay, TAB 75614"
+        "id_usuario": 4888,
+        "nombre": "Debora Maria Cristina Esquivel",
+        "contrasena": "YojCJbfh6Db0",
+        "num_telefono": "485-327-2394",
+        "direccion": "Viaducto Sur Menendez 438 Edif. 068 , Depto. 214, Nueva Albania, CHIH 41359-8561"
     },
     {
-        "id_usuario": 3982,
-        "nombre": "Luis Barajas",
-        "contrasena": "StoNjs45Xduv",
-        "num_telefono": "436-077-1413",
-        "direccion": "Continuacion Noruega 359 541, San Elvia de la Montana, TAMPS 32771-9443"
+        "id_usuario": 7256,
+        "nombre": "Zeferino Luz Jaime Santiago",
+        "contrasena": "7XyqY2yOsItp",
+        "num_telefono": "220-903-0401",
+        "direccion": "Calzada Sur Zelaya 460 Interior 462, Nueva Federacion de Rusia, BCS 74118-8494"
     },
     {
-        "id_usuario": 2565,
-        "nombre": "Ursula Blanco Leyva",
-        "contrasena": "D^8qG2GfxIIJ",
-        "num_telefono": "238-398-8217",
-        "direccion": "Peatonal Guinea 821 Interior 170, San Elena de la Montana, MEX 64170"
+        "id_usuario": 3599,
+        "nombre": "Noemi Raya",
+        "contrasena": "HSb4PmaKn!!x",
+        "num_telefono": "180-854-2952",
+        "direccion": "Calle Tayikistan 658 217, San Silvano los bajos, BCS 54582"
     },
     {
-        "id_usuario": 3027,
-        "nombre": "Pedro Quezada Sarabia",
-        "contrasena": "xQ845gXpX6fa",
-        "num_telefono": "853-121-6108",
-        "direccion": "Calle Durango 544 Interior 756, Vieja Suecia, HGO 53774-0221"
+        "id_usuario": 3246,
+        "nombre": "Ing. Mariana Garcia",
+        "contrasena": "6GR9Q0Zv8XpD",
+        "num_telefono": "516-045-2986",
+        "direccion": "Cerrada Rumania 508 394, Nueva Samoa, DF 79533-9822"
     },
     {
-        "id_usuario": 4949,
-        "nombre": "Conchita Anabel Calderon Padron",
-        "contrasena": "q4!cMZt14eHL",
-        "num_telefono": "823-100-3834",
-        "direccion": "Circunvalacion Garica 461 800, Nueva Kirguistan, SIN 03616-4095"
+        "id_usuario": 5491,
+        "nombre": "Martin Victoria Samaniego",
+        "contrasena": "AfzszdwwM^Wx",
+        "num_telefono": "117-380-6541",
+        "direccion": "Periferico Sur Terrazas 578 Edif. 170 , Depto. 704, Nueva Tonga, MICH 73184"
     },
     {
-        "id_usuario": 7278,
-        "nombre": "Jose Carlos Varela",
-        "contrasena": "bDo7UtyDHF6K",
-        "num_telefono": "666-877-0436",
-        "direccion": "Pasaje Rivas 679 861, San Alonso de la Montana, COAH 10460-1367"
+        "id_usuario": 3274,
+        "nombre": "Salvador Abigail Carrero",
+        "contrasena": "pqA9Cs3Xyxq8",
+        "num_telefono": "676-014-8881",
+        "direccion": "Pasaje Veracruz de Ignacio de la Llave 223 Interior 421, Vieja Turquia, MEX 54485-5261"
+    },
+    {
+        "id_usuario": 7762,
+        "nombre": "Renato Aida Montemayor",
+        "contrasena": "VXpFcyLYdkhM",
+        "num_telefono": "746-055-3852",
+        "direccion": "Pasaje Republica Centroafricana 101 882, Vieja Republica Democratica Popular Lao, VER 18812"
+    },
+    {
+        "id_usuario": 7039,
+        "nombre": "Estela Nevarez",
+        "contrasena": "0Gi3arHpr6rB",
+        "num_telefono": "619-294-5704",
+        "direccion": "Diagonal Honduras 734 Interior 847, Nueva Papua Nueva Guinea, TLAX 59520"
     }
 ]
