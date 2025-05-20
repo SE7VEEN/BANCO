@@ -1,112 +1,24 @@
 [
     {
-        "PID": "4880",
-        "PPID": "13364",
+        "PID": "25376",
+        "PPID": "3540",
         "Estado": "En espera",
-        "IDUsuario": 4888,
-        "IDCuenta": "CTA-3D2DAAF1",
+        "IDUsuario": 2754,
+        "IDCuenta": "CTA-3AD42868",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "estandar",
         "Operacion": "NULL",
-        "Timestamp": "01:37:44"
+        "Timestamp": "03:08:23"
     },
     {
-        "PID": "9128",
-        "PPID": "13364",
+        "PID": "3076",
+        "PPID": "3540",
         "Estado": "En espera",
-        "IDUsuario": 7256,
-        "IDCuenta": "CTA-608B9D1C",
+        "IDUsuario": 3365,
+        "IDCuenta": "CTA-15B70E40",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "estandar",
         "Operacion": "NULL",
-        "Timestamp": "01:37:45"
-    },
-    {
-        "PID": "24912",
-        "PPID": "13364",
-        "Estado": "En espera",
-        "IDUsuario": 3599,
-        "IDCuenta": "CTA-58F3965A",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Operacion": "NULL",
-        "Timestamp": "01:37:45"
-    },
-    {
-        "PID": "4800",
-        "PPID": "13364",
-        "Estado": "En espera",
-        "IDUsuario": 3246,
-        "IDCuenta": "CTA-65EEE84C",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Operacion": "NULL",
-        "Timestamp": "01:37:46"
-    },
-    {
-        "PID": "11104",
-        "PPID": "13364",
-        "Estado": "En espera",
-        "IDUsuario": 5491,
-        "IDCuenta": "CTA-887333D6",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Operacion": "NULL",
-        "Timestamp": "01:37:46"
-    },
-    {
-        "PID": "27556",
-        "PPID": "13364",
-        "Estado": "En espera",
-        "IDUsuario": 3274,
-        "IDCuenta": "CTA-94B79C88",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Operacion": "NULL",
-        "Timestamp": "01:37:47"
-    },
-    {
-        "PID": "30540",
-        "PPID": "13364",
-        "Estado": "En espera",
-        "IDUsuario": 7762,
-        "IDCuenta": "CTA-F472A71F",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Operacion": "NULL",
-        "Timestamp": "01:37:47"
-    },
-    {
-        "PID": "17928",
-        "PPID": "13364",
-        "Estado": "En espera",
-        "IDUsuario": 7039,
-        "IDCuenta": "CTA-483DB571",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Operacion": "NULL",
-        "Timestamp": "01:37:48"
-    },
-    {
-        "PID": "31596",
-        "PPID": "13364",
-        "Estado": "En espera",
-        "IDUsuario": null,
-        "IDCuenta": null,
-        "TipoUsuario": "Visitante",
-        "TipoCuenta": null,
-        "Operacion": "NULL",
-        "Timestamp": "01:37:48"
-    },
-    {
-        "PID": "7508",
-        "PPID": "13364",
-        "Estado": "En espera",
-        "IDUsuario": null,
-        "IDCuenta": null,
-        "TipoUsuario": "Visitante",
-        "TipoCuenta": null,
-        "Operacion": "NULL",
-        "Timestamp": "01:37:49"
+        "Timestamp": "03:08:23"
     }
-]
+]]

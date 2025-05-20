@@ -6,7 +6,7 @@ from multiprocessing import Process, Lock
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from servidor.hilos.procesos import crear_proceso
-from servidor.hilos.pcb import terminar_proceso
+#from servidor.hilos.pcb import terminar_proceso
 from general.utils.utils import inicializar_archivo, CUENTAS_PATH
 
 cuentas_lock = Lock()

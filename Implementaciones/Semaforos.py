@@ -1,3 +1,8 @@
+import os, sys, time
+from threading import Semaphore
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from Implementaciones.Actualizacion_PCB import actualizar_estado_pcb
+
 semaforo_ventanillas = Semaphore(2)  # 2 ventanillas disponibles
 semaforo_asesores = Semaphore(1)     # 1 asesor disponible
 
