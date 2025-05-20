@@ -3,10 +3,13 @@ import json
 import sys
 
 from .clientes import Client
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
-# Obtener ruta absoluta a cliente/datos/clientes.json
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))  # carpeta 'cliente'
-DATOS_DIR = os.path.join(BASE_DIR, 'datos')
+# 3. Construimos ruta hacia BANCO/general/datos
+DATOS_DIR = os.path.join(BASE_DIR, 'general', 'datos')
+
+
+
 os.makedirs(DATOS_DIR, exist_ok=True)  # Asegura que la carpeta exista
 archivo = os.path.join(DATOS_DIR, 'clientes.json')
 

@@ -15,8 +15,8 @@ import os
 # 2. Subimos 3 niveles para llegar a BANCO/
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
-# 3. Construimos ruta hacia BANCO/cliente/datos
-DATOS_DIR = os.path.join(BASE_DIR, 'cliente', 'datos')
+# 3. Construimos ruta hacia BANCO/general/datos
+DATOS_DIR = os.path.join(BASE_DIR, 'general', 'datos')
 
 # Archivos JSON dentro de cliente/datos
 CUENTAS_PATH = os.path.join(DATOS_DIR, 'cuentas.json')
