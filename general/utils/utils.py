@@ -9,22 +9,16 @@ from multiprocessing import Lock
 pcb_lock = Lock()
 cuentas_lock = Lock()
 
-# Ruta absoluta al archivo pcb.json dentro de banco/general/datos/
-
-
-import os
-
-# 1. __file__ apunta a BANCO/general/utils/utils.py
-# 2. Subimos 3 niveles para llegar a BANCO/
+# Subimos dos niveles desde este archivo (por ejemplo, desde cliente/cuentas/gestion_cuenta.py)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
-# 3. Construimos ruta hacia BANCO/general/datos
-DATOS_DIR = os.path.join(BASE_DIR, 'general', 'datos')
+# Ruta hacia la carpeta general/datos
+DATOS_PATH = os.path.join(BASE_DIR, 'general', 'datos')
 
-# Archivos JSON dentro de cliente/datos
-CUENTAS_PATH = os.path.join(DATOS_DIR, 'cuentas.json')
-CLIENTES_PATH = os.path.join(DATOS_DIR, 'clientes.json')
-PCB_PATH = os.path.join(DATOS_DIR, 'pcb.json')
+# Rutas de archivos
+CUENTAS_PATH = os.path.join(DATOS_PATH, 'cuentas.json')
+CLIENTES_PATH = os.path.join(DATOS_PATH, 'clientes.json')
+PCB_PATH = os.path.join(DATOS_PATH, 'pcb.json')
 
 def quitar_acentos(texto):
     return ''.join(

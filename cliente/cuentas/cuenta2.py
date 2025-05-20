@@ -4,8 +4,6 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-
-
 class Cuenta:
     def __init__(self, id_cuenta="", id_usuario=None, estado_cuenta="activa", tipo_cuenta=None, 
                  tarjetas=None, saldo=0.0, adeudos=0.0):
