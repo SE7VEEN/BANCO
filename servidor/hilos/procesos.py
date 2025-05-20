@@ -18,7 +18,6 @@ class Proceso:
         self.prioridad = prioridad
         self.destino = destino
         self.operacion = operacion or "NULL"
-        self.prioridad = prioridad
         self.timestamp = datetime.now().strftime("%H:%M:%S")
 
     def to_dict(self):
