@@ -3,6 +3,8 @@ import json
 import random
 from faker import Faker
 import sys
+# Dentro de la clase Client, al inicio
+from general.utils.utils import CLIENTES_PATH  # importar la ruta correcta
 
 # Corregido: doble guion bajo en __file__ y cierre del paréntesis
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
