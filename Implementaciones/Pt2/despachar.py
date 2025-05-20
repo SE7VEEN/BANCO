@@ -1,3 +1,10 @@
+import os, sys, time
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from Implementaciones.Prioridad_cola import PRIORIDAD, cola_procesos
+from Implementaciones.Actualizacion_PCB import actualizar_estado_pcb
+
+
 def despachar_proceso(proceso, semaforo):
     try:
         # FIFO ya lo controla el planificador
