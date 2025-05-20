@@ -1,12 +1,12 @@
 
 from multiprocessing import Process, Lock
+import threading
 import json, time, os, shutil, sys, datetime
 from pathlib import Path
-
+pcb_lock = threading.Lock()
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from general.utils.utils import PCB_PATH
 def actualizar_estado_pcb(pid, estado=None, operacion=None, recurso_esperando=None, recurso_adquirido=None):
-    pcb_lock = Lock
     with pcb_lock:
         with open(PCB_PATH, 'r+') as f:
             pcb = json.load(f)
