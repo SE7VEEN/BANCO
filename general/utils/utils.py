@@ -3,6 +3,11 @@ import unicodedata
 import json
 import os
 from cliente.cuentas.cuenta2 import Cuenta
+from servidor.hilos.models import Proceso
+from multiprocessing import Lock
+
+pcb_lock = Lock()
+cuentas_lock = Lock()
 
 import os
 

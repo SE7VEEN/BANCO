@@ -1,6 +1,6 @@
 #from models import Proceso
 from clase_procesos import Proceso
-from utils import guardar_en_pcb, obtener_datos_cliente
+from general.utils import guardar_en_pcb, obtener_datos_cliente
 import time
 
 def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
