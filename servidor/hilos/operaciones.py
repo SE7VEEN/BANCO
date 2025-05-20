@@ -1,71 +1,47 @@
-import os
-import sys
 import time
+import random
+import sys, os, json
 
-# Asegurar que el path incluya el directorio raíz del proyecto
+from multiprocessing import Process, Lock
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from servidor.hilos.procesos import crear_proceso
+from servidor.hilos.pcb import terminar_proceso
+from general.utils.utils import inicializar_archivo, CUENTAS_PATH
 
-from servidor.hilos.clase_procesos import Proceso
-from general.utils.utils import guardar_en_pcb, obtener_datos_cliente
-
-def crear_proceso(tipo_usuario, id_usuario=None, operacion=None):
-    """
-    Crea y registra un proceso con los datos correspondientes.
-    """
-    if tipo_usuario == "Cliente":
-        if not id_usuario:
-            raise ValueError("Se requiere ID de usuario para clientes")
-
-        datos_cliente = obtener_datos_cliente(id_usuario)
-        if not datos_cliente:
-            raise ValueError(f"Cliente con ID '{id_usuario}' no registrado")
-
-        tipo_cuenta = datos_cliente.get('tipo_cuenta', 'Estándar')
-        id_cuenta = datos_cliente.get('id_cuenta')
-
-    elif tipo_usuario == "Visitante":
-        if id_usuario is not None:
-            raise ValueError("Visitante no debe tener ID de usuario")
-        tipo_cuenta = None
-        id_cuenta = None
-    else:
-        raise ValueError(f"Tipo de usuario desconocido: {tipo_usuario}")
-
-    proceso = Proceso(
-        tipo_usuario=tipo_usuario,
-        id_usuario=id_usuario,
-        id_cuenta=id_cuenta,
-        tipo_cuenta=tipo_cuenta,
-        operacion=operacion
-    )
-
-    # Guardar inmediatamente el proceso en estado "En ejecución"
-    return proceso
-
-def terminar_proceso(proceso):
-    """
-    Marca el proceso como finalizado y actualiza su información.
-    """
-    proceso.estado = "Finalizado"
-    proceso.tiempo_fin = time.time()
-    guardar_en_pcb(proceso.to_dict())
+cuentas_lock = Lock()
 
 def ejecutar_operacion(tipo_usuario, id_usuario=None, operacion=None):
-    """
-    Ejecuta la operación simulando un proceso bancario.
-    """
     try:
         proceso = crear_proceso(tipo_usuario, id_usuario, operacion)
-        print(f"[Proceso {proceso.pid}] Iniciando operación: {operacion}")
+        print(f"[Proceso {proceso.pid}] Iniciando {operacion}...")
 
-        # Simula duración del proceso según la operación
-        if "Consulta" in operacion:
-            time.sleep(2)
-        else:
-            time.sleep(3)
+        time.sleep(2 if "Consulta" in operacion else 3)
 
         terminar_proceso(proceso)
-        print(f"[Proceso {proceso.pid}] Operación '{operacion}' completada exitosamente.\n")
-
+        print(f"[Proceso {proceso.pid}] {operacion} completada exitosamente")
     except Exception as e:
-        print(f"[Error] Fallo en operación '{operacion}': {str(e)}")
+        print(f"[Error] En operación {operacion}: {str(e)}")
+
+def generar_solicitudes_automaticas():
+    operaciones_clientes = ["NULL"]
+    operaciones_visitantes = ["NULL"]
+    solicitudes = []
+
+    with cuentas_lock:
+        inicializar_archivo(CUENTAS_PATH)
+        with open(CUENTAS_PATH, 'r') as f:
+            cuentas = json.load(f)
+
+    for cuenta in cuentas:
+        id_usuario = cuenta.get('id_usuario')
+        if id_usuario:
+            for _ in range(random.randint(1, 3)):
+                operacion = random.choice(operaciones_clientes)
+                solicitudes.append(("Cliente", id_usuario, operacion))
+
+    for _ in range(random.randint(2, 6)):
+        operacion = random.choice(operaciones_visitantes)
+        solicitudes.append(("Visitante", None, operacion))
+
+    return solicitudes

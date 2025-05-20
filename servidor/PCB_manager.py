@@ -3,8 +3,17 @@ from rich.table import Table
 from rich.json import JSON
 from rich.panel import Panel
 import json
+import os
 import time
 from typing import List, Dict
+
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# Ruta hacia la carpeta general/datos
+DATOS_PATH = os.path.join(BASE_DIR, 'general', 'datos')
+
+PCB_PATH = os.path.join(DATOS_PATH, 'pcb.json')
 
 class mostrar_pcb:
     def __init__(self, archivo_json: str):
@@ -98,7 +107,8 @@ class mostrar_pcb:
 # Ejemplo de uso:
 if __name__ == "__main__":
     # Crear instancia y mostrar
-    visualizador = mostrar_pcb("pcb.json")
+    visualizador = mostrar_pcb(PCB_PATH)
+    print(PCB_PATH)
     
     # Mostrar como tabla (modo estático)
     visualizador.mostrar()
