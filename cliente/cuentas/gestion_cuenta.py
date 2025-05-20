@@ -13,7 +13,7 @@ from general.utils.utils import cargar_cuentas, guardar_cuentas
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))  # cliente/
 CLIENTES_PATH = os.path.join(BASE_DIR, 'datos', 'clientes.json')
-                                                    
+                        
 def crear_cuenta_para_cliente(id_usuario):
     if not os.path.exists(CLIENTES_PATH):
         print("Error: No existe el archivo de clientes")
