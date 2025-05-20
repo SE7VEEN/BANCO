@@ -38,9 +38,13 @@ def limpiar_y_crear_datos():
 
 if __name__ == "__main__":
 
-    if not limpiar_y_crear_datos():
+    
+    """ if not limpiar_y_crear_datos():
         sys.exit(1)  # Salir si hay error
-    print("\n")
+    print("\n") """
+
+
+    
 
     for f in [PCB_PATH, CLIENTES_PATH, CUENTAS_PATH]:
         inicializar_archivo(f)
