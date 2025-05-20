@@ -1,58 +1,23 @@
 [
     {
-        "id_usuario": 2351,
-        "nombre": "Miguel Teresa Rivero",
-        "contrasena": "V!^sj3DL7Zjh",
-        "num_telefono": "346-158-8593",
-        "direccion": "Circunvalacion Yucatan 019 Edif. 443 , Depto. 704, San Lorena los bajos, TLAX 25157"
+        "id_usuario": 1301,
+        "nombre": "Dr. Josefina Guerrero",
+        "contrasena": "q43A4LqGeQqd",
+        "num_telefono": "837-025-8633",
+        "direccion": "Andador Samoa 503 Edif. 513 , Depto. 458, Vieja Uruguay, DF 53858"
     },
     {
-        "id_usuario": 8947,
-        "nombre": "Abigail Mondragon Viera",
-        "contrasena": "i*GzuYulQ1Vf",
-        "num_telefono": "567-454-2494",
-        "direccion": "Cerrada Sur Palacios 309 Edif. 242 , Depto. 438, Nueva Granada, ZAC 48880"
+        "id_usuario": 5968,
+        "nombre": "Josefina Olmos",
+        "contrasena": "aElicTPvYB0o",
+        "num_telefono": "364-688-7076",
+        "direccion": "Circunvalacion Sur Irizarry 388 Interior 722, Nueva Guinea, OAX 75182"
     },
     {
-        "id_usuario": 4998,
-        "nombre": "Camila Pineda",
-        "contrasena": "zwIuPBjz*2BL",
-        "num_telefono": "714-527-2319",
-        "direccion": "Privada Salcedo 801 Edif. 805 , Depto. 166, Nueva Tailandia, VER 33931"
-    },
-    {
-        "id_usuario": 4060,
-        "nombre": "Alfredo Caballero",
-        "contrasena": "c3KPH*pHWulw",
-        "num_telefono": "833-841-0431",
-        "direccion": "Andador Sur Corral 764 Edif. 986 , Depto. 162, San Alta  Gracia los bajos, Q. ROO 22212-3151"
-    },
-    {
-        "id_usuario": 5197,
-        "nombre": "Lorena Valdivia",
-        "contrasena": "skr7vnxMtfUA",
-        "num_telefono": "973-510-2514",
-        "direccion": "Diagonal Norte Tafoya 503 Interior 096, Nueva Comoras, MOR 51332-7907"
-    },
-    {
-        "id_usuario": 4684,
-        "nombre": "Pilar Robles",
-        "contrasena": "CiTFBVE9CBvI",
-        "num_telefono": "330-151-2992",
-        "direccion": "Pasaje Lozano 205 334, San Asuncion los bajos, TLAX 10523"
-    },
-    {
-        "id_usuario": 3529,
-        "nombre": "Micaela Caridad Alva Negron",
-        "contrasena": "ud3bVVPWa0FL",
-        "num_telefono": "101-626-3730",
-        "direccion": "Avenida Norte Regalado 681 434, Nueva Sudan del Sur, TAMPS 56692"
-    },
-    {
-        "id_usuario": 2427,
-        "nombre": "Mtro. Elena Carranza",
-        "contrasena": "dLX^BxT6uYCy",
-        "num_telefono": "776-348-0366",
-        "direccion": "Peatonal Peru 208 Edif. 171 , Depto. 318, San Maria Luisa de la Montana, SON 60366-0895"
+        "id_usuario": 1440,
+        "nombre": "Isabela Coronado Orozco",
+        "contrasena": "8593em2KubQR",
+        "num_telefono": "227-041-3463",
+        "direccion": "Corredor Guinea Bissau 041 599, Nueva Senegal, ZAC 12850"
     }
 ]

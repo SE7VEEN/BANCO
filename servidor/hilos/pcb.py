@@ -40,17 +40,3 @@ def obtener_datos_cliente(id_usuario):
         except Exception as e:
             print(f"Error obteniendo datos del cliente: {str(e)}")
             return None
-
-""" def monitor_procesos():
-    try:
-        with pcb_lock:
-            inicializar_archivo(PCB_PATH)
-            with open(PCB_PATH, 'r') as f:
-                procesos = json.load(f)
-        print("\n=== MONITOR DE PROCESOS ===")
-        print(f"Procesos totales: {len(procesos)}")
-        print("Últimos 5 procesos:")
-        for p in procesos[-5:]:
-            print(f"PID: {p['PID']} | Estado: {p['Estado']} | Operación: {p['Operacion']}")
-    except Exception as e:
-        print(f"Error en monitor: {str(e)}") """

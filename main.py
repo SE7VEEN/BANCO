@@ -1,108 +1,83 @@
 import time
-from servidor.hilos.operaciones import ejecutar_operacion, generar_solicitudes_automaticas
-#from servidor.hilos.pcb import monitor_procesos
-from general.utils.utils import PCB_PATH, CLIENTES_PATH, CUENTAS_PATH, DATOS_PATH, BASE_DIR,  inicializar_archivo, eliminar_carpeta_datos
+import shutil, json, sys
+import threading
+from pathlib import Path
+from multiprocessing import Process
 
-from cliente.clientes.clientes import Client
+from servidor.hilos.operaciones import ejecutar_operacion
+from general.utils.utils import PCB_PATH, CLIENTES_PATH, CUENTAS_PATH, inicializar_archivo
 from cliente.clientes.gestor import gestionar_clientes
 from cliente.cuentas.gestion_cuenta import crear_cuentas_automaticamente_por_clientes
-
+from Implementaciones.Pt2.ejecucion2 import planificador
 from Implementaciones.Ejecucion import iniciar_simulacion
-
-from multiprocessing import Process
 from servidor.PCB_manager import mostrar_pcb
-import shutil, os, json, sys
-from pathlib import Path
 
-BASE_DIR = Path(__file__).parent  # Apunta a BANCO/
+# Definimos rutas
+BASE_DIR = Path(__file__).parent
 DATOS_DIR = BASE_DIR / "general" / "datos"
-
+ARCHIVOS_JSON = {
+    "clientes.json": CLIENTES_PATH,
+    "cuentas.json": CUENTAS_PATH,
+    "pcb.json": PCB_PATH,
+}
 
 def limpiar_y_crear_datos():
+    """Elimina el directorio de datos y reinicia los archivos JSON como listas vacías."""
     try:
-        # Eliminar la carpeta si existe
         if DATOS_DIR.exists():
             shutil.rmtree(DATOS_DIR)
-        
-        # Crear la carpeta nuevamente
         DATOS_DIR.mkdir(parents=True, exist_ok=True)
-        
-        # Crear archivos JSON vacíos
-        archivos_necesarios = ['clientes.json', 'cuentas.json', 'pcb.json']
-        for archivo in archivos_necesarios:
-            with open(DATOS_DIR / archivo, 'w') as f:
-                json.dump([], f)
-            
+
+        for nombre_archivo in ARCHIVOS_JSON.keys():
+            ruta = DATOS_DIR / nombre_archivo
+            with open(ruta, 'w') as f:
+                json.dump([], f, indent=4)  # Archivo JSON limpio, bien formateado
         return True
     except Exception as e:
         print(f"✖ Error al limpiar datos: {str(e)}")
         return False
 
-if __name__ == "__main__":
+def lanzar_visualizador():
+    """Inicia el visualizador en modo tiempo real."""
+    visualizador = mostrar_pcb(PCB_PATH)
+    visualizador.mostrar(modo_vivo=True)
 
-    
-    if not limpiar_y_crear_datos():
-        sys.exit(1)  # Salir si hay error
-    print("\n")
-
-
-    
-
-    for f in [PCB_PATH, CLIENTES_PATH, CUENTAS_PATH]:
-        inicializar_archivo(f)
-
-
-    cliente_aleatorio = Client()
-    gestionar_clientes('generar', nuevo_data={'cantidad': 8})
-    print("\n")
-
-    crear_cuentas_automaticamente_por_clientes()
-    print("\n")
-
+def lanzar_procesos():
+    """Inicia procesos basados en las solicitudes simuladas."""
     solicitudes = iniciar_simulacion()
-
-    print("Solicitudes generadas automáticamente:")
+    print("\n📦 Solicitudes generadas automáticamente:")
     for i, solicitud in enumerate(solicitudes, 1):
         print(f"{i}. Tipo: {solicitud[0]}, ID: {solicitud[1]}, Operación: {solicitud[2]}")
 
-    print("\n")
     procesos = []
     for args in solicitudes:
         p = Process(target=ejecutar_operacion, args=args)
         p.start()
         procesos.append(p)
-        time.sleep(0.5)
+        time.sleep(0.5)  # Delay para observar cambios en tiempo real
 
     for p in procesos:
         p.join()
 
+if __name__ == "__main__":
+    if not limpiar_y_crear_datos():
+        sys.exit(1)
 
-    print("\n")
-    visualizador = mostrar_pcb(PCB_PATH)
-    
-    # Mostrar ayuda
-    print("\nOpciones disponibles:")
-    print("1. Vista en tiempo real")
-    print("2. Ver JSON crudo")
-    print("3. Salir")
-    
-    while True:
-        opcion = input("\nSeleccione una opción (1-3): ")
-        
-        if opcion == "1":
-            print("\nIniciando vista en tiempo real... (Presione Ctrl+C para salir)")
-            try:
-                visualizador.mostrar(modo_vivo=True)
-            except KeyboardInterrupt:
-                print("\nRegresando al menú principal...")
-        elif opcion == "2":
-            visualizador.mostrar_json_crudo()
-        elif opcion == "3":
-            break
-        else:
-            print("Opción no válida. Intente de nuevo.")
+    # Inicializar archivos si no existen
+    for ruta in ARCHIVOS_JSON.values():
+        inicializar_archivo(ruta)
 
+    # Generar datos iniciales
+    gestionar_clientes('generar', nuevo_data={'cantidad': 3})
+    crear_cuentas_automaticamente_por_clientes()
+    planificador()
 
+    # Lanzar visualizador de PCB en hilo independiente
+    visor_hilo = threading.Thread(target=lanzar_visualizador, daemon=True)
+    visor_hilo.start()
 
+    # Ejecutar operaciones en procesos
+    lanzar_procesos()
 
-
+    # Esperar entrada para finalizar
+    input("\nPresione ENTER para terminar la simulación y cerrar la vista en tiempo real...\n")
