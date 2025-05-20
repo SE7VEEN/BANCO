@@ -12,8 +12,9 @@ from servidor.PCB_manager import mostrar_pcb
 import shutil, os, json, sys
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent.parent  # Apunta a BANCO/
+BASE_DIR = Path(__file__).parent  # Apunta a BANCO/
 DATOS_DIR = BASE_DIR / "general" / "datos"
+
 
 def limpiar_y_crear_datos():
     try:
@@ -38,9 +39,9 @@ def limpiar_y_crear_datos():
 if __name__ == "__main__":
 
     
-    """ if not limpiar_y_crear_datos():
+    if not limpiar_y_crear_datos():
         sys.exit(1)  # Salir si hay error
-    print("\n") """
+    print("\n") 
 
 
     
