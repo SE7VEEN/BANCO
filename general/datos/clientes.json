@@ -1,0 +1,37 @@
+[
+    {
+        "id_usuario": 5687,
+        "nombre": "Leonel Angel Saldana Cortez",
+        "contrasena": "j9RKtGunKpiQ",
+        "num_telefono": "114-795-2381",
+        "direccion": "Eje vial Norte Pedraza 051 Edif. 642 , Depto. 031, Vieja Congo, MEX 12490"
+    },
+    {
+        "id_usuario": 5533,
+        "nombre": "Sr(a). Leonel Serrato",
+        "contrasena": "Xj3sotIFjYHU",
+        "num_telefono": "573-625-2966",
+        "direccion": "Calzada Sur Borrego 739 Edif. 197 , Depto. 196, San Caridad los bajos, AGS 12392"
+    },
+    {
+        "id_usuario": 1079,
+        "nombre": "Magdalena Torrez Salgado",
+        "contrasena": "cxebTRDVFKGr",
+        "num_telefono": "362-729-2720",
+        "direccion": "Avenida Hidalgo 288 Edif. 869 , Depto. 990, San Claudia de la Montana, AGS 09804-7663"
+    },
+    {
+        "id_usuario": 4908,
+        "nombre": "Ing. Yeni de Jesus",
+        "contrasena": "3hYMBux0OtR4",
+        "num_telefono": "231-893-0358",
+        "direccion": "Andador Salas 081 Interior 486, San Jose Eduardo los bajos, BCS 40090-5424"
+    },
+    {
+        "id_usuario": 4194,
+        "nombre": "Eloy Gabriela Sanches",
+        "contrasena": "BYOimsElcOYc",
+        "num_telefono": "900-883-7564",
+        "direccion": "Viaducto Senegal 810 Interior 024, San Jacobo los altos, NL 18137-5345"
+    }
+]

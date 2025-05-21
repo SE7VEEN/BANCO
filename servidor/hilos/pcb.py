@@ -48,3 +48,11 @@ def obtener_datos_cliente(id_usuario):
         
 
 
+import json
+
+def safe_json_read(path, default=[]):
+    try:
+        with open(path, 'r') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return default
