@@ -67,7 +67,7 @@ if __name__ == "__main__":
         inicializar_archivo(ruta)
 
     # Generar datos iniciales
-    gestionar_clientes('generar', nuevo_data={'cantidad': 8})
+    gestionar_clientes('generar', nuevo_data={'cantidad': 5})
     crear_cuentas_automaticamente_por_clientes()
     planificador()
 

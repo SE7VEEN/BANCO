@@ -1,58 +1,37 @@
 [
     {
-        "id_usuario": 9996,
-        "nombre": "Clemente Escamilla",
-        "contrasena": "Pa9DEhToPyC2",
-        "num_telefono": "037-700-2488",
-        "direccion": "Avenida Austria 710 Interior 507, San Enrique los altos, NAY 39686-8745"
+        "id_usuario": 4165,
+        "nombre": "Ing. Dulce Maria Canales",
+        "contrasena": "8QKqk1MXm7Qg",
+        "num_telefono": "363-463-5931",
+        "direccion": "Boulevard Federacion de Rusia 464 Edif. 056 , Depto. 133, Vieja Camboya, PUE 48291"
     },
     {
-        "id_usuario": 2632,
-        "nombre": "Benjamin Vallejo",
-        "contrasena": "WqDMX*KCHcDh",
-        "num_telefono": "380-241-9270",
-        "direccion": "Circuito Belarus 347 958, San Bianca los altos, BCS 39546"
+        "id_usuario": 9221,
+        "nombre": "Benjamin Elvia Castellanos Meraz",
+        "contrasena": "!X*J3vLV1s4W",
+        "num_telefono": "780-339-3254",
+        "direccion": "Peatonal Hurtado 899 792, Nueva Kuwait, JAL 08272-0602"
     },
     {
-        "id_usuario": 8317,
-        "nombre": "Luis Miguel Emilio Leon Vallejo",
-        "contrasena": "9voJoAx1NQEm",
-        "num_telefono": "147-995-6353",
-        "direccion": "Retorno Swazilandia 708 Edif. 725 , Depto. 007, Vieja Paraguay, ZAC 63707"
+        "id_usuario": 2607,
+        "nombre": "Dr. Diego Villarreal",
+        "contrasena": "bsR4Cf2K!rY1",
+        "num_telefono": "497-350-7211",
+        "direccion": "Prolongacion Distrito Federal 863 Interior 480, Vieja Republica de Moldova, VER 50089"
     },
     {
-        "id_usuario": 8683,
-        "nombre": "Lic. Carla Adame",
-        "contrasena": "Wo^7ZknmDmgp",
-        "num_telefono": "899-528-5097",
-        "direccion": "Circuito Norte Zelaya 935 307, San Isaac los altos, NL 87000-4013"
+        "id_usuario": 7027,
+        "nombre": "Adan Guzman Altamirano",
+        "contrasena": "nWGXAbB4Z2H9",
+        "num_telefono": "382-409-6640",
+        "direccion": "Continuacion Baeza 938 Edif. 544 , Depto. 486, San Tomas de la Montana, YUC 32151"
     },
     {
-        "id_usuario": 6317,
-        "nombre": "Maximiliano Valles",
-        "contrasena": "Nj9z^Ipz4asM",
-        "num_telefono": "162-749-1131",
-        "direccion": "Boulevard Malasia 717 938, Nueva Myanmar, QRO 96070"
-    },
-    {
-        "id_usuario": 3812,
-        "nombre": "Fabiola Ortega",
-        "contrasena": "nXim*Wvblgm*",
-        "num_telefono": "380-565-6992",
-        "direccion": "Retorno Timor-Leste 341 Edif. 696 , Depto. 333, San Eva los altos, PUE 62579-2921"
-    },
-    {
-        "id_usuario": 8555,
-        "nombre": "Ana Luisa Hugo Prieto Negron",
-        "contrasena": "reggHcYcDpsV",
-        "num_telefono": "440-481-2298",
-        "direccion": "Circunvalacion Tabasco 033 Interior 978, Vieja Belice, OAX 36808"
-    },
-    {
-        "id_usuario": 3650,
-        "nombre": "Dr. Maria Elena Manzanares",
-        "contrasena": "6OahTkjPl!l2",
-        "num_telefono": "828-533-9172",
-        "direccion": "Callejon Ibarra 522 Edif. 029 , Depto. 115, Vieja Eslovenia, TAMPS 92575"
+        "id_usuario": 5336,
+        "nombre": "Nayeli Juan Carlos Salgado Jaramillo",
+        "contrasena": "1yhpx6PjoYqD",
+        "num_telefono": "103-800-8752",
+        "direccion": "Calle Norte Matias 159 Edif. 359 , Depto. 590, Nueva Guinea, NAY 76168-5062"
     }
 ]

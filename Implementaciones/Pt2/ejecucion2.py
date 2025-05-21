@@ -21,8 +21,23 @@ asesores = Semaphore(2)
 OPERACIONES_CLIENTES = ["Deposito", "Consulta"]
 OPERACIONES_VISITANTES = ["Consulta"]
 
+from servidor.hilos.operaciones import generar_solicitudes_automaticas, ejecutar_operacion
+from multiprocessing import Process
+
+def lanzar_solicitudes():
+    solicitudes = generar_solicitudes_automaticas()
+    procesos = []
+    for tipo, id_usuario, operacion in solicitudes:
+        p = Process(target=ejecutar_operacion, args=(tipo, id_usuario, operacion))
+        p.start()
+        procesos.append(p)
+    for p in procesos:
+        p.join()
+
+    return solicitudes
+
 # 1. Generar solicitudes automáticas
-def generar_solicitudes_automaticas():
+""" def generar_solicitudes_automaticas():
     solicitudes = []
 
     with cuentas_lock:
@@ -40,7 +55,7 @@ def generar_solicitudes_automaticas():
         operacion = random.choice(OPERACIONES_VISITANTES)
         solicitudes.append(("Visitante", None, operacion))
 
-    return solicitudes
+    return solicitudes """
 
 # 2. Despachar proceso a ventanilla o asesor
 def despachar_proceso(proceso, semaforo):
@@ -90,6 +105,8 @@ def despachar_proceso(proceso, semaforo):
         
     finally:
         semaforo.release()
+
+
 
 
 # 3. Planificador de prioridades con FIFO dentro de cada nivel
