@@ -37,24 +37,24 @@ def operacion_transferencia(proceso, id_cuenta_destino, monto, cuentas_lock):
                 cuenta_destino = next((c for c in cuentas if c["id_cuenta"] == id_cuenta_destino), None)
 
                 if not cuenta_origen:
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta de origen no encontrada")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta origen no encontrada")
                     return False
 
                 if not cuenta_destino:
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta de destino no encontrada")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta destino no encontrada")
                     return False
 
                 if cuenta_origen.get("estado_cuenta") != "activa":
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta de origen inactiva")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta origen inactiva")
                     return False
 
                 if cuenta_destino.get("estado_cuenta") != "activa":
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta de destino inactiva")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta destino inactiva")
                     return False
 
                 saldo_origen = cuenta_origen.get("saldo", 0)
                 if saldo_origen < monto:
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Fondos insuficientes en cuenta de origen")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Fondos insuficientes en cuenta origen")
                     return False
 
                 # 4. Simular procesamiento
@@ -71,10 +71,14 @@ def operacion_transferencia(proceso, id_cuenta_destino, monto, cuentas_lock):
         # 6. Estado: Finalizado
         actualizar_estado_pcb(pid,
             estado="Finalizado",
-            operacion=f"Transferencia completada (${monto:.2f} de {id_cuenta_origen} a {id_cuenta_destino})",
+            operacion=f"Transferencia completada (${monto:.2f})",
         )
         return True
 
     except Exception as e:
         actualizar_estado_pcb(pid, estado="Error", operacion=f"Error en transferencia: {str(e)}")
         return False
+
+
+            #operacion=f"Transferencia completada (${monto:.2f} de {id_cuenta_origen} a {id_cuenta_destino})",
+            #operacion=f"Transferencia completada (${monto:.2f} a {id_cuenta_destino})

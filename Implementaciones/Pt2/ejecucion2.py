@@ -19,7 +19,8 @@ from Implementaciones.Pt2.Op_consultaSaldo import operacion_consulta_saldo
 cuentas_lock = Lock()
 
 #OPERACIONES EN VENTANILLAS
-OPERACIONES_VENTANILLA_CLIENTE = ["Deposito Personal", "Retiro Personal", "Transferencia", "Consulta Saldo"]
+OPERACIONES_VENTANILLA_CLIENTE = ["Transferencia"]
+#OPERACIONES_VENTANILLA_CLIENTE = ["Deposito Personal", "Retiro Personal", "Transferencia", "Consulta Saldo"]
 OPERACIONES_VENTANILLA_VISITANTE = ["Deposito"] #retiro
 
 #OPERACIONES DISPONIBLES CON ASESOR
@@ -28,16 +29,32 @@ OPERACIONES_ASESOR_CLIENTE = ["Consulta", "Modificacion de Datos", "Creacion de 
 
 # Tiempos de simulación por operación
 TIEMPOS_OPERACION = {
-    "Deposito": 2.0,
+    "Deposito": 4.0,
     "Retiro": 2.5,
     "Transferencia": 3.0,
     "Solicitud de Tarjeta": 1.5,
     "Consulta": 1.0,
+    "Consulta Saldo": 5.0,
     "Modificacion de Datos": 2.0,
     "Creacion de Cuentas": 4.0,
     "Baja de Cuenta": 3.5
 }
 
+
+def obtener_id_cuenta_aleatorio(archivo_cuentas=CUENTAS_PATH):
+    try:
+        with open(archivo_cuentas, 'r') as f:
+            cuentas = json.load(f)
+        # Filtrar cuentas que tengan el campo id_cuenta
+        cuentas_validas = [c for c in cuentas if c.get('id_cuenta') is not None]
+        if not cuentas_validas:
+            return None
+        cuenta_aleatoria = random.choice(cuentas_validas)
+        return cuenta_aleatoria['id_cuenta']
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error al leer el archivo: {e}")
+        return None
+    
 def seleccionar_operacion_y_destino(tipo_usuario):
     """Selecciona aleatoriamente operación y destino según tipo de usuario"""
     if tipo_usuario == "Cliente":
@@ -57,20 +74,6 @@ def seleccionar_operacion_y_destino(tipo_usuario):
             destino = "Asesor"
     
     return operacion, destino
-
-def obtener_id_cuenta_aleatorio(archivo_cuentas=CUENTAS_PATH):
-    try:
-        with open(archivo_cuentas, 'r') as f:
-            cuentas = json.load(f)
-        # Filtrar cuentas que tengan el campo id_cuenta
-        cuentas_validas = [c for c in cuentas if c.get('id_cuenta') is not None]
-        if not cuentas_validas:
-            return None
-        cuenta_aleatoria = random.choice(cuentas_validas)
-        return cuenta_aleatoria['id_cuenta']
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"Error al leer el archivo: {e}")
-        return None
 
 
 # === Generar solicitudes automáticas ===
@@ -96,12 +99,9 @@ def generar_solicitudes_automaticas():
 # === Despachar proceso (versión secuencial) ===
 def despachar_proceso_secuencial(proceso):
     """Ejecuta la operación correspondiente según el destino"""
-    try:
-        mensaje = f"Procesando {proceso.operacion} en {proceso.destino}"
-        actualizar_estado_pcb(proceso.pid, estado="En ejecución", operacion=mensaje)
-        
+    try:   
         # Simular tiempo de operación
-        tiempo = TIEMPOS_OPERACION.get(proceso.operacion, 1.0)
+        tiempo = TIEMPOS_OPERACION.get(proceso.operacion, 2.0)
         time.sleep(tiempo)
         
         # Ejecutar operaciones específicas
@@ -117,6 +117,8 @@ def despachar_proceso_secuencial(proceso):
             operacion_transferencia(proceso, cuenta_destino, monto=50.0, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Consulta Saldo":
             operacion_consulta_saldo(proceso, cuentas_lock=cuentas_lock)
+        elif proceso.operacion == "Consulta": 
+            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                  
         else:
             # Para otras operaciones solo registramos finalización
             actualizar_estado_pcb(proceso.pid, estado="Finalizado", 
@@ -132,15 +134,13 @@ def planificador():
     solicitudes = generar_solicitudes_automaticas()
     cola_prioridad = PriorityQueue()
 
-    print("\n=== Solicitudes generadas ===")
+
     for i, (tipo, id_user, oper, dest) in enumerate(solicitudes, 1):
-        print(f"{i}. {tipo:8} -> {oper:20} en {dest:10} (ID: {id_user or 'N/A'})")
         proceso = crear_proceso(tipo, id_user, oper, destino=dest)  # Pasar destino aquí
         cola_prioridad.put((proceso.prioridad, time.time(), proceso))
 
-    print("\n=== Procesando solicitudes ===")
     while not cola_prioridad.empty():
+        time.sleep(1)
         _, _, proceso = cola_prioridad.get()
-        print(f"PID {proceso.pid}: {proceso.tipo_usuario} - {proceso.operacion} en {proceso.destino}")
         despachar_proceso_secuencial(proceso)
 

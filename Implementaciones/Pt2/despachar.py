@@ -3,7 +3,7 @@ from multiprocessing import Lock, Semaphore
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from Implementaciones.Pt2.prioridad2 import PRIORIDAD, cola_procesos
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
-from Implementaciones.Pt2.ejecucion2 import operacion_deposito, operacion_consulta
+from Implementaciones.Pt2.ejecucion2 import operacion_depositoPersonal, operacion_consulta
 
 # Semáforo global que permite solo un proceso en ejecución a la vez
 semaforo_global = Semaphore(1)
@@ -18,8 +18,8 @@ def despachar_proceso(proceso):
         cuentas_lock = Lock()
         
         # Ejecuta la operación
-        if proceso.operacion == "Depósito":
-            operacion_deposito(proceso, monto=100.0, cuentas_lock=cuentas_lock)
+        if proceso.operacion == "Deposito":
+            operacion_depositoPersonal(proceso, monto=100.0, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Consulta":
             operacion_consulta(proceso, cuentas_lock=cuentas_lock)
         else:

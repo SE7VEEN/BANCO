@@ -15,7 +15,7 @@ def operacion_consulta_saldo(proceso, cuentas_lock):
     try:
         # Estado: Procesando consulta
         actualizar_estado_pcb(pid,
-            estado="Procesando",
+            estado="Trabajando",
             operacion=f"Consultando saldo cuenta {id_cuenta}"
         )
 
