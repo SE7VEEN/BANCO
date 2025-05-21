@@ -16,6 +16,11 @@ from Implementaciones.Pt2.Op_retiro import operacion_retiro
 from Implementaciones.Pt2.Op_consultaDatos import operacion_consulta_datos
 from Implementaciones.Pt2.Op_transferencia import operacion_transferencia
 from Implementaciones.Pt2.Op_consultaSaldo import operacion_consulta_saldo
+from Implementaciones.Pt2.agregarCliente import agregarCliente
+from Implementaciones.Pt2.agregarTarjeta import agregarTarjeta
+from Implementaciones.Pt2.Op_modificacionDatos import operacion_modificacion_datos
+from Implementaciones.Pt2.Op_bajaCuenta import operacion_baja_cuenta
+
 
 # Configuraciones
 cuentas_lock = Lock()
@@ -137,9 +142,15 @@ def despachar_proceso_secuencial(proceso):
         elif proceso.operacion == "Creacion cuenta":
             agregarCliente(proceso, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Agregar tarjeta":
-            agregarTarjeta(proceso, cuentas_lock=cuentas_lock) 
+            agregarTarjeta(proceso, cuentas_lock=cuentas_lock)                                  
+        elif proceso.operacion == "Modificacion de Datos":
+            operacion_modificacion_datos(proceso)
+            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=proceso.operacion)
+        elif proceso.operacion == "Baja de Cuenta":
+            tipo_baja = random.choice(["temporal", "definitiva"])
+            operacion_baja_cuenta(proceso, tipo_baja=tipo_baja)
         elif proceso.operacion == "Consulta": 
-            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                  
+            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada") 
         else:
             # Para otras operaciones solo registramos finalización
             actualizar_estado_pcb(proceso.pid, estado="Finalizado", 
