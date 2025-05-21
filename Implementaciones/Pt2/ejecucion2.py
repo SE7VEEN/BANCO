@@ -34,7 +34,7 @@ TIEMPOS_OPERACION = {
     "Transferencia": 3.0,
     "Solicitud de Tarjeta": 1.5,
     "Consulta": 1.0,
-    "Consulta Saldo": 5.0,
+    "Consulta Saldo": 2.0,
     "Modificacion de Datos": 2.0,
     "Creacion de Cuentas": 4.0,
     "Baja de Cuenta": 3.5
@@ -99,7 +99,12 @@ def generar_solicitudes_automaticas():
 # === Despachar proceso (versión secuencial) ===
 def despachar_proceso_secuencial(proceso):
     """Ejecuta la operación correspondiente según el destino"""
-    try:   
+    try: 
+        mensaje = f"Dirigiendo a {proceso.destino} para realizar {proceso.operacion}"
+        actualizar_estado_pcb(proceso.pid, estado="Preparando", operacion=mensaje)
+
+        actualizar_estado_pcb(proceso.pid, estado="Esperando", operacion="Esperando acceso a cuentas") 
+
         # Simular tiempo de operación
         tiempo = TIEMPOS_OPERACION.get(proceso.operacion, 2.0)
         time.sleep(tiempo)
@@ -140,7 +145,6 @@ def planificador():
         cola_prioridad.put((proceso.prioridad, time.time(), proceso))
 
     while not cola_prioridad.empty():
-        time.sleep(1)
         _, _, proceso = cola_prioridad.get()
         despachar_proceso_secuencial(proceso)
 

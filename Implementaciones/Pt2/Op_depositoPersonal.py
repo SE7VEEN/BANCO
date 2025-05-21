@@ -15,16 +15,10 @@ def operacion_depositoPersonal(proceso, monto, cuentas_lock):
             actualizar_estado_pcb(pid, estado="Fallido", operacion="Monto inválido")
             return False
 
-        # 1. Estado: Esperando lock
-        actualizar_estado_pcb(pid,
-            estado="Esperando",
-            operacion="Esperando acceso a cuentas",
-        )
-
         with cuentas_lock:
             # 2. Estado: Lock adquirido
             actualizar_estado_pcb(pid,
-                estado="Trabajando",
+                estado="En ejecucion",
                 operacion="Procesando deposito",
             )
 
@@ -38,7 +32,7 @@ def operacion_depositoPersonal(proceso, monto, cuentas_lock):
                     return False
 
                 # 4. Simular procesamiento
-                time.sleep(2)
+                time.sleep(1)
                 cuenta["saldo"] = cuenta.get("saldo", 0) + monto
 
                 # 5. Guardar cambios

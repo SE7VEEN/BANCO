@@ -15,16 +15,10 @@ def operacion_deposito(proceso, id_cuenta_destino, monto, cuentas_lock):
             actualizar_estado_pcb(pid, estado="Fallido", operacion="Monto inválido")
             return False
 
-        # 1. Estado: Esperando lock
-        actualizar_estado_pcb(pid,
-            estado="Esperando",
-            operacion="Esperando acceso a cuentas",
-        )
-
         with cuentas_lock:
             # 2. Estado: Lock adquirido
             actualizar_estado_pcb(pid,
-                estado="Trabajando",
+                estado="En ejecución",
                 operacion="Procesando deposito"
             )
 
