@@ -1,59 +1,46 @@
 [
     {
-        "PID": "3527",
-        "PPID": "13980",
+        "PID": "3792",
+        "PPID": "5224",
         "Estado": "Finalizado",
-        "IDUsuario": 2712,
-        "IDCuenta": "CTA-ECBEF212",
+        "IDUsuario": 7766,
+        "IDCuenta": "CTA-317D1E36",
+        "TipoUsuario": "Cliente",
+        "TipoCuenta": "estandar",
+        "Prioridad": 2,
+        "Destino": "Ventanilla",
+        "Operacion": "Deposito completado (+$10.00)",
+        "Timestamp": "23:17:56"
+    },
+    {
+        "PID": "5860",
+        "PPID": "5224",
+        "Estado": "Finalizado",
+        "IDUsuario": 7771,
+        "IDCuenta": "CTA-6FD62920",
+        "TipoUsuario": "Cliente",
+        "TipoCuenta": "estandar",
+        "Prioridad": 2,
+        "Destino": "Ventanilla",
+        "Operacion": "Consulta realizada",
+        "Timestamp": "23:17:56"
+    },
+    {
+        "PID": "4567",
+        "PPID": "5224",
+        "Estado": "Finalizado",
+        "IDUsuario": 9908,
+        "IDCuenta": "CTA-06D4C54E",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "premium",
         "Prioridad": 1,
-        "Destino": "Ventanilla",
-        "Operacion": "Consulta realizada",
-        "Timestamp": "22:52:13"
-    },
-    {
-        "PID": "3097",
-        "PPID": "13980",
-        "Estado": "Error",
-        "IDUsuario": 7660,
-        "IDCuenta": "CTA-1FA4CA6B",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Prioridad": 2,
-        "Destino": "Ventanilla",
-        "Operacion": "Error en deposito: actualizar_estado_pcb() got an unexpected keyword argument 'recurso_esperando'",
-        "Timestamp": "22:52:13"
-    },
-    {
-        "PID": "4849",
-        "PPID": "13980",
-        "Estado": "Finalizado",
-        "IDUsuario": 4074,
-        "IDCuenta": "CTA-7718147B",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Prioridad": 2,
         "Destino": "Asesor",
         "Operacion": "Consulta realizada",
-        "Timestamp": "22:52:13"
+        "Timestamp": "23:17:56"
     },
     {
-        "PID": "3708",
-        "PPID": "13980",
-        "Estado": "Finalizado",
-        "IDUsuario": null,
-        "IDCuenta": null,
-        "TipoUsuario": "Visitante",
-        "TipoCuenta": null,
-        "Prioridad": 2,
-        "Destino": "Ventanilla",
-        "Operacion": "Consulta realizada",
-        "Timestamp": "22:52:13"
-    },
-    {
-        "PID": "7998",
-        "PPID": "13980",
+        "PID": "5170",
+        "PPID": "5224",
         "Estado": "Finalizado",
         "IDUsuario": null,
         "IDCuenta": null,
@@ -62,6 +49,19 @@
         "Prioridad": 2,
         "Destino": "Asesor",
         "Operacion": "Consulta realizada",
-        "Timestamp": "22:52:13"
+        "Timestamp": "23:17:56"
+    },
+    {
+        "PID": "7478",
+        "PPID": "5224",
+        "Estado": "Finalizado",
+        "IDUsuario": null,
+        "IDCuenta": null,
+        "TipoUsuario": "Visitante",
+        "TipoCuenta": null,
+        "Prioridad": 2,
+        "Destino": "Ventanilla",
+        "Operacion": "Consulta realizada",
+        "Timestamp": "23:17:56"
     }
 ]

@@ -43,7 +43,7 @@ def despachar_proceso_secuencial(proceso):
     actualizar_estado_pcb(proceso.pid, estado="En ejecución", operacion=f"Asignado a {proceso.destino}")
 
     if proceso.operacion == "Depósito":
-        operacion_deposito(proceso, monto=100.0, cuentas_lock=cuentas_lock)
+        operacion_deposito(proceso, monto=10.0, cuentas_lock=cuentas_lock)
     elif proceso.operacion == "Consulta":
         time.sleep(1)
         actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion="Consulta realizada")
