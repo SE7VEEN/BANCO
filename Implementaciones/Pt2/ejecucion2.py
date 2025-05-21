@@ -12,16 +12,18 @@ from servidor.hilos.pcb import safe_json_read
 from Implementaciones.Pt2.Op_depositoPersonal import operacion_depositoPersonal
 from Implementaciones.Pt2.Op_retiroPersonal import operacion_retiroPersonal
 from Implementaciones.Pt2.Op_deposito import operacion_deposito
+from Implementaciones.Pt2.Op_retiro import operacion_retiro
 from Implementaciones.Pt2.Op_transferencia import operacion_transferencia
 from Implementaciones.Pt2.Op_consultaSaldo import operacion_consulta_saldo
+from Implementaciones.Pt2.Op_consultaDatos import operacion_consulta_datos
 
 # Configuraciones
 cuentas_lock = Lock()
 
 #OPERACIONES EN VENTANILLAS
-OPERACIONES_VENTANILLA_CLIENTE = ["Transferencia"]
-#OPERACIONES_VENTANILLA_CLIENTE = ["Deposito Personal", "Retiro Personal", "Transferencia", "Consulta Saldo"]
-OPERACIONES_VENTANILLA_VISITANTE = ["Deposito"] #retiro
+OPERACIONES_VENTANILLA_CLIENTE = ["Deposito Personal", "Retiro Personal", "Transferencia", "Consulta Saldo", "Consulta Datos"]
+#OPERACIONES_VENTANILLA_CLIENTE = ["Retiro"]
+OPERACIONES_VENTANILLA_VISITANTE = ["Deposito", "Retiro"]
 
 #OPERACIONES DISPONIBLES CON ASESOR
 OPERACIONES_ASESOR_VISITANTE = ["Consulta"]
@@ -31,10 +33,11 @@ OPERACIONES_ASESOR_CLIENTE = ["Consulta", "Modificacion de Datos", "Creacion de 
 TIEMPOS_OPERACION = {
     "Deposito": 4.0,
     "Retiro": 2.5,
-    "Transferencia": 3.0,
+    "Transferencia": 1.0,
     "Solicitud de Tarjeta": 1.5,
-    "Consulta": 1.0,
+    "Consulta": 1.5,
     "Consulta Saldo": 2.0,
+    "Consulta Datos": 2.0,
     "Modificacion de Datos": 2.0,
     "Creacion de Cuentas": 4.0,
     "Baja de Cuenta": 3.5
@@ -50,7 +53,7 @@ def obtener_id_cuenta_aleatorio(archivo_cuentas=CUENTAS_PATH):
         if not cuentas_validas:
             return None
         cuenta_aleatoria = random.choice(cuentas_validas)
-        return cuenta_aleatoria['id_cuenta']
+        return str(cuenta_aleatoria['id_cuenta'])
     except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"Error al leer el archivo: {e}")
         return None
@@ -59,14 +62,14 @@ def seleccionar_operacion_y_destino(tipo_usuario):
     """Selecciona aleatoriamente operación y destino según tipo de usuario"""
     if tipo_usuario == "Cliente":
         # Decidir si va a ventanilla o asesor
-        if random.random() < 0.7:  # 70% probabilidad de ventanilla
+        if random.random() < 0.2:  # 70% probabilidad de ventanilla
             operacion = random.choice(OPERACIONES_VENTANILLA_CLIENTE)
             destino = "Ventanilla"
         else:
             operacion = random.choice(OPERACIONES_ASESOR_CLIENTE)
             destino = "Asesor"
     else:  # Visitante
-        if random.random() < 0.5:  # 50% probabilidad de ventanilla
+        if random.random() < 0.9:  # 50% probabilidad de ventanilla
             operacion = random.choice(OPERACIONES_VENTANILLA_VISITANTE)
             destino = "Ventanilla"
         else:
@@ -100,30 +103,38 @@ def generar_solicitudes_automaticas():
 def despachar_proceso_secuencial(proceso):
     """Ejecuta la operación correspondiente según el destino"""
     try: 
-        mensaje = f"Dirigiendo a {proceso.destino} para realizar {proceso.operacion}"
+        time.sleep(1)
+        mensaje = f"Dirigiendo a {proceso.destino}"
         actualizar_estado_pcb(proceso.pid, estado="Preparando", operacion=mensaje)
-
+        time.sleep(2)
         actualizar_estado_pcb(proceso.pid, estado="Esperando", operacion="Esperando acceso a cuentas") 
 
         # Simular tiempo de operación
-        tiempo = TIEMPOS_OPERACION.get(proceso.operacion, 2.0)
+        tiempo = TIEMPOS_OPERACION.get(proceso.operacion, 3.0)
         time.sleep(tiempo)
         
+        monto=random.uniform(10, 1000)
+
         # Ejecutar operaciones específicas
         if proceso.operacion == "Deposito Personal":
-            operacion_depositoPersonal(proceso, monto=random.uniform(10, 1000), cuentas_lock=cuentas_lock)
+            operacion_depositoPersonal(proceso, monto, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Retiro Personal":
-            operacion_retiroPersonal(proceso, monto=50.0, cuentas_lock=cuentas_lock)
+            operacion_retiroPersonal(proceso, monto, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Deposito":
             cuenta_destino = obtener_id_cuenta_aleatorio()            
-            operacion_deposito(proceso, cuenta_destino, monto=50.0, cuentas_lock=cuentas_lock)
+            operacion_deposito(proceso, cuenta_destino, monto, cuentas_lock=cuentas_lock)
+        elif proceso.operacion == "Retiro":
+            cuenta_destino = obtener_id_cuenta_aleatorio()
+            operacion_retiro(proceso, cuenta_destino, monto, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Transferencia":
             cuenta_destino = obtener_id_cuenta_aleatorio()
-            operacion_transferencia(proceso, cuenta_destino, monto=50.0, cuentas_lock=cuentas_lock)
+            operacion_transferencia(proceso, cuenta_destino, monto, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Consulta Saldo":
             operacion_consulta_saldo(proceso, cuentas_lock=cuentas_lock)
+        elif proceso.operacion == "Consulta Datos":
+            operacion_consulta_datos(proceso, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Consulta": 
-            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                  
+            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                           
         else:
             # Para otras operaciones solo registramos finalización
             actualizar_estado_pcb(proceso.pid, estado="Finalizado", 

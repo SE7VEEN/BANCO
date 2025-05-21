@@ -1,4 +1,4 @@
-# retiro.py
+# transferencia.py
 
 import time
 import json, sys, os
@@ -7,44 +7,43 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from general.utils.utils import CUENTAS_PATH
 
-def operacion_retiroPersonal(proceso, monto, cuentas_lock):
+def operacion_retiro(proceso, id_cuenta_destino, monto, cuentas_lock):
     pid = str(proceso.pid)
-    id_cuenta = proceso.id_cuenta
 
     try:
         if monto <= 0:
             actualizar_estado_pcb(pid, estado="Fallido", operacion="Monto inválido")
             return False
 
-
         with cuentas_lock:
             # 2. Estado: Lock adquirido
             actualizar_estado_pcb(pid,
-                estado="En ejecucion",
+                estado="En ejecución",
                 operacion="Procesando retiro"
             )
 
             # 3. Cargar cuentas
             with open(CUENTAS_PATH, 'r+') as f:
                 cuentas = json.load(f)
-                cuenta = next((c for c in cuentas if c["id_cuenta"] == id_cuenta), None)
+                
+                cuenta_destino = next((c for c in cuentas if c["id_cuenta"] == id_cuenta_destino), None)
 
-                if not cuenta:
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta no encontrada")
+                if not cuenta_destino:
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta de destino no encontrada")
                     return False
 
-                if cuenta.get("estado_cuenta") != "activa":
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta inactiva")
+                if cuenta_destino.get("estado_cuenta") != "activa":
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta de destino inactiva")
                     return False
 
-                saldo_actual = cuenta.get("saldo", 0)
-                if saldo_actual < monto:
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Fondos insuficientes")
+                if monto <= 0:
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion=f"Error en el retiro")
                     return False
 
                 # 4. Simular procesamiento
                 time.sleep(1)
-                cuenta["saldo"] = round(saldo_actual - monto, 2)
+
+                cuenta_destino["saldo"] = round(cuenta_destino.get("saldo", 0) - monto, 2)
 
                 # 5. Guardar cambios
                 f.seek(0)
@@ -54,10 +53,10 @@ def operacion_retiroPersonal(proceso, monto, cuentas_lock):
         # 6. Estado: Finalizado
         actualizar_estado_pcb(pid,
             estado="Finalizado",
-            operacion=f"Retiro completado (-${monto:.2f})",
+            operacion=f"Retiro completado (${monto:.2f} de {id_cuenta_destino})",
         )
         return True
 
     except Exception as e:
-        actualizar_estado_pcb(pid, estado="Error", operacion=f"Error en retiro: {str(e)}")
+        actualizar_estado_pcb(pid, estado="Error", operacion=f"Error en deposito: {str(e)}")
         return False

@@ -65,7 +65,7 @@ def operacion_transferencia(proceso, id_cuenta_destino, monto, cuentas_lock):
         # 6. Estado: Finalizado
         actualizar_estado_pcb(pid,
             estado="Finalizado",
-            operacion=f"Transferencia completada (${monto:.2f})",
+            operacion=f"Transferencia completada (${monto:.2f} a {id_cuenta_destino})",
         )
         return True
 
@@ -73,6 +73,3 @@ def operacion_transferencia(proceso, id_cuenta_destino, monto, cuentas_lock):
         actualizar_estado_pcb(pid, estado="Error", operacion=f"Error en transferencia: {str(e)}")
         return False
 
-
-            #operacion=f"Transferencia completada (${monto:.2f} de {id_cuenta_origen} a {id_cuenta_destino})",
-            #operacion=f"Transferencia completada (${monto:.2f} a {id_cuenta_destino})

@@ -41,7 +41,7 @@ def operacion_deposito(proceso, id_cuenta_destino, monto, cuentas_lock):
                     return False
 
                 # 4. Simular procesamiento
-                time.sleep(2)
+                time.sleep(1)
 
                 cuenta_destino["saldo"] = round(cuenta_destino.get("saldo", 0) + monto, 2)
 

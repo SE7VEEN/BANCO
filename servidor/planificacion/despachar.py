@@ -1,7 +1,7 @@
 import os, sys, time
 from multiprocessing import Lock, Semaphore
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-from Implementaciones.Pt2.prioridad2 import PRIORIDAD, cola_procesos
+#from Implementaciones.Pt2.prioridad2 import PRIORIDAD, cola_procesos
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from Implementaciones.Pt2.ejecucion2 import operacion_depositoPersonal, operacion_consulta
 
