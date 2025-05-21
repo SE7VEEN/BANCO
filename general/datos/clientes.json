@@ -1,0 +1,23 @@
+[
+    {
+        "id_usuario": 7125,
+        "nombre": "Maria Cristina Luis Manuel Villagomez Merino",
+        "contrasena": "B7E!I9siMlr0",
+        "num_telefono": "340-316-2988",
+        "direccion": "Periferico Durango 935 Interior 752, Nueva Hungria, BCS 10808-8044"
+    },
+    {
+        "id_usuario": 9028,
+        "nombre": "Francisco Carmen Leon",
+        "contrasena": "6add^bm1DPn9",
+        "num_telefono": "955-922-0279",
+        "direccion": "Calle Norte Vazquez 990 964, San Zacarias de la Montana, PUE 42117"
+    },
+    {
+        "id_usuario": 5330,
+        "nombre": "Rosa Hermelinda Segura",
+        "contrasena": "bWJiIn9JT7JM",
+        "num_telefono": "395-996-9420",
+        "direccion": "Callejon Norte Lebron 757 Edif. 390 , Depto. 449, San Hernan de la Montana, GRO 68824"
+    }
+]
