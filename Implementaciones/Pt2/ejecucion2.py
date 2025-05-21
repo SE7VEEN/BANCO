@@ -8,6 +8,7 @@ from multiprocessing import Process, Semaphore, Lock
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from servidor.hilos.procesos import crear_proceso
+from servidor.hilos.pcb import obtener_datos_cliente
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from Implementaciones.Pt2.prioridad2 import asignar_prioridad, definir_destino
 from general.utils.utils import CUENTAS_PATH, inicializar_archivo
@@ -26,10 +27,16 @@ OPERACIONES_VISITANTES = ["Consulta"]
 from multiprocessing import Process
 
 
-
 # 1. Generar solicitudes automáticas
 def generar_solicitudes_automaticas():
     solicitudes = []
+
+    
+    cuenta = obtener_datos_cliente(id_usuario) if id_usuario else {}
+    tipo_cuenta = cuenta.get("tipo_cuenta", "NULL")
+
+    prioridad = asignar_prioridad(tipo_usuario, tipo_cuenta)
+    destino = definir_destino(operacion)
 
     with cuentas_lock:
         inicializar_archivo(CUENTAS_PATH)
@@ -132,41 +139,3 @@ def planificador():
 
 if __name__ == '__main__':
     planificador()
-
-
-
-""" def lanzar_solicitudes():
-    solicitudes = generar_solicitudes_automaticas()
-    procesos = []
-    for tipo, id_usuario, operacion in solicitudes:
-        p = Process(target=ejecutar_operacion, args=(tipo, id_usuario, operacion))
-        p.start()
-        procesos.append(p)
-    for p in procesos:
-        p.join()
-
-    return solicitudes """
-
-""" def generar_solicitudes_automaticas():
-    operaciones_clientes = ["NULL"]
-    operaciones_visitantes = ["NULL"]
-    solicitudes = []
-
-    with cuentas_lock:
-        inicializar_archivo(CUENTAS_PATH)
-        with open(CUENTAS_PATH, 'r') as f:
-            cuentas = json.load(f)
-
-    for cuenta in cuentas:
-        id_usuario = cuenta.get('id_usuario')
-        if id_usuario:
-            for _ in range(random.randint(1, 1)):
-                operacion = random.choice(operaciones_clientes)
-                solicitudes.append(("Cliente", id_usuario, operacion))
-
-    for _ in range(random.randint(1, 1)):
-        operacion = random.choice(operaciones_visitantes)
-        solicitudes.append(("Visitante", None, operacion))
-        solicitudes.append(("Visitante", None, operacion))
-
-    return solicitudes """

@@ -17,8 +17,8 @@ class Proceso:
         self.id_usuario = id_usuario
         self.tipo_usuario = tipo_usuario
         self.tipo_cuenta = tipo_cuenta
-        self.prioridad = prioridad
-        self.destino = destino
+        self.prioridad = prioridad 
+        self.destino = destino 
         self.operacion = operacion or "NULL"
         self.timestamp = datetime.now().strftime("%H:%M:%S")
 
