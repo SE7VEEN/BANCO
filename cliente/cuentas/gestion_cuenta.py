@@ -107,8 +107,36 @@ def crear_cuentas_automaticamente_por_clientes():
     if not os.path.exists(CLIENTES_PATH):
         print("Error: No existe el archivo de clientes")
         return
+    
     with open(CLIENTES_PATH, 'r') as f:
         clientes = json.load(f)
 
     for cliente in clientes:
-        crear_cuenta_para_cliente(cliente["id_usuario"])
+        id_usuario = cliente["id_usuario"]
+        cuentas_existentes = obtener_cuentas_por_usuario(id_usuario)
+        if not cuentas_existentes:
+            crear_cuenta_para_cliente(id_usuario)
+        else:
+            print(f"Cliente {id_usuario} ya tiene una cuenta. No se crea una nueva.")
+            
+            
+def agregar_tarjeta_a_cuenta(id_cuenta):
+    cuentas = cargar_cuentas()
+    cuenta_dict = {c.id_cuenta: c for c in cuentas}
+
+    if id_cuenta not in cuenta_dict:
+        print(f"No se encontró la cuenta con ID {id_cuenta}")
+        return False
+
+    cuenta = cuenta_dict[id_cuenta]
+
+    # Generar nueva tarjeta usando el método de Cuenta
+    nueva_tarjeta = cuenta._generar_tarjetas(1)[0]
+    cuenta.tarjetas.append(nueva_tarjeta)
+
+    # Actualizar la cuenta usando gestionar_cuenta
+    return gestionar_cuenta(
+        accion="modificar",
+        id_cuenta=id_cuenta,
+        nuevos_datos={"tarjetas": cuenta.tarjetas}
+    )

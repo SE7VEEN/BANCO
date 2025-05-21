@@ -1,0 +1,107 @@
+[
+    {
+        "id_usuario": 1200,
+        "nombre": "Miguel Miriam Robledo Maestas",
+        "contrasena": "TKG4lGJ0Dw^e",
+        "num_telefono": "058-608-3519",
+        "direccion": "Pasaje Lituania 006 Edif. 001 , Depto. 252, Nueva Nauru, SLP 38366-7991"
+    },
+    {
+        "id_usuario": 9481,
+        "nombre": "Guillermo Paola Cazares",
+        "contrasena": "hUeGRbjyX7KD",
+        "num_telefono": "395-563-3733",
+        "direccion": "Peatonal Baja California 894 Interior 212, San Alvaro los bajos, TAB 76329"
+    },
+    {
+        "id_usuario": 6672,
+        "nombre": "Cornelio Sergio Echeverria Serrato",
+        "contrasena": "tUwpjedPxUd6",
+        "num_telefono": "346-786-7357",
+        "direccion": "Privada Dominguez 807 Interior 519, San Sara los bajos, COAH 60884-7928"
+    },
+    {
+        "id_usuario": 7932,
+        "nombre": "Sr(a). Salvador Navarro",
+        "contrasena": "9PSHx0dA6flu",
+        "num_telefono": "080-312-2143",
+        "direccion": "Circunvalacion Aguascalientes 040 Edif. 303 , Depto. 156, San Nayeli los altos, CAMP 71386"
+    },
+    {
+        "id_usuario": 5665,
+        "nombre": "Francisco Colon Pizarro",
+        "contrasena": "u2KKZJF9osPO",
+        "num_telefono": "033-714-3401",
+        "direccion": "Avenida Tabasco 318 Edif. 561 , Depto. 719, San Wendolin de la Montana, DF 20145-6419"
+    },
+    {
+        "id_usuario": 3607,
+        "nombre": "Ing. Juan Carlos Escalante",
+        "contrasena": "B2WsFEqS8Fj6",
+        "num_telefono": "270-618-5962",
+        "direccion": "Viaducto Sur Sisneros 099 Interior 975, San Violeta de la Montana, CAMP 64812-0431"
+    },
+    {
+        "id_usuario": 5003,
+        "nombre": "Mtro. Nicolas Ochoa",
+        "contrasena": "X9jq1*9oAfxB",
+        "num_telefono": "139-221-1865",
+        "direccion": "Retorno Montes 459 Edif. 528 , Depto. 728, San Ramon de la Montana, MOR 31125"
+    },
+    {
+        "id_usuario": 2445,
+        "nombre": "Antonia Rodrigo Melendez Ledesma",
+        "contrasena": "IICvRp25P5pc",
+        "num_telefono": "948-740-4003",
+        "direccion": "Ampliacion Morelos 847 190, Vieja Saint Kitts y Nevis, TAMPS 78770-5060"
+    },
+    {
+        "id_usuario": 5507,
+        "nombre": "Manuel Padilla Gallardo",
+        "contrasena": "^n7VjwgfM11J",
+        "num_telefono": "251-295-4362",
+        "direccion": "Continuacion Distrito Federal 785 Interior 098, Vieja Costa Rica, OAX 24636"
+    },
+    {
+        "id_usuario": 2321,
+        "nombre": "Francisca Martin Gallardo Menendez",
+        "contrasena": "pUCjw2sbu4UJ",
+        "num_telefono": "481-813-1139",
+        "direccion": "Viaducto Norte Florez 709 Edif. 814 , Depto. 854, Vieja Sudafrica, CHIS 17633-4591"
+    },
+    {
+        "id_usuario": 2432,
+        "nombre": "Adalberto Vigil Acuna",
+        "contrasena": "MXVxpspPl^aK",
+        "num_telefono": "967-443-9355",
+        "direccion": "Retorno Yucatan 754 077, San Renato de la Montana, TLAX 10540"
+    },
+    {
+        "id_usuario": 3067,
+        "nombre": "Pamela Rocio Osorio Banuelos",
+        "contrasena": "#LW5tYtuV1C)",
+        "num_telefono": "201-485-0176",
+        "direccion": "Viaducto Norte Rojas 398 Edif. 919 , Depto. 930, Vieja Uzbekistan, VER 47578-8937"
+    },
+    {
+        "id_usuario": 4854,
+        "nombre": "Frida Jose Manuel Cintron Cortes",
+        "contrasena": "!6UnXQOhmsq9",
+        "num_telefono": "163-074-0297",
+        "direccion": "Corredor Jalisco 985 Edif. 563 , Depto. 311, San Dalia los altos, BC 38748-6838"
+    },
+    {
+        "id_usuario": 8410,
+        "nombre": "Elisa Galvez Lara",
+        "contrasena": "hBUmG!j71Iuk",
+        "num_telefono": "708-255-9498",
+        "direccion": "Peatonal Norte Bonilla 257 Interior 253, Nueva Peru, SON 73163-4065"
+    },
+    {
+        "id_usuario": 5814,
+        "nombre": "Maria Elena Armas Valle",
+        "contrasena": "SegL4*iD8MRi",
+        "num_telefono": "463-266-6780",
+        "direccion": "Prolongacion Haro 127 Edif. 833 , Depto. 866, San Carolina de la Montana, GTO 09236"
+    }
+]
