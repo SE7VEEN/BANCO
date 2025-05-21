@@ -1,23 +1,107 @@
 [
     {
-        "id_usuario": 2712,
-        "nombre": "Sr(a). Juan Lugo",
-        "contrasena": "!7nvWo9aBhy1",
-        "num_telefono": "711-396-5214",
-        "direccion": "Circunvalacion Serbia 739 Edif. 959 , Depto. 633, Nueva Ghana, TLAX 77712-2433"
+        "id_usuario": 3964,
+        "nombre": "Teodoro Barrera Pedraza",
+        "contrasena": "*p7bDod1mzaK",
+        "num_telefono": "834-118-6812",
+        "direccion": "Retorno Etiopia 323 Edif. 627 , Depto. 170, San Camilo los altos, ZAC 23076"
     },
     {
-        "id_usuario": 7660,
-        "nombre": "Flavio Cisneros Perez",
-        "contrasena": "XtipwhkDY6Rs",
-        "num_telefono": "185-408-7412",
-        "direccion": "Circuito Sur Avila 329 323, Vieja Canada, CHIS 21744"
+        "id_usuario": 9006,
+        "nombre": "Jos Ramon Cisneros Casillas",
+        "contrasena": "pAoQ!dZa*qaM",
+        "num_telefono": "391-777-4869",
+        "direccion": "Pasaje Benin 811 Interior 852, San Luis Manuel los bajos, Q. ROO 18415"
     },
     {
-        "id_usuario": 4074,
-        "nombre": "Abel Eduardo Menendez",
-        "contrasena": "TQQ^HdXNWdfg",
-        "num_telefono": "404-679-7598",
-        "direccion": "Prolongacion Tayikistan 714 Edif. 836 , Depto. 569, San Nadia los bajos, JAL 15707"
+        "id_usuario": 8182,
+        "nombre": "Ana Luisa Alta  Gracia Romero",
+        "contrasena": "qBWxk7Hbg206",
+        "num_telefono": "704-007-3344",
+        "direccion": "Avenida Norte Castaneda 425 Edif. 149 , Depto. 714, San Estela de la Montana, HGO 98826"
+    },
+    {
+        "id_usuario": 6349,
+        "nombre": "Lic. Rodrigo Badillo",
+        "contrasena": "Yc5yKuGpe5Z0",
+        "num_telefono": "405-749-5645",
+        "direccion": "Pasaje Michoacan de Ocampo 356 Edif. 397 , Depto. 376, San Maria los altos, GRO 75219-9086"
+    },
+    {
+        "id_usuario": 9561,
+        "nombre": "Emiliano Santacruz Crespo",
+        "contrasena": "Qacohoj9MRow",
+        "num_telefono": "881-778-4226",
+        "direccion": "Peatonal Sur Mesa 843 198, San Eugenio los bajos, NAY 84078"
+    },
+    {
+        "id_usuario": 7967,
+        "nombre": "Lic. Javier Esparza",
+        "contrasena": "P8SAqc*DF04e",
+        "num_telefono": "800-398-3913",
+        "direccion": "Eje vial Nigeria 154 589, Vieja Arabia Saudita, BCS 47461-8164"
+    },
+    {
+        "id_usuario": 7230,
+        "nombre": "Magdalena Zacarias Balderas",
+        "contrasena": "aYwFFH4refhK",
+        "num_telefono": "772-103-9675",
+        "direccion": "Privada Portillo 521 Interior 562, Vieja Libano, SON 95909"
+    },
+    {
+        "id_usuario": 6843,
+        "nombre": "Maria Elena Orosco",
+        "contrasena": "xvMhnBPRtVxJ",
+        "num_telefono": "960-037-6645",
+        "direccion": "Corredor Zacatecas 607 Interior 670, Nueva Nueva Zelandia, TAB 92797-8726"
+    },
+    {
+        "id_usuario": 4517,
+        "nombre": "Celia Elvia Montalvo Veliz",
+        "contrasena": "qFSqakQVHMfC",
+        "num_telefono": "442-952-5896",
+        "direccion": "Continuacion Norte Palacios 549 Edif. 690 , Depto. 343, Nueva San Vicente y las Granadinas, DF 49564"
+    },
+    {
+        "id_usuario": 4723,
+        "nombre": "Eric Sarabia del Valle",
+        "contrasena": "19XtynjClKuh",
+        "num_telefono": "334-588-5892",
+        "direccion": "Pasaje Montano 426 Interior 650, San Porfirio los altos, CHIH 62741"
+    },
+    {
+        "id_usuario": 2199,
+        "nombre": "Ing. Ana Maria Carranza",
+        "contrasena": "M01Wq7PGSly*",
+        "num_telefono": "667-366-7073",
+        "direccion": "Peatonal Sur Vazquez 987 Interior 737, San Victoria los altos, Q. ROO 64209"
+    },
+    {
+        "id_usuario": 2642,
+        "nombre": "Leonel Minerva Reyes",
+        "contrasena": "lIHwAW3M688Q",
+        "num_telefono": "167-994-8682",
+        "direccion": "Circunvalacion Jamaica 648 Edif. 135 , Depto. 335, Vieja Chipre, NL 74311-5400"
+    },
+    {
+        "id_usuario": 7439,
+        "nombre": "Gloria Helena Rodriquez Reyes",
+        "contrasena": "lc!s0Z5gWert",
+        "num_telefono": "065-494-5451",
+        "direccion": "Boulevard Chihuahua 701 Interior 714, San Indira los altos, YUC 69167"
+    },
+    {
+        "id_usuario": 7116,
+        "nombre": "Olga Rolando Parra",
+        "contrasena": "Z5AQvv6ywIqs",
+        "num_telefono": "518-847-7609",
+        "direccion": "Privada Quintana Roo 451 Edif. 540 , Depto. 638, Vieja Congo, JAL 31237"
+    },
+    {
+        "id_usuario": 5734,
+        "nombre": "Alberto Jaime Carvajal Escobar",
+        "contrasena": "Q6CdbsKuTvXC",
+        "num_telefono": "353-308-7281",
+        "direccion": "Ampliacion Quintana Roo 717 376, Vieja Tailandia, GRO 22078-3643"
     }
 ]

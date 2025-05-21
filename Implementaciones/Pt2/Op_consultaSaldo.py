@@ -1,0 +1,48 @@
+import json
+import sys
+import os
+from decimal import Decimal
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
+from general.utils.utils import CUENTAS_PATH
+
+def operacion_consulta_saldo(proceso, id_cuenta, cuentas_lock):
+    
+    pid = str(proceso.pid)
+    
+    try:
+        # Estado: Procesando consulta
+        actualizar_estado_pcb(pid,
+            estado="Procesando",
+            operacion=f"Consultando saldo cuenta {id_cuenta}"
+        )
+
+        with cuentas_lock:
+            with open(CUENTAS_PATH, 'r') as f:
+                cuentas = json.load(f)
+                cuenta = next((c for c in cuentas if c.get("id_cuenta") == id_cuenta), None)
+                
+                if cuenta:
+                    saldo = float(cuenta.get("saldo", 0))
+                    
+                    # Estado: Consulta exitosa
+                    actualizar_estado_pcb(pid,
+                        estado="Finalizado",
+                        operacion=f"Saldo consultado: ${saldo:.2f}"
+                    )
+                    return saldo
+
+        # Estado: Cuenta no encontrada
+        actualizar_estado_pcb(pid,
+            estado="Fallido",
+            operacion=f"Cuenta {id_cuenta} no encontrada"
+        )
+        return None
+
+    except Exception as e:
+        actualizar_estado_pcb(pid,
+            estado="Error",
+            operacion=f"Error consultando saldo: {str(e)}"
+        )
+        return None

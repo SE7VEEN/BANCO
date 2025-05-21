@@ -7,14 +7,36 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 from servidor.hilos.procesos import crear_proceso
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from general.utils.utils import CUENTAS_PATH, inicializar_archivo
-from Implementaciones.Pt2.Operacion import operacion_deposito
+from Implementaciones.Pt2.Op_depositoPersonal import operacion_depositoPersonal
+from Implementaciones.Pt2.Op_retiro import operacion_retiro
+from Implementaciones.Pt2.Op_deposito import operacion_deposito
+from Implementaciones.Pt2.Op_transferencia import operacion_transferencia
+from Implementaciones.Pt2.Op_consultaSaldo import operacion_consulta_saldo
 from servidor.hilos.pcb import safe_json_read
 
 # Configuraciones
 cuentas_lock = Lock()
 
-OPERACIONES_CLIENTES = ["Depósito", "Consulta"]
-OPERACIONES_VISITANTES = ["Consulta"]
+OPERACIONES_CLIENTES = ["Deposito Personal", "Retiro", "Transferencia", "Consulta", "Consulta Saldo"]
+OPERACIONES_VISITANTES = ["Consulta", "Deposito",]
+
+def obtener_id_cuenta_aleatorio(archivo_cuentas=CUENTAS_PATH):
+    try:
+        with open(archivo_cuentas, 'r') as f:
+            cuentas = json.load(f)
+            
+        # Filtrar cuentas que tengan el campo id_cuenta
+        cuentas_validas = [c for c in cuentas if c.get('id_cuenta') is not None]
+        
+        if not cuentas_validas:
+            return None
+            
+        cuenta_aleatoria = random.choice(cuentas_validas)
+        return cuenta_aleatoria['id_cuenta']
+        
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error al leer el archivo: {e}")
+        return None
 
 # === Generar solicitudes automáticas ===
 def generar_solicitudes_automaticas():
@@ -42,8 +64,19 @@ def generar_solicitudes_automaticas():
 def despachar_proceso_secuencial(proceso):
     actualizar_estado_pcb(proceso.pid, estado="En ejecución", operacion=f"Asignado a {proceso.destino}")
 
-    if proceso.operacion == "Depósito":
-        operacion_deposito(proceso, monto=100.0, cuentas_lock=cuentas_lock)
+    if proceso.operacion == "Deposito Personal":
+        operacion_depositoPersonal(proceso, monto=100.0, cuentas_lock=cuentas_lock)
+    elif proceso.operacion == "Deposito":
+        cuenta_destino = obtener_id_cuenta_aleatorio()
+        operacion_deposito(proceso, cuenta_destino, monto=50.0, cuentas_lock=cuentas_lock)
+    elif proceso.operacion == "Retiro":
+        operacion_retiro(proceso, monto=50.0, cuentas_lock=cuentas_lock)
+    elif proceso.operacion == "Transferencia":
+        cuenta_destino = obtener_id_cuenta_aleatorio()
+        operacion_transferencia(proceso, cuenta_destino, monto=50.0, cuentas_lock=cuentas_lock)
+    elif proceso.operacion == "Consulta Saldo":
+        cuenta_destino = obtener_id_cuenta_aleatorio()
+        operacion_consulta_saldo(proceso, cuenta_destino, cuentas_lock=cuentas_lock)
     elif proceso.operacion == "Consulta":
         time.sleep(1)
         actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion="Consulta realizada")
