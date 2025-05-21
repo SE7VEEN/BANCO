@@ -5,7 +5,6 @@ from uuid import uuid4
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from servidor.hilos.pcb import obtener_datos_cliente, guardar_en_pcb
-from general.utils.utils import CUENTAS_PATH, inicializar_archivo
 
 class Proceso:
     def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None, prioridad = None, destino = None):
