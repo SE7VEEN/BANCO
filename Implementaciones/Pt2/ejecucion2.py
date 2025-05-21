@@ -16,6 +16,8 @@ from Implementaciones.Pt2.Op_retiro import operacion_retiro
 from Implementaciones.Pt2.Op_consultaDatos import operacion_consulta_datos
 from Implementaciones.Pt2.Op_transferencia import operacion_transferencia
 from Implementaciones.Pt2.Op_consultaSaldo import operacion_consulta_saldo
+from Implementaciones.Pt2.agregarCliente import agregarCliente
+from Implementaciones.Pt2.agregarTarjeta import agregarTarjeta
 
 # Configuraciones
 cuentas_lock = Lock()
@@ -27,7 +29,7 @@ OPERACIONES_VENTANILLA_VISITANTE = ["Deposito", "Retiro"]
 
 #OPERACIONES DISPONIBLES CON ASESOR
 OPERACIONES_ASESOR_VISITANTE = ["Consulta", "Creacion cuenta"]
-OPERACIONES_ASESOR_CLIENTE = ["Consulta", "Modificacion de Datos", "Baja de Cuenta", "Agregar tarjeta"]
+OPERACIONES_ASESOR_CLIENTE = ["Consulta", "Modificacion de Datos", "Baja de Cuenta", "Agregar tarjeta", "Creacion cuenta"]
 
 
 # Tiempos de simulación por operación
@@ -133,9 +135,13 @@ def despachar_proceso_secuencial(proceso):
         elif proceso.operacion == "Consulta Saldo":
             operacion_consulta_saldo(proceso, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Consulta Datos":
-            operacion_consulta_datos(proceso, cuentas_lock=cuentas_lock)
+            operacion_consulta_datos(proceso, cuentas_lock=cuentas_lock) 
+        elif proceso.operacion == "Creacion cuenta":
+            agregarCliente(proceso, cuentas_lock=cuentas_lock)
+        elif proceso.operacion == "Agregar tarjeta":
+            agregarTarjeta(proceso, cuentas_lock=cuentas_lock) 
         elif proceso.operacion == "Consulta": 
-            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                  
+            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                
         else:
             # Para otras operaciones solo registramos finalización
             actualizar_estado_pcb(proceso.pid, estado="Finalizado", 
