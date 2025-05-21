@@ -1,0 +1,107 @@
+[
+    {
+        "id_usuario": 2189,
+        "nombre": "Ing. Vanesa Ortiz",
+        "contrasena": "pLS4!kVdhTP8",
+        "num_telefono": "141-685-0631",
+        "direccion": "Boulevard Borrego 674 Interior 503, San Emilia de la Montana, CAMP 88642-0108"
+    },
+    {
+        "id_usuario": 3169,
+        "nombre": "Noemi Araceli Centeno Ramon",
+        "contrasena": "bXAQZA*8FQrW",
+        "num_telefono": "430-795-3747",
+        "direccion": "Calzada Nayarit 692 Edif. 866 , Depto. 650, San Ana Maria los bajos, GRO 74314-1135"
+    },
+    {
+        "id_usuario": 9191,
+        "nombre": "Soledad Carolina Castaneda Pena",
+        "contrasena": "5zm*DxIH2U18",
+        "num_telefono": "416-192-7479",
+        "direccion": "Avenida Mora 282 Edif. 659 , Depto. 685, Vieja Costa Rica, MOR 25644"
+    },
+    {
+        "id_usuario": 8960,
+        "nombre": "Dr. Enrique Salazar",
+        "contrasena": "^TB88Wr1IfTW",
+        "num_telefono": "441-252-3252",
+        "direccion": "Diagonal Sur Aguayo 514 Edif. 945 , Depto. 570, San Zeferino de la Montana, TLAX 29513-7995"
+    },
+    {
+        "id_usuario": 8087,
+        "nombre": "Carlos Graciela Arias",
+        "contrasena": "fqpEd1GBYLCd",
+        "num_telefono": "009-087-0643",
+        "direccion": "Privada Vanuatu 019 932, Nueva Monaco, SIN 79310-1088"
+    },
+    {
+        "id_usuario": 4281,
+        "nombre": "Cornelio Fuentes",
+        "contrasena": "qZTlW85pukTz",
+        "num_telefono": "588-331-0675",
+        "direccion": "Privada Sonora 452 Edif. 898 , Depto. 532, Vieja Tuvalu, CHIH 03722"
+    },
+    {
+        "id_usuario": 7801,
+        "nombre": "Mtro. Rocio Llamas",
+        "contrasena": "4XQxNqebGccu",
+        "num_telefono": "938-481-6296",
+        "direccion": "Andador Sur Melgar 450 366, Nueva Liechtenstein, COL 48468"
+    },
+    {
+        "id_usuario": 7776,
+        "nombre": "Andres Osorio Nevarez",
+        "contrasena": "7WtahjKHGYem",
+        "num_telefono": "002-910-3219",
+        "direccion": "Periferico Bolivia 285 Interior 224, San Lorena de la Montana, TAMPS 04648"
+    },
+    {
+        "id_usuario": 8039,
+        "nombre": "Francisco Javier Martin Ornelas",
+        "contrasena": "9pH0hZBsKjY6",
+        "num_telefono": "404-817-3818",
+        "direccion": "Boulevard Oaxaca 089 Interior 045, San Ariadna los altos, BC 39435-1116"
+    },
+    {
+        "id_usuario": 6628,
+        "nombre": "Javier Eloisa Munoz Menendez",
+        "contrasena": "*gzez36tsVk3",
+        "num_telefono": "530-197-3831",
+        "direccion": "Boulevard Sur Roque 112 Interior 286, Nueva Eslovaquia, SIN 20508-3037"
+    },
+    {
+        "id_usuario": 8170,
+        "nombre": "Cristina Itzel Zepeda",
+        "contrasena": "YT1W0Amu7mIo",
+        "num_telefono": "233-068-5480",
+        "direccion": "Periferico Cavazos 600 906, San Santiago de la Montana, BC 52497"
+    },
+    {
+        "id_usuario": 9651,
+        "nombre": "Angelica Nelly de la Fuente",
+        "contrasena": "v0*XrY2ixUeI",
+        "num_telefono": "284-755-8163",
+        "direccion": "Diagonal Pineda 075 Edif. 008 , Depto. 792, Vieja Chile, NL 72430-2415"
+    },
+    {
+        "id_usuario": 2714,
+        "nombre": "Eugenia Adriana Nunez Alonzo",
+        "contrasena": "rGyG1FQSyJ7X",
+        "num_telefono": "895-155-4928",
+        "direccion": "Diagonal Castellanos 330 Edif. 970 , Depto. 133, Vieja Tuvalu, SON 16722-4685"
+    },
+    {
+        "id_usuario": 6610,
+        "nombre": "Oscar Linda Camarillo",
+        "contrasena": "NgkjlMBRgaAF",
+        "num_telefono": "199-116-3195",
+        "direccion": "Calle Campeche 355 240, San Eloisa los bajos, AGS 26397"
+    },
+    {
+        "id_usuario": 6648,
+        "nombre": "Guadalupe Gamboa Valenzuela",
+        "contrasena": "IO!sKupjswVP",
+        "num_telefono": "243-704-8514",
+        "direccion": "Prolongacion Nigeria 462 588, San Frida los altos, NL 21882"
+    }
+]

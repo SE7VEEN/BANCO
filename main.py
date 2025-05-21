@@ -9,7 +9,6 @@ from general.utils.utils import PCB_PATH, CLIENTES_PATH, CUENTAS_PATH, inicializ
 from cliente.clientes.gestor import gestionar_clientes
 from cliente.cuentas.gestion_cuenta import crear_cuentas_automaticamente_por_clientes
 from Implementaciones.Pt2.ejecucion2 import planificador
-# from Implementaciones.Ejecucion import iniciar_simulacion
 from servidor.PCB_manager import mostrar_pcb
 from general.interfaces.menu_principal import bienvenida_banco
 

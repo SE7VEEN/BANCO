@@ -7,9 +7,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from general.utils.utils import CUENTAS_PATH
 
-def operacion_consulta_saldo(proceso, id_cuenta, cuentas_lock):
+def operacion_consulta_saldo(proceso, cuentas_lock):
     
     pid = str(proceso.pid)
+    id_cuenta = str(proceso.id_cuenta)
     
     try:
         # Estado: Procesando consulta

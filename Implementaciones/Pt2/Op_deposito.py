@@ -9,7 +9,6 @@ from general.utils.utils import CUENTAS_PATH
 
 def operacion_deposito(proceso, id_cuenta_destino, monto, cuentas_lock):
     pid = str(proceso.pid)
-    id_cuenta_origen = proceso.id_cuenta
 
     try:
         if monto <= 0:

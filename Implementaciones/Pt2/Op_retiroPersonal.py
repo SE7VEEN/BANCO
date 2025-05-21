@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from general.utils.utils import CUENTAS_PATH
 
-def operacion_retiro(proceso, monto, cuentas_lock):
+def operacion_retiroPersonal(proceso, monto, cuentas_lock):
     pid = str(proceso.pid)
     id_cuenta = proceso.id_cuenta
 
