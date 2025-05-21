@@ -56,3 +56,11 @@ def safe_json_read(path, default=[]):
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return default
+    
+def safe_json_write(path, data):
+    try:
+        with open(path, 'w') as f:
+            json.dump(data, f, indent=4)
+    except Exception as e:
+        print(f"Error al escribir JSON en {path}: {e}")
+        raise

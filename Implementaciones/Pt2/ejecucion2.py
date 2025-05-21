@@ -13,9 +13,9 @@ from Implementaciones.Pt2.Op_depositoPersonal import operacion_depositoPersonal
 from Implementaciones.Pt2.Op_retiroPersonal import operacion_retiroPersonal
 from Implementaciones.Pt2.Op_deposito import operacion_deposito
 from Implementaciones.Pt2.Op_retiro import operacion_retiro
+from Implementaciones.Pt2.Op_consultaDatos import operacion_consulta_datos
 from Implementaciones.Pt2.Op_transferencia import operacion_transferencia
 from Implementaciones.Pt2.Op_consultaSaldo import operacion_consulta_saldo
-from Implementaciones.Pt2.Op_consultaDatos import operacion_consulta_datos
 
 # Configuraciones
 cuentas_lock = Lock()
@@ -26,8 +26,9 @@ OPERACIONES_VENTANILLA_CLIENTE = ["Deposito Personal", "Retiro Personal", "Trans
 OPERACIONES_VENTANILLA_VISITANTE = ["Deposito", "Retiro"]
 
 #OPERACIONES DISPONIBLES CON ASESOR
-OPERACIONES_ASESOR_VISITANTE = ["Consulta"]
-OPERACIONES_ASESOR_CLIENTE = ["Consulta", "Modificacion de Datos", "Creacion de Cuentas", "Baja de Cuenta"]
+OPERACIONES_ASESOR_VISITANTE = ["Consulta", "Creacion cuenta"]
+OPERACIONES_ASESOR_CLIENTE = ["Consulta", "Modificacion de Datos", "Baja de Cuenta", "Agregar tarjeta"]
+
 
 # Tiempos de simulación por operación
 TIEMPOS_OPERACION = {
@@ -134,7 +135,7 @@ def despachar_proceso_secuencial(proceso):
         elif proceso.operacion == "Consulta Datos":
             operacion_consulta_datos(proceso, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Consulta": 
-            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                           
+            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                  
         else:
             # Para otras operaciones solo registramos finalización
             actualizar_estado_pcb(proceso.pid, estado="Finalizado", 

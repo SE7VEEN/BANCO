@@ -7,8 +7,8 @@
                         )
 - Operaciones de asesor (
                     Consulta de cuenta, 
-                    modificación de datos, 
-                    baja de cuenta, 
+                    cliente -id cuenta   modificación de datos, yo 
+                    cliente -id cuenta   baja de cuenta, yo - temporal o definitiva 
                     agregar nueva cuenta, 
                     agregar nuevo cliente
                         ) 
@@ -16,3 +16,4 @@
 - Verificar proceso de colas 
 - Que el texto principal diga "BENITO"
 - Reorganizar carpetas
+
