@@ -1,72 +1,46 @@
 [
     {
-        "PID": "5621",
-        "PPID": "7040",
+        "PID": "3527",
+        "PPID": "13980",
         "Estado": "Finalizado",
-        "IDUsuario": 5687,
-        "IDCuenta": "CTA-C191EE9C",
+        "IDUsuario": 2712,
+        "IDCuenta": "CTA-ECBEF212",
         "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Prioridad": 2,
+        "TipoCuenta": "premium",
+        "Prioridad": 1,
         "Destino": "Ventanilla",
         "Operacion": "Consulta realizada",
-        "Timestamp": "21:04:19"
+        "Timestamp": "22:52:13"
     },
     {
-        "PID": "7692",
-        "PPID": "7040",
-        "Estado": "Esperando",
-        "IDUsuario": 5533,
-        "IDCuenta": "CTA-90DC31EF",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Prioridad": 2,
-        "Destino": "Asesor",
-        "Operacion": "Esperando acceso a cuentas",
-        "Timestamp": "21:04:19"
-    },
-    {
-        "PID": "5360",
-        "PPID": "7040",
+        "PID": "3097",
+        "PPID": "13980",
         "Estado": "Error",
-        "IDUsuario": 1079,
-        "IDCuenta": "CTA-6EC37F4F",
+        "IDUsuario": 7660,
+        "IDCuenta": "CTA-1FA4CA6B",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "estandar",
         "Prioridad": 2,
         "Destino": "Ventanilla",
         "Operacion": "Error en deposito: actualizar_estado_pcb() got an unexpected keyword argument 'recurso_esperando'",
-        "Timestamp": "21:04:19"
+        "Timestamp": "22:52:13"
     },
     {
-        "PID": "1299",
-        "PPID": "7040",
+        "PID": "4849",
+        "PPID": "13980",
         "Estado": "Finalizado",
-        "IDUsuario": 4908,
-        "IDCuenta": "CTA-E081B608",
+        "IDUsuario": 4074,
+        "IDCuenta": "CTA-7718147B",
         "TipoUsuario": "Cliente",
         "TipoCuenta": "estandar",
         "Prioridad": 2,
-        "Destino": "Ventanilla",
+        "Destino": "Asesor",
         "Operacion": "Consulta realizada",
-        "Timestamp": "21:04:19"
+        "Timestamp": "22:52:13"
     },
     {
-        "PID": "7051",
-        "PPID": "7040",
-        "Estado": "Finalizado",
-        "IDUsuario": 4194,
-        "IDCuenta": "CTA-A7B01F1B",
-        "TipoUsuario": "Cliente",
-        "TipoCuenta": "estandar",
-        "Prioridad": 2,
-        "Destino": "Ventanilla",
-        "Operacion": "Consulta realizada",
-        "Timestamp": "21:04:19"
-    },
-    {
-        "PID": "9701",
-        "PPID": "7040",
+        "PID": "3708",
+        "PPID": "13980",
         "Estado": "Finalizado",
         "IDUsuario": null,
         "IDCuenta": null,
@@ -75,21 +49,19 @@
         "Prioridad": 2,
         "Destino": "Ventanilla",
         "Operacion": "Consulta realizada",
-        "Timestamp": "21:04:19"
+        "Timestamp": "22:52:13"
     },
     {
-        "PID": "7944",
-        "PPID": "7040",
-        "Estado": "En espera",
+        "PID": "7998",
+        "PPID": "13980",
+        "Estado": "Finalizado",
         "IDUsuario": null,
         "IDCuenta": null,
         "TipoUsuario": "Visitante",
         "TipoCuenta": null,
         "Prioridad": 2,
         "Destino": "Asesor",
-        "Operacion": "Consulta",
-        "Timestamp": "21:04:19"
-    }
-] "21:04:19"
+        "Operacion": "Consulta realizada",
+        "Timestamp": "22:52:13"
     }
 ]

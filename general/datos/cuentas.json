@@ -1,72 +1,44 @@
 [
     {
-        "id_cuenta": "CTA-C191EE9C",
-        "id_usuario": 5687,
+        "id_cuenta": "CTA-ECBEF212",
+        "id_usuario": 2712,
         "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
+        "tipo_cuenta": "premium",
         "tarjetas": [
             {
-                "VISA": "8454-5928-6238-2742",
-                "cvv": "058"
+                "VISA": "3878-7063-0331-4486",
+                "cvv": "245"
             }
         ],
-        "saldo": 35762.03,
-        "adeudos": 439.46
+        "saldo": 8820.02,
+        "adeudos": 1607.33
     },
     {
-        "id_cuenta": "CTA-90DC31EF",
-        "id_usuario": 5533,
+        "id_cuenta": "CTA-1FA4CA6B",
+        "id_usuario": 7660,
         "estado_cuenta": "activa",
         "tipo_cuenta": "estandar",
         "tarjetas": [
             {
-                "VISA": "3910-1533-9855-9745",
-                "cvv": "697"
+                "VISA": "4714-8468-5861-9737",
+                "cvv": "488"
             }
         ],
-        "saldo": 45814.61,
-        "adeudos": 1492.95
+        "saldo": 76942.72,
+        "adeudos": 1119.7
     },
     {
-        "id_cuenta": "CTA-6EC37F4F",
-        "id_usuario": 1079,
+        "id_cuenta": "CTA-7718147B",
+        "id_usuario": 4074,
         "estado_cuenta": "activa",
         "tipo_cuenta": "estandar",
         "tarjetas": [
             {
-                "VISA": "8703-9430-9503-5229",
-                "cvv": "566"
+                "VISA": "6474-3699-5766-7356",
+                "cvv": "268"
             }
         ],
-        "saldo": 59189.6,
-        "adeudos": 1455.35
-    },
-    {
-        "id_cuenta": "CTA-E081B608",
-        "id_usuario": 4908,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "9636-5521-5094-3066",
-                "cvv": "811"
-            }
-        ],
-        "saldo": 46255.84,
-        "adeudos": 1211.76
-    },
-    {
-        "id_cuenta": "CTA-A7B01F1B",
-        "id_usuario": 4194,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "4834-4443-1644-9769",
-                "cvv": "584"
-            }
-        ],
-        "saldo": 82777.64,
-        "adeudos": 781.42
+        "saldo": 79384.72,
+        "adeudos": 702.92
     }
 ]
