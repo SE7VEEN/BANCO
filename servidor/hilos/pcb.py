@@ -16,28 +16,58 @@ from threading import Lock
 # Añade un Lock global para sincronizar el acceso al archivo
 pcb_lock = Lock()
 
+import json, time
+import threading
+from pathlib import Path
+from atomicwrites import atomic_write
+
+pcb_lock = threading.Lock()
+
+
 def guardar_en_pcb(proceso):
-    with pcb_lock:  # Bloquea el acceso concurrente
+    with pcb_lock:
         try:
-            # Leer datos existentes
+            # 1. Obtener ruta absoluta confiable
+            base_dir = Path(__file__).resolve().parent.parent.parent
+            datos_dir = base_dir / "general" / "datos"
+            pcb_path = datos_dir / "pcb.json"
+            
+            # 2. Crear directorios si no existen
+            datos_dir.mkdir(parents=True, exist_ok=True)
+            
+            # 3. Cargar datos existentes o inicializar
             try:
-                with open(PCB_PATH, 'r') as f:
-                    data = json.load(f)
-            except (FileNotFoundError, json.JSONDecodeError):
+                if pcb_path.exists():
+                    data = json.loads(pcb_path.read_text(encoding='utf-8'))
+                else:
+                    data = []
+            except json.JSONDecodeError:
                 data = []
             
-            # Convertir a dict si es necesario
-            proceso_dict = proceso.to_dict() if hasattr(proceso, 'to_dict') else proceso
+            # 4. Validar estructura de datos
+            if not isinstance(data, list):
+                data = []
             
-            # Añadir nuevo proceso
-            data.append(proceso_dict)
+            # 5. Añadir nuevo proceso
+            new_entry = proceso.to_dict()
+            new_data = data + [new_entry]
             
-            # Escribir todo el array de nuevo
-            with open(PCB_PATH, 'w') as f:
-                json.dump(data, f, indent=4)
-                
+            # 6. Escritura atómica con manejo de errores
+            try:
+                with atomic_write(pcb_path, overwrite=True, encoding='utf-8') as f:
+                    json.dump(new_data, f, indent=4, ensure_ascii=False)
+            except PermissionError:
+                # Esperar y reintentar una vez
+                time.sleep(0.1)
+                with atomic_write(pcb_path, overwrite=True, encoding='utf-8') as f:
+                    json.dump(new_data, f, indent=4, ensure_ascii=False)
+                    
         except Exception as e:
-            print(f"Error al guardar en PCB: {str(e)}")
+            print(f"Error al guardar PCB: {type(e).__name__} - {str(e)}")
+            # Crear archivo vacío como último recurso
+            if not datos_dir.exists():
+                datos_dir.mkdir(parents=True)
+            pcb_path.write_text('[]', encoding='utf-8')
 
 # def terminar_proceso(proceso):
 #     proceso.estado = "Finalizado"

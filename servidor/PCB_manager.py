@@ -32,7 +32,14 @@ class mostrar_pcb:
         self.console = Console()
         self.last_update = time.time()
         self.error = None
-    
+    def _ensure_valid_json(self):
+        from general.utils.utils import reparar_pcb
+        for _ in range(3):  # 3 intentos de reparación
+            if reparar_pcb():
+                break
+            time.sleep(0.1)
+
+
     def cargar_pcbs(self) -> List[Dict]:
         """Carga los PCBs desde el archivo JSON"""
         try:

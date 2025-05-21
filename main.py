@@ -10,7 +10,8 @@ from cliente.clientes.gestor import gestionar_clientes
 from cliente.cuentas.gestion_cuenta import crear_cuentas_automaticamente_por_clientes
 from Implementaciones.Pt2.ejecucion2 import planificador, generar_solicitudes_automaticas
 from servidor.PCB_manager import mostrar_pcb
-
+from pathlib import Path
+(Path(__file__).parent / "general" / "datos").mkdir(parents=True, exist_ok=True)
 # Definimos rutas
 BASE_DIR = Path(__file__).parent
 DATOS_DIR = BASE_DIR / "general" / "datos"
@@ -18,8 +19,6 @@ ARCHIVOS_JSON = {
     "clientes.json": CLIENTES_PATH,
     "cuentas.json": CUENTAS_PATH,
     "pcb.json": PCB_PATH,
-
-    
 }
 
 def limpiar_y_crear_datos():

@@ -95,3 +95,22 @@ def obtener_datos_cliente(id_usuario):
             if cuenta.get('id_usuario') == id_usuario:
                 return cuenta
     return None
+
+import json
+from pathlib import Path
+def reparar_pcb():
+    try:
+        base_dir = Path(__file__).resolve().parent.parent
+        pcb_path = base_dir / "general" / "datos" / "pcb.json"
+        
+        # Asegurar que el directorio existe
+        pcb_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        if not pcb_path.exists():
+            pcb_path.write_text('[]', encoding='utf-8')
+            return True
+            
+        # Resto de la lógica de reparación...
+    except Exception as e:
+        print(f"Error al reparar PCB: {str(e)}")
+        return False
