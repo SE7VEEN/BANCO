@@ -16,6 +16,8 @@ from Implementaciones.Pt2.Op_retiro import operacion_retiro
 from Implementaciones.Pt2.Op_consultaDatos import operacion_consulta_datos
 from Implementaciones.Pt2.Op_transferencia import operacion_transferencia
 from Implementaciones.Pt2.Op_consultaSaldo import operacion_consulta_saldo
+from Implementaciones.Pt2.Op_modificacionDatos import operacion_modificacion_datos
+from Implementaciones.Pt2.Op_bajaCuenta import operacion_baja_cuenta
 
 # Configuraciones
 cuentas_lock = Lock()
@@ -136,6 +138,13 @@ def despachar_proceso_secuencial(proceso):
             operacion_consulta_datos(proceso, cuentas_lock=cuentas_lock)
         elif proceso.operacion == "Consulta": 
             actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=f"{proceso.operacion} completada")                  
+        elif proceso.operacion == "Modificacion de Datos":
+            operacion_modificacion_datos(proceso)
+            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion=proceso.operacion)
+        elif proceso.operacion == "Baja de Cuenta":
+            tipo_baja = random.choice(["temporal", "definitiva"])
+            operacion_baja_cuenta(proceso, tipo_baja=tipo_baja)
+
         else:
             # Para otras operaciones solo registramos finalización
             actualizar_estado_pcb(proceso.pid, estado="Finalizado", 
