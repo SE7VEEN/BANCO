@@ -1,0 +1,37 @@
+[
+    {
+        "id_usuario": 7338,
+        "nombre": "Oscar Hugo Garza",
+        "contrasena": "mng6y^kb4uiU",
+        "num_telefono": "662-671-3411",
+        "direccion": "Pasaje Sur Saiz 532 Interior 235, Vieja Israel, DGO 46668-0502"
+    },
+    {
+        "id_usuario": 5058,
+        "nombre": "Dr. Guillermina Chapa",
+        "contrasena": "BgRv7DE!hNjK",
+        "num_telefono": "422-934-7841",
+        "direccion": "Circuito Maldivas 465 Interior 846, San Ruby los bajos, GTO 24917"
+    },
+    {
+        "id_usuario": 8611,
+        "nombre": "Rodolfo Pilar Miramontes Escobar",
+        "contrasena": "OIoFLeKva2RV",
+        "num_telefono": "730-400-4944",
+        "direccion": "Circunvalacion Montenegro 315 519, Vieja Sudan del Sur, OAX 20975"
+    },
+    {
+        "id_usuario": 9148,
+        "nombre": "Maria Eugenia Escobar Caban",
+        "contrasena": "oDBvOS*MlhLW",
+        "num_telefono": "732-018-2915",
+        "direccion": "Periferico Armenta 293 Edif. 940 , Depto. 693, San Rosalia los bajos, NAY 93593"
+    },
+    {
+        "id_usuario": 3511,
+        "nombre": "Benito Soliz",
+        "contrasena": "YoxYpR5OGiDY",
+        "num_telefono": "756-236-1582",
+        "direccion": "Peatonal Olmos 053 Interior 026, Nueva Mexico, AGS 67463-3983"
+    }
+]

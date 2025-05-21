@@ -55,11 +55,13 @@ def guardar_cuentas(cuentas):
         json.dump([c.to_dict() for c in cuentas], f, indent=4)
 
 
-def inicializar_archivo(filename, default=[]):
-    """Asegura que el archivo JSON exista"""
-    if not os.path.exists(filename):
-        with open(filename, 'w') as f:
-            json.dump(default, f)
+def inicializar_archivo(ruta):
+    try:
+        with open(ruta, 'r') as f:
+            json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        with open(ruta, 'w') as f:
+            json.dump([], f, indent=4)
 
 def guardar_en_pcb(proceso_dict, lock):
     with lock:

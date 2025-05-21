@@ -10,18 +10,34 @@ from general.utils.utils import CUENTAS_PATH, PCB_PATH, inicializar_archivo
 pcb_lock = Lock()
 cuentas_lock = Lock()
 
+import json
+from threading import Lock
+
+# Añade un Lock global para sincronizar el acceso al archivo
+pcb_lock = Lock()
+
 def guardar_en_pcb(proceso):
-    with pcb_lock:
+    with pcb_lock:  # Bloquea el acceso concurrente
         try:
-            inicializar_archivo(PCB_PATH)
-            with open(PCB_PATH, 'r+') as f:
-                pcb = json.load(f)
-                pcb.append(proceso.to_dict())
-                f.seek(0)
-                json.dump(pcb, f, indent=4)
+            # Leer datos existentes
+            try:
+                with open(PCB_PATH, 'r') as f:
+                    data = json.load(f)
+            except (FileNotFoundError, json.JSONDecodeError):
+                data = []
+            
+            # Convertir a dict si es necesario
+            proceso_dict = proceso.to_dict() if hasattr(proceso, 'to_dict') else proceso
+            
+            # Añadir nuevo proceso
+            data.append(proceso_dict)
+            
+            # Escribir todo el array de nuevo
+            with open(PCB_PATH, 'w') as f:
+                json.dump(data, f, indent=4)
+                
         except Exception as e:
-            print(f"Error crítico al actualizar PCB: {str(e)}")
-            raise
+            print(f"Error al guardar en PCB: {str(e)}")
 
 # def terminar_proceso(proceso):
 #     proceso.estado = "Finalizado"
