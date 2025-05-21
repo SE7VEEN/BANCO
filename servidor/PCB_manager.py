@@ -91,13 +91,20 @@ class mostrar_pcb:
                 table.add_column(col, style=style, justify=justify)
         
         # Añadir filas con los datos
-        for pcb in self.pcbs:
+        pcbs_ordenados = sorted(
+            self.pcbs,
+            key=lambda x: (x.get("Estado") == "Finalizado", int(x.get("Prioridad", 99)))
+        )
+
+        # Añadir filas con los datos
+        for pcb in pcbs_ordenados:
             estado = pcb.get("Estado", "N/A")
-            
+
             # Convertir Prioridad a string si es numérico
             prioridad = pcb.get("Prioridad", "N/A")
             if isinstance(prioridad, int):
                 prioridad = str(prioridad)
+            
             
             row = [
                 pcb.get("PID", "N/A"),
