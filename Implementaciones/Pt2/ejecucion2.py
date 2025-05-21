@@ -21,10 +21,10 @@ asesores = Semaphore(2)
 OPERACIONES_CLIENTES = ["Deposito", "Consulta"]
 OPERACIONES_VISITANTES = ["Consulta"]
 
-from servidor.hilos.operaciones import generar_solicitudes_automaticas, ejecutar_operacion
+#from servidor.hilos.operaciones import generar_solicitudes_automaticas, ejecutar_operacion
 from multiprocessing import Process
 
-def lanzar_solicitudes():
+""" def lanzar_solicitudes():
     solicitudes = generar_solicitudes_automaticas()
     procesos = []
     for tipo, id_usuario, operacion in solicitudes:
@@ -34,10 +34,34 @@ def lanzar_solicitudes():
     for p in procesos:
         p.join()
 
-    return solicitudes
+    return solicitudes """
+
+""" def generar_solicitudes_automaticas():
+    operaciones_clientes = ["NULL"]
+    operaciones_visitantes = ["NULL"]
+    solicitudes = []
+
+    with cuentas_lock:
+        inicializar_archivo(CUENTAS_PATH)
+        with open(CUENTAS_PATH, 'r') as f:
+            cuentas = json.load(f)
+
+    for cuenta in cuentas:
+        id_usuario = cuenta.get('id_usuario')
+        if id_usuario:
+            for _ in range(random.randint(1, 1)):
+                operacion = random.choice(operaciones_clientes)
+                solicitudes.append(("Cliente", id_usuario, operacion))
+
+    for _ in range(random.randint(1, 1)):
+        operacion = random.choice(operaciones_visitantes)
+        solicitudes.append(("Visitante", None, operacion))
+        solicitudes.append(("Visitante", None, operacion))
+
+    return solicitudes """
 
 # 1. Generar solicitudes automáticas
-""" def generar_solicitudes_automaticas():
+def generar_solicitudes_automaticas():
     solicitudes = []
 
     with cuentas_lock:
@@ -55,7 +79,7 @@ def lanzar_solicitudes():
         operacion = random.choice(OPERACIONES_VISITANTES)
         solicitudes.append(("Visitante", None, operacion))
 
-    return solicitudes """
+    return solicitudes
 
 # 2. Despachar proceso a ventanilla o asesor
 def despachar_proceso(proceso, semaforo):
@@ -64,7 +88,7 @@ def despachar_proceso(proceso, semaforo):
         with cuentas_lock:
             actualizar_estado_pcb(
                 pid=proceso.pid, 
-                estado="En ejecución",
+                estado="En ejecucion",
                 prioridad=proceso.prioridad,
                 destino=proceso.destino
             )

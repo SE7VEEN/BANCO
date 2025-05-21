@@ -75,8 +75,5 @@ if __name__ == "__main__":
     visor_hilo = threading.Thread(target=lanzar_visualizador, daemon=True)
     visor_hilo.start()
 
-    # Ejecutar operaciones en procesos
-    lanzar_procesos()
-
     # Esperar entrada para finalizar
     input("\nPresione ENTER para terminar la simulación y cerrar la vista en tiempo real...\n")

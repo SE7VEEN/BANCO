@@ -12,15 +12,13 @@ def operacion_deposito(proceso, monto, cuentas_lock):
 
     try:
         if monto <= 0:
-            actualizar_estado_pcb(pid, estado="Fallido", operacion="Monto inválido", recurso_esperando=None, recurso_adquirido=None)
+            actualizar_estado_pcb(pid, estado="Fallido", operacion="Monto inválido")
             return False
 
         # 1. Estado: Esperando lock
         actualizar_estado_pcb(pid,
             estado="Esperando",
             operacion="Esperando acceso a cuentas",
-            recurso_esperando="accounts_lock",
-            recurso_adquirido=None
         )
 
         with cuentas_lock:

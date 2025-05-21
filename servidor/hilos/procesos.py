@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, random
 from datetime import datetime
 from uuid import uuid4
 
@@ -9,7 +9,9 @@ from general.utils.utils import CUENTAS_PATH, inicializar_archivo
 
 class Proceso:
     def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None, prioridad = None, destino = None):
-        self.pid = pid or str(os.getpid())
+        #self.pid = pid or str(os.getpid())
+        self.pid = pid or str(random.randint(1000, 9999))
+        #self.ppid = ppid or str(os.getppid())
         self.ppid = ppid or str(os.getppid())
         self.estado = estado
         self.id_cuenta = id_cuenta
