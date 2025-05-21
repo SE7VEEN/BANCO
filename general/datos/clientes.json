@@ -1,23 +1,58 @@
 [
     {
-        "id_usuario": 1301,
-        "nombre": "Dr. Josefina Guerrero",
-        "contrasena": "q43A4LqGeQqd",
-        "num_telefono": "837-025-8633",
-        "direccion": "Andador Samoa 503 Edif. 513 , Depto. 458, Vieja Uruguay, DF 53858"
+        "id_usuario": 9996,
+        "nombre": "Clemente Escamilla",
+        "contrasena": "Pa9DEhToPyC2",
+        "num_telefono": "037-700-2488",
+        "direccion": "Avenida Austria 710 Interior 507, San Enrique los altos, NAY 39686-8745"
     },
     {
-        "id_usuario": 5968,
-        "nombre": "Josefina Olmos",
-        "contrasena": "aElicTPvYB0o",
-        "num_telefono": "364-688-7076",
-        "direccion": "Circunvalacion Sur Irizarry 388 Interior 722, Nueva Guinea, OAX 75182"
+        "id_usuario": 2632,
+        "nombre": "Benjamin Vallejo",
+        "contrasena": "WqDMX*KCHcDh",
+        "num_telefono": "380-241-9270",
+        "direccion": "Circuito Belarus 347 958, San Bianca los altos, BCS 39546"
     },
     {
-        "id_usuario": 1440,
-        "nombre": "Isabela Coronado Orozco",
-        "contrasena": "8593em2KubQR",
-        "num_telefono": "227-041-3463",
-        "direccion": "Corredor Guinea Bissau 041 599, Nueva Senegal, ZAC 12850"
+        "id_usuario": 8317,
+        "nombre": "Luis Miguel Emilio Leon Vallejo",
+        "contrasena": "9voJoAx1NQEm",
+        "num_telefono": "147-995-6353",
+        "direccion": "Retorno Swazilandia 708 Edif. 725 , Depto. 007, Vieja Paraguay, ZAC 63707"
+    },
+    {
+        "id_usuario": 8683,
+        "nombre": "Lic. Carla Adame",
+        "contrasena": "Wo^7ZknmDmgp",
+        "num_telefono": "899-528-5097",
+        "direccion": "Circuito Norte Zelaya 935 307, San Isaac los altos, NL 87000-4013"
+    },
+    {
+        "id_usuario": 6317,
+        "nombre": "Maximiliano Valles",
+        "contrasena": "Nj9z^Ipz4asM",
+        "num_telefono": "162-749-1131",
+        "direccion": "Boulevard Malasia 717 938, Nueva Myanmar, QRO 96070"
+    },
+    {
+        "id_usuario": 3812,
+        "nombre": "Fabiola Ortega",
+        "contrasena": "nXim*Wvblgm*",
+        "num_telefono": "380-565-6992",
+        "direccion": "Retorno Timor-Leste 341 Edif. 696 , Depto. 333, San Eva los altos, PUE 62579-2921"
+    },
+    {
+        "id_usuario": 8555,
+        "nombre": "Ana Luisa Hugo Prieto Negron",
+        "contrasena": "reggHcYcDpsV",
+        "num_telefono": "440-481-2298",
+        "direccion": "Circunvalacion Tabasco 033 Interior 978, Vieja Belice, OAX 36808"
+    },
+    {
+        "id_usuario": 3650,
+        "nombre": "Dr. Maria Elena Manzanares",
+        "contrasena": "6OahTkjPl!l2",
+        "num_telefono": "828-533-9172",
+        "direccion": "Callejon Ibarra 522 Edif. 029 , Depto. 115, Vieja Eslovenia, TAMPS 92575"
     }
 ]

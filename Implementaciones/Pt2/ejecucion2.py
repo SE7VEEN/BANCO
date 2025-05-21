@@ -18,7 +18,7 @@ ventanillas = Semaphore(2)
 asesores = Semaphore(2)
 
 # Operaciones válidas
-OPERACIONES_CLIENTES = ["Depósito", "Consulta"]
+OPERACIONES_CLIENTES = ["Deposito", "Consulta"]
 OPERACIONES_VISITANTES = ["Consulta"]
 
 # 1. Generar solicitudes automáticas
@@ -45,18 +45,52 @@ def generar_solicitudes_automaticas():
 # 2. Despachar proceso a ventanilla o asesor
 def despachar_proceso(proceso, semaforo):
     try:
-        actualizar_estado_pcb(proceso.pid, estado="En ejecución", operacion=f"Asignado a {proceso.destino}")
+        # Actualización consistente del PCB con lock
+        with cuentas_lock:
+            actualizar_estado_pcb(
+                pid=proceso.pid, 
+                estado="En ejecución",
+                prioridad=proceso.prioridad,
+                destino=proceso.destino
+            )
 
-        if proceso.operacion == "Depósito":
+        if proceso.operacion == "Deposito":
             operacion_deposito(proceso, monto=100.0, cuentas_lock=cuentas_lock)
+            with cuentas_lock:
+                actualizar_estado_pcb(
+                    pid=proceso.pid,
+                    estado="Finalizado",
+                    destino=proceso.destino
+                )
+
         elif proceso.operacion == "Consulta":
             time.sleep(1)  # Simulación
-            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion="Consulta realizada")
+            with cuentas_lock:
+                actualizar_estado_pcb(
+                    pid=proceso.pid,
+                    estado="Finalizado",
+                    destino=proceso.destino
+                )
         else:
-            actualizar_estado_pcb(proceso.pid, estado="Error", operacion="Operación no implementada")
+            with cuentas_lock:
+                actualizar_estado_pcb(
+                    pid=proceso.pid,
+                    estado="Error",
+                    destino=proceso.destino
+                )
 
+    except Exception as e:
+        with cuentas_lock:
+            actualizar_estado_pcb(
+                pid=proceso.pid,
+                estado="Error",
+                destino=proceso.destino
+            )
+        print(f"Error procesando {proceso.pid}: {str(e)}")
+        
     finally:
         semaforo.release()
+
 
 # 3. Planificador de prioridades con FIFO dentro de cada nivel
 def planificador():
@@ -77,7 +111,7 @@ def planificador():
         elif proceso.destino == "Asesor":
             sem = asesores
         else:
-            actualizar_estado_pcb(proceso.pid, estado="Error", operacion="Destino no válido")
+            actualizar_estado_pcb(proceso.pid, estado="Error", operacion="Destino no valido")
             continue
 
         sem.acquire()

@@ -8,8 +8,7 @@ from servidor.hilos.operaciones import ejecutar_operacion
 from general.utils.utils import PCB_PATH, CLIENTES_PATH, CUENTAS_PATH, inicializar_archivo
 from cliente.clientes.gestor import gestionar_clientes
 from cliente.cuentas.gestion_cuenta import crear_cuentas_automaticamente_por_clientes
-from Implementaciones.Pt2.ejecucion2 import planificador
-from Implementaciones.Ejecucion import iniciar_simulacion
+from Implementaciones.Pt2.ejecucion2 import planificador, generar_solicitudes_automaticas
 from servidor.PCB_manager import mostrar_pcb
 
 # Definimos rutas
@@ -44,7 +43,7 @@ def lanzar_visualizador():
 
 def lanzar_procesos():
     """Inicia procesos basados en las solicitudes simuladas."""
-    solicitudes = iniciar_simulacion()
+    solicitudes = generar_solicitudes_automaticas()
     print("\n📦 Solicitudes generadas automáticamente:")
     for i, solicitud in enumerate(solicitudes, 1):
         print(f"{i}. Tipo: {solicitud[0]}, ID: {solicitud[1]}, Operación: {solicitud[2]}")
@@ -68,7 +67,7 @@ if __name__ == "__main__":
         inicializar_archivo(ruta)
 
     # Generar datos iniciales
-    gestionar_clientes('generar', nuevo_data={'cantidad': 3})
+    gestionar_clientes('generar', nuevo_data={'cantidad': 8})
     crear_cuentas_automaticamente_por_clientes()
     planificador()
 

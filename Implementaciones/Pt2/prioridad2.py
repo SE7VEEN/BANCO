@@ -4,7 +4,7 @@ def asignar_prioridad(self):
     return 2
 
 def definir_destino(self):
-    if self.operacion in ["Depósito", "Retiro", "Transferencia"]:
+    if self.operacion in ["Deposito", "Retiro", "Transferencia"]:
         return "Ventanilla"
     elif self.operacion in ["Consulta", "Simulación"]:
         return "Asesor"

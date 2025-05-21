@@ -27,7 +27,7 @@ def operacion_deposito(proceso, monto, cuentas_lock):
             # 2. Estado: Lock adquirido
             actualizar_estado_pcb(pid,
                 estado="Trabajando",
-                operacion="Procesando depósito",
+                operacion="Procesando deposito",
                 recurso_esperando=None,
                 recurso_adquirido="accounts_lock"
             )
@@ -53,12 +53,12 @@ def operacion_deposito(proceso, monto, cuentas_lock):
         # 6. Estado: Finalizado
         actualizar_estado_pcb(pid,
             estado="Finalizado",
-            operacion=f"Depósito completado (+${monto:.2f})",
+            operacion=f"Deposito completado (+${monto:.2f})",
             recurso_esperando=None,
             recurso_adquirido=None
         )
         return True
 
     except Exception as e:
-        actualizar_estado_pcb(pid, estado="Error", operacion=f"Error en depósito: {str(e)}")
+        actualizar_estado_pcb(pid, estado="Error", operacion=f"Error en deposito: {str(e)}")
         return False
