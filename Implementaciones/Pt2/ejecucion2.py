@@ -120,3 +120,5 @@ def planificador():
         _, _, proceso = cola_prioridad.get()
         print(f"PID {proceso.pid}: {proceso.tipo_usuario} - {proceso.operacion} en {proceso.destino}")
         despachar_proceso_secuencial(proceso)
+
+##
