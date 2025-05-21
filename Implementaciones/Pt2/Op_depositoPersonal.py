@@ -7,7 +7,6 @@ from Implementaciones.Pt2.actualizar import actualizar_estado_pcb  # asegúrate 
 from general.utils.utils import CUENTAS_PATH
 
 def operacion_deposito(proceso, monto, cuentas_lock):
-    
     pid = str(proceso.pid)
     id_cuenta = proceso.id_cuenta
 
@@ -27,7 +26,8 @@ def operacion_deposito(proceso, monto, cuentas_lock):
             actualizar_estado_pcb(pid,
                 estado="Trabajando",
                 operacion="Procesando deposito",
-            
+                recurso_esperando=None,
+                recurso_adquirido="accounts_lock"
             )
 
             # 3. Cargar cuentas
@@ -52,7 +52,8 @@ def operacion_deposito(proceso, monto, cuentas_lock):
         actualizar_estado_pcb(pid,
             estado="Finalizado",
             operacion=f"Deposito completado (+${monto:.2f})",
-    
+            recurso_esperando=None,
+            recurso_adquirido=None
         )
         return True
 

@@ -43,44 +43,26 @@ def lanzar_visualizador():
     visualizador = mostrar_pcb(PCB_PATH)
     visualizador.mostrar(modo_vivo=True)
 
-# def lanzar_procesos():
-#     """Inicia procesos basados en las solicitudes simuladas."""
-#     solicitudes = iniciar_simulacion()
-#     print("\n📦 Solicitudes generadas automáticamente:")
-#     for i, solicitud in enumerate(solicitudes, 1):
-#         print(f"{i}. Tipo: {solicitud[0]}, ID: {solicitud[1]}, Operación: {solicitud[2]}")
-
-#     procesos = []
-#     for args in solicitudes:
-#         p = Process(target=ejecutar_operacion, args=args)
-#         p.start()
-#         procesos.append(p)
-#         time.sleep(0.5)  # Delay para observar cambios en tiempo real
-
-#     for p in procesos:
-#         p.join()
 
 if __name__ == "__main__":
     if not limpiar_y_crear_datos():
         sys.exit(1)
         
-    # bienvenida_banco()   
+    bienvenida_banco()   
 
     # Inicializar archivos si no existen
     for ruta in ARCHIVOS_JSON.values():
         inicializar_archivo(ruta)
 
     # Generar datos iniciales
-    gestionar_clientes('generar', nuevo_data={'cantidad': 3})
+    gestionar_clientes('generar', nuevo_data={'cantidad': 15})
     crear_cuentas_automaticamente_por_clientes()
-
 
     # Lanzar visualizador de PCB en hilo independiente
     visor_hilo = threading.Thread(target=lanzar_visualizador, daemon=True)
     visor_hilo.start()
     planificador()
-    # Ejecutar operaciones en procesos
-    # lanzar_procesos()
+
 
     # Esperar entrada para finalizar
     input("\nPresione ENTER para terminar la simulación y cerrar la vista en tiempo real...\n")
