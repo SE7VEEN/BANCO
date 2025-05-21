@@ -47,7 +47,7 @@ if __name__ == "__main__":
     if not limpiar_y_crear_datos():
         sys.exit(1)
         
-    bienvenida_banco()   
+    #bienvenida_banco()   
 
     # Inicializar archivos si no existen
     for ruta in ARCHIVOS_JSON.values():

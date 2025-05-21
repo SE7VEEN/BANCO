@@ -11,7 +11,6 @@ import time
 from typing import List, Dict, Optional
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-from playsound import playsound
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 DATOS_PATH = os.path.join(BASE_DIR, 'general', 'datos')
@@ -33,10 +32,7 @@ class mostrar_pcb:
         self.console = Console()
         self.last_update = time.time()
         self.error = None
-        self.ultimos_estados = {}  # Para rastrear cambios de estado
-        self.sonido_finalizado = os.path.join(BASE_DIR, 'sonidos', 'desplegar.wav')
-        self.sonido_fallido = os.path.join(BASE_DIR, 'sonidos', 'mostrar.wav')
-        
+    
     def cargar_pcbs(self) -> List[Dict]:
         """Carga los PCBs desde el archivo JSON"""
         try:
@@ -147,15 +143,23 @@ class mostrar_pcb:
         return layout
     
     def mostrar(self, modo_vivo: bool = True, intervalo: float = 1.0):
+        """
+        Muestra los PCBs con diferentes opciones de visualización.
+        
+        Args:
+            modo_vivo: Si True, muestra una vista que se actualiza automáticamente
+            intervalo: Intervalo de actualización en segundos (solo para modo polling)
+        """
         if not modo_vivo:
             self.console.print(self.generar_layout())
             return
-            
+        
+        # Modo live con watchdog (más eficiente)
         try:
             layout = Layout()
             
             def actualizar():
-                self.verificar_cambios_estado()  # Ahora verifica cambios de estado
+                self.pcbs = self.cargar_pcbs()
                 layout.update(self.generar_layout())
             
             event_handler = PCBWatcher(actualizar)
@@ -206,38 +210,6 @@ class mostrar_pcb:
                     border_style="red"
                 )
             )
-
-    def verificar_cambios_estado(self):
-        """Verifica cambios de estado y reproduce sonidos correspondientes"""
-        nuevos_pcbs = self.cargar_pcbs()
-        
-        for nuevo, viejo in zip(nuevos_pcbs, self.pcbs):
-            pid = nuevo.get("PID")
-            nuevo_estado = nuevo.get("Estado")
-            viejo_estado = viejo.get("Estado") if len(self.pcbs) > 0 else None
-            
-            # Reproducir sonido para proceso finalizado
-            if nuevo_estado == "Finalizado" and viejo_estado != "Finalizado":
-                self.reproducir_sonido(self.sonido_finalizado, f"Proceso {pid} finalizado")
-            
-            # Reproducir sonido para proceso fallido
-            elif nuevo_estado == "Fallido" and viejo_estado != "Fallido":
-                self.reproducir_sonido(self.sonido_fallido, f"Proceso {pid} fallido")
-        
-        self.pcbs = nuevos_pcbs
-    
-    def reproducir_sonido(self, ruta_sonido, mensaje_log=""):
-        """Función auxiliar para reproducir sonidos"""
-        try:
-            if os.path.exists(ruta_sonido):
-                if mensaje_log:
-                    print(mensaje_log)
-                playsound(ruta_sonido)
-            else:
-                print(f"⚠ Archivo de sonido no encontrado: {os.path.basename(ruta_sonido)}")
-        except Exception as e:
-            print(f"❌ Error al reproducir sonido: {e}")
-    
 
 if __name__ == "__main__":
     # Ejemplo de uso
