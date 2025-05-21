@@ -40,3 +40,11 @@ def obtener_datos_cliente(id_usuario):
         except Exception as e:
             print(f"Error obteniendo datos del cliente: {str(e)}")
             return None
+    datos_cliente = {
+        'id_cuenta': 'CTA-XXXXXX',
+        'tipo_cuenta': 'premium'  # o 'estandar' según corresponda
+    }
+    return datos_cliente
+        
+
+

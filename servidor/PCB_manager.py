@@ -78,7 +78,7 @@ class mostrar_pcb:
             ("Estado", self._get_state_style, "left"),
             ("Usuario", "green", "center"),
             ("Tipo", "blue", "center"),
-            ("Prioridad", "green","center"),
+            ("Prioridad", "green", "center"),  # Asegúrate que está como "green" y "center"
             ("Destino", "blue", "center"),
             ("Operación", "yellow", "left"),
             ("Timestamp", "cyan", "center")
@@ -94,13 +94,18 @@ class mostrar_pcb:
         for pcb in self.pcbs:
             estado = pcb.get("Estado", "N/A")
             
+            # Convertir Prioridad a string si es numérico
+            prioridad = pcb.get("Prioridad", "N/A")
+            if isinstance(prioridad, int):
+                prioridad = str(prioridad)
+            
             row = [
                 pcb.get("PID", "N/A"),
                 str(pcb.get("PPID", "N/A")),
                 Text(estado, style=self._get_state_style(estado)),
                 str(pcb.get("IDUsuario", "N/A")),
                 pcb.get("TipoUsuario", "N/A"),
-                pcb.get("Prioridad",  "N/A"),
+                prioridad,  # Ahora es string
                 pcb.get("Destino", "N/A"),
                 pcb.get("Operacion", "N/A"),
                 pcb.get("Timestamp", "N/A")
@@ -115,7 +120,7 @@ class mostrar_pcb:
             table.add_row(*row)
         
         return table
-    
+
     def generar_layout(self) -> Layout:
         """Genera un layout completo con tabla y posibles mensajes de error"""
         layout = Layout()

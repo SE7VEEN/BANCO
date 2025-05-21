@@ -7,18 +7,23 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 from servidor.hilos.pcb import obtener_datos_cliente, guardar_en_pcb
 
 class Proceso:
-    def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None, prioridad = None, destino = None):
-        #self.pid = pid or str(os.getpid())
+    def __init__(self, tipo_usuario, pid=None, ppid=None, estado="En espera", id_usuario=None, id_cuenta=None, tipo_cuenta=None, operacion=None, prioridad=None, destino=None):
         self.pid = pid or str(random.randint(1000, 9999))
-        #self.ppid = ppid or str(os.getppid())
         self.ppid = ppid or str(os.getppid())
         self.estado = estado
         self.id_cuenta = id_cuenta
         self.id_usuario = id_usuario
         self.tipo_usuario = tipo_usuario
         self.tipo_cuenta = tipo_cuenta
-        self.prioridad = prioridad 
-        self.destino = destino 
+        
+        
+        if tipo_cuenta == "premium":
+            self.prioridad = 1
+        else:  # estandar o visitante
+            self.prioridad = 2
+            
+        self.destino = destino or random.choice(["Ventanilla", "Asesor"])
+        
         self.operacion = operacion or "NULL"
         self.timestamp = datetime.now().strftime("%H:%M:%S")
 

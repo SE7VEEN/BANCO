@@ -1,16 +1,11 @@
-import json
-import random
-import time, sys, os
 from queue import PriorityQueue
 from multiprocessing import Process, Semaphore, Lock
-
+import sys, os, json, time, random
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from servidor.hilos.procesos import crear_proceso
-from servidor.hilos.pcb import obtener_datos_cliente
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
-from Implementaciones.Pt2.prioridad2 import asignar_prioridad, definir_destino
 from general.utils.utils import CUENTAS_PATH, inicializar_archivo
 from Implementaciones.Pt2.Operacion import operacion_deposito  # Debes tener esta función implementada
 
@@ -20,23 +15,12 @@ ventanillas = Semaphore(2)
 asesores = Semaphore(2)
 
 # Operaciones válidas
-OPERACIONES_CLIENTES = ["Deposito", "Consulta"]
+OPERACIONES_CLIENTES = ["Depósito", "Consulta"]
 OPERACIONES_VISITANTES = ["Consulta"]
-
-#from servidor.hilos.operaciones import generar_solicitudes_automaticas, ejecutar_operacion
-from multiprocessing import Process
-
 
 # 1. Generar solicitudes automáticas
 def generar_solicitudes_automaticas():
     solicitudes = []
-
-    
-    cuenta = obtener_datos_cliente(id_usuario) if id_usuario else {}
-    tipo_cuenta = cuenta.get("tipo_cuenta", "NULL")
-
-    prioridad = asignar_prioridad(tipo_usuario, tipo_cuenta)
-    destino = definir_destino(operacion)
 
     with cuentas_lock:
         inicializar_archivo(CUENTAS_PATH)
@@ -58,54 +42,18 @@ def generar_solicitudes_automaticas():
 # 2. Despachar proceso a ventanilla o asesor
 def despachar_proceso(proceso, semaforo):
     try:
-        # Actualización consistente del PCB con lock
-        with cuentas_lock:
-            actualizar_estado_pcb(
-                pid=proceso.pid, 
-                estado="En ejecucion",
-                prioridad=proceso.prioridad,
-                destino=proceso.destino
-            )
+        actualizar_estado_pcb(proceso.pid, estado="En ejecución", operacion=f"Asignado a {proceso.destino}")
 
-        if proceso.operacion == "Deposito":
+        if proceso.operacion == "Depósito":
             operacion_deposito(proceso, monto=100.0, cuentas_lock=cuentas_lock)
-            with cuentas_lock:
-                actualizar_estado_pcb(
-                    pid=proceso.pid,
-                    estado="Finalizado",
-                    destino=proceso.destino
-                )
-
         elif proceso.operacion == "Consulta":
             time.sleep(1)  # Simulación
-            with cuentas_lock:
-                actualizar_estado_pcb(
-                    pid=proceso.pid,
-                    estado="Finalizado",
-                    destino=proceso.destino
-                )
+            actualizar_estado_pcb(proceso.pid, estado="Finalizado", operacion="Consulta realizada")
         else:
-            with cuentas_lock:
-                actualizar_estado_pcb(
-                    pid=proceso.pid,
-                    estado="Error",
-                    destino=proceso.destino
-                )
+            actualizar_estado_pcb(proceso.pid, estado="Error", operacion="Operación no implementada")
 
-    except Exception as e:
-        with cuentas_lock:
-            actualizar_estado_pcb(
-                pid=proceso.pid,
-                estado="Error",
-                destino=proceso.destino
-            )
-        print(f"Error procesando {proceso.pid}: {str(e)}")
-        
     finally:
         semaforo.release()
-
-
-
 
 # 3. Planificador de prioridades con FIFO dentro de cada nivel
 def planificador():
@@ -114,7 +62,8 @@ def planificador():
 
     for tipo, id_usuario, operacion in solicitudes:
         proceso = crear_proceso(tipo, id_usuario, operacion)
-        cola_prioridad.put((proceso.prioridad, time.time(), proceso))  # time.time() para preservar orden FIFO
+        # El destino ya viene asignado aleatoriamente en el proceso
+        cola_prioridad.put((proceso.prioridad, time.time(), proceso))
 
     procesos_en_ejecucion = []
 
@@ -126,7 +75,7 @@ def planificador():
         elif proceso.destino == "Asesor":
             sem = asesores
         else:
-            actualizar_estado_pcb(proceso.pid, estado="Error", operacion="Destino no valido")
+            actualizar_estado_pcb(proceso.pid, estado="Error", operacion="Destino no válido")
             continue
 
         sem.acquire()
@@ -137,5 +86,7 @@ def planificador():
     for p in procesos_en_ejecucion:
         p.join()
 
+
 if __name__ == '__main__':
     planificador()
+    
