@@ -1,6 +1,6 @@
 from queue import PriorityQueue
 import sys, os, json, time, random
-from multiprocessing import Lock
+from multiprocessing import Lock, Semaphore
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
@@ -24,6 +24,8 @@ from general.operaciones.Op_bajaCuenta import operacion_baja_cuenta
 
 # Configuraciones
 cuentas_lock = Lock()
+semaforo_asesor = Semaphore(2)
+semaforo_ventanillas = Semaphore(3)
 
 #OPERACIONES EN VENTANILLAS
 OPERACIONES_VENTANILLA_CLIENTE = ["Deposito Personal", "Retiro Personal", "Transferencia", "Consulta Saldo", "Consulta Datos"]
@@ -106,7 +108,17 @@ def generar_solicitudes_automaticas():
 
 def despachar_proceso_secuencial(proceso):
     """Ejecuta la operación correspondiente según el destino"""
+
+
     try: 
+
+        if proceso.destino == "Ventanilla":
+            semaforo = semaforo_ventanillas
+        elif proceso.destino == "Asesor":
+            semaforo = semaforo_asesor
+        else:
+            semaforo = None  # Por si acaso
+
         time.sleep(1)
         mensaje = f"Dirigiendo a {proceso.destino}"
         actualizar_estado_pcb(proceso.pid, estado="Preparando", operacion=mensaje)
@@ -159,7 +171,9 @@ def despachar_proceso_secuencial(proceso):
     except Exception as e:
         actualizar_estado_pcb(proceso.pid, estado="Error", 
                             operacion=f"Error en {proceso.operacion}: {str(e)}")
-
+    finally:
+        if semaforo is not None:
+            semaforo.release()
 # === Planificador principal (sin multiprocessing) ===
 
 def planificador():

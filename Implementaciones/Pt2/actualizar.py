@@ -1,13 +1,14 @@
 from multiprocessing import Process, Lock
 import threading
-import json, time, os, shutil, sys, datetime
+import json, time, os, shutil, sys
+from datetime import datetime  # Corrección aquí
 from pathlib import Path
 
 pcb_lock = threading.Lock()
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from general.utils.utils import PCB_PATH
 
-def actualizar_estado_pcb(pid, estado=None, prioridad=None, destino=None, operacion = None):
+def actualizar_estado_pcb(pid, estado=None, prioridad=None, destino=None, operacion=None):
     with pcb_lock:
         try:
             # Leer el archivo PCB
@@ -21,12 +22,13 @@ def actualizar_estado_pcb(pid, estado=None, prioridad=None, destino=None, operac
                             proceso["Estado"] = estado
                         if prioridad is not None:
                             proceso["Prioridad"] = prioridad
-                        if prioridad is not None:
-                            proceso["Prioridad"] = prioridad
                         if destino is not None:
                             proceso["Destino"] = destino
                         if operacion is not None:
                             proceso["Operacion"] = operacion
+
+                        # Agregar o actualizar el timestamp
+                        proceso["Timestamp"] = datetime.now().strftime("%H:%M:%S")
                         break
                 
                 # Guardar los cambios

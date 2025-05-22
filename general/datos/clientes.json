@@ -1,114 +1,93 @@
 [
     {
-        "id_usuario": 3604,
-        "nombre": "Blanca Diaz Rico",
-        "contrasena": "MkSWaf335il0",
-        "num_telefono": "910-968-4022",
-        "direccion": "Ampliacion Israel 883 Interior 346, Nueva Francia, MICH 36443"
+        "id_usuario": 5080,
+        "nombre": "Julio Cesar Reynoso Tapia",
+        "contrasena": "kV9A9w0IjXrl",
+        "num_telefono": "723-001-2527",
+        "direccion": "Andador Mexico 350 Interior 088, San Susana los altos, Q. ROO 30504-7798"
     },
     {
-        "id_usuario": 5705,
-        "nombre": "Ivonne Hidalgo",
-        "contrasena": "PNm^4FPFS5zo",
-        "num_telefono": "754-757-7575",
-        "direccion": "Avenida Sur Madrigal 338 Edif. 573 , Depto. 283, San Gabriel de la Montana, QRO 49417-1998"
+        "id_usuario": 2833,
+        "nombre": "Leonardo Timoteo Colunga Mesa",
+        "contrasena": "FxK5J96Dg18M",
+        "num_telefono": "090-850-5576",
+        "direccion": "Pasaje Sinaloa 771 054, San Sofia de la Montana, TLAX 38949"
     },
     {
-        "id_usuario": 4845,
-        "nombre": "Maria Teresa Eugenia del Rio Jaramillo",
-        "contrasena": "I43fKn6l!Sow",
-        "num_telefono": "129-778-9848",
-        "direccion": "Viaducto Paraguay 790 Interior 798, San Hilda de la Montana, DF 63750-5796"
+        "id_usuario": 4632,
+        "nombre": "Raquel Adan Abreu",
+        "contrasena": "jTwiwI^DKF2I",
+        "num_telefono": "594-329-4786",
+        "direccion": "Andador Tunez 489 Edif. 434 , Depto. 722, San Antonio los altos, MEX 35952-6598"
     },
     {
-        "id_usuario": 1714,
-        "nombre": "Laura Ignacio Linares Aponte",
-        "contrasena": "pMLIn7L0f^vo",
-        "num_telefono": "481-876-4364",
-        "direccion": "Periferico Sur Sandoval 089 945, San Andrea los altos, GRO 81988-3671"
+        "id_usuario": 2471,
+        "nombre": "Olivia Claudia Maldonado",
+        "contrasena": "NbW^r3aYDgAp",
+        "num_telefono": "483-594-3930",
+        "direccion": "Pasaje Norte Valdez 570 Interior 341, Nueva Colombia, YUC 14289-6159"
     },
     {
-        "id_usuario": 2475,
-        "nombre": "Mtro. Agustin Rojo",
-        "contrasena": "jsREzJwkX!2o",
-        "num_telefono": "527-054-2025",
-        "direccion": "Circunvalacion Cortez 109 Interior 776, Vieja Eslovenia, NAY 86591"
+        "id_usuario": 2479,
+        "nombre": "Esmeralda Elvira Montanez",
+        "contrasena": "l8YIvF6onS9o",
+        "num_telefono": "700-965-6552",
+        "direccion": "Prolongacion Marrero 177 Interior 900, Nueva Austria, GRO 02457-7949"
     },
     {
-        "id_usuario": 9994,
-        "nombre": "Daniela Camacho Benavides",
-        "contrasena": "Nh9X^!!MTRx^",
-        "num_telefono": "888-570-4217",
-        "direccion": "Viaducto Malasia 013 Edif. 989 , Depto. 550, San Mariana los altos, GTO 42170-6684"
+        "id_usuario": 5010,
+        "nombre": "Benjamin Franco Gomez",
+        "contrasena": "giPWQ7H1p^1G",
+        "num_telefono": "972-067-5494",
+        "direccion": "Diagonal Reyna 759 137, Nueva Letonia, TAMPS 65639-9956"
     },
     {
-        "id_usuario": 4506,
-        "nombre": "Rosalia Leonel Zamora",
-        "contrasena": "iebYayqoxmuX",
-        "num_telefono": "998-577-3831",
-        "direccion": "Boulevard Sur Jaimes 843 Interior 300, San Hugo los altos, QRO 82282"
+        "id_usuario": 8384,
+        "nombre": "Sr(a). Reina Ocasio",
+        "contrasena": "7WUOWxSQiNZY",
+        "num_telefono": "192-996-6580",
+        "direccion": "Peatonal Liberia 903 449, Vieja Belice, CAMP 78496"
     },
     {
-        "id_usuario": 6450,
-        "nombre": "Rene Jeronimo Matias",
-        "contrasena": "isuZrokDpJ3g",
-        "num_telefono": "320-469-9455",
-        "direccion": "Diagonal Chiapas 069 567, San Caridad de la Montana, TAMPS 66190"
+        "id_usuario": 9048,
+        "nombre": "Guadalupe Isabel Cotto",
+        "contrasena": "YSK!*8xIgNma",
+        "num_telefono": "766-651-2325",
+        "direccion": "Continuacion Sur Casanova 461 943, Vieja Suriname, DF 45044-7925"
     },
     {
-        "id_usuario": 7698,
-        "nombre": "Flavio Augusto Ponce Segura",
-        "contrasena": "7jVLUeadqhJu",
-        "num_telefono": "794-757-4277",
-        "direccion": "Ampliacion Hidalgo 583 Interior 228, San Omar los altos, SIN 26558"
+        "id_usuario": 7885,
+        "nombre": "Jesus Estela Esquivel",
+        "contrasena": "5q2D0Zxt6Y7S",
+        "num_telefono": "830-546-7953",
+        "direccion": "Corredor Guatemala 962 817, Vieja Republica Unida de Tanzania, CHIH 84599-2163"
     },
     {
-        "id_usuario": 8914,
-        "nombre": "Vicente Dalia Vargas",
-        "contrasena": "OAUnwNcF3A3o",
-        "num_telefono": "544-869-7041",
-        "direccion": "Calle Peres 932 Edif. 307 , Depto. 367, Nueva Uzbekistan, JAL 62485"
+        "id_usuario": 5830,
+        "nombre": "Eloy Ontiveros",
+        "contrasena": "JiPsnOx09FwO",
+        "num_telefono": "010-036-3729",
+        "direccion": "Avenida Sur Alcaraz 270 593, San Liliana los altos, PUE 47139-4929"
     },
     {
-        "id_usuario": 3119,
-        "nombre": "Gustavo Vega Cisneros",
-        "contrasena": "zgisoFmygemm",
-        "num_telefono": "277-986-5349",
-        "direccion": "Callejon Colima 981 Interior 104, San Andres de la Montana, COL 53236-4090"
+        "id_usuario": 4136,
+        "nombre": "Sr(a). Jacobo Portillo",
+        "contrasena": "xXpP*0pQLetr",
+        "num_telefono": "816-900-9359",
+        "direccion": "Boulevard Chacon 770 Interior 085, San Humberto los altos, CHIS 07248-8798"
     },
     {
-        "id_usuario": 5357,
-        "nombre": "Gustavo Olivares Lara",
-        "contrasena": "sKHE^qV!vGbi",
-        "num_telefono": "131-827-7907",
-        "direccion": "Periferico Republica Dominicana 543 642, San Luz los altos, GTO 01907-3752"
+        "id_usuario": 2704,
+        "nombre": "Ramon Alicia Valencia",
+        "contrasena": "G!VqzX0NrQb7",
+        "num_telefono": "970-488-3731",
+        "direccion": "Circunvalacion Queretaro 474 602, San Felipe los bajos, DGO 90404-6247"
     },
     {
-        "id_usuario": 2743,
-        "nombre": "Maria del Carmen Partida",
-        "contrasena": "bSgOp92aV7Fr",
-        "num_telefono": "297-980-0749",
-        "direccion": "Andador Coahuila de Zaragoza 454 162, Vieja Dominicana, TAB 46517-6620"
-    },
-    {
-        "id_usuario": 9378,
-        "nombre": "Mtro. Hernan Paez",
-        "contrasena": "XJ2z5ufGAR0C",
-        "num_telefono": "346-855-4025",
-        "direccion": "Callejon Aguascalientes 722 729, Vieja Cabo Verde, SON 36468"
-    },
-    {
-        "id_usuario": 8796,
-        "nombre": "Francisca Camacho Saenz",
-        "contrasena": "US*oxzlZtUrm",
-        "num_telefono": "965-770-8196",
-        "direccion": "Diagonal Guerrero 735 Edif. 656 , Depto. 631, Vieja Grecia, CHIS 22130-7043"
-    },
-    {
-        "id_usuario": 7886,
-        "nombre": "Dr. Francisca Roybal",
-        "contrasena": "nxSjg!1u3oDa",
-        "num_telefono": "891-312-6103",
-        "direccion": "Pasaje Tailandia 448 Interior 240, Vieja Italia, PUE 65055"
+        "id_usuario": 4192,
+        "nombre": "Rebeca Arredondo Lovato",
+        "contrasena": "DKP0QiMEMiM!",
+        "num_telefono": "195-991-8643",
+        "direccion": "Avenida Zimbabwe 475 328, San Oswaldo los altos, GTO 10054-4564"
     }
 ]

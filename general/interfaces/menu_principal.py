@@ -18,7 +18,6 @@ def efecto_maquina(texto, delay=0.03):
     print()
 
 def esperar_enter():
-    print("\n" + "═" * 50)
     imprimir_centrado("Presiona ENTER para continuar...")
     while True:
         try:
@@ -46,9 +45,7 @@ def mostrar_banner():
 
 def bienvenida_banco():
     mostrar_banner()
-    print("\n" + "═" * 50)
     efecto_maquina("\033[1;32mBIENVENIDO A LA SIMULACIÓN BANCARIA\033[0m", 0.05)
-    print("\n" + "═" * 50)
     imprimir_centrado("\033[1;37mSistema de gestión financiera virtual\033[0m")
     
     esperar_enter()
