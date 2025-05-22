@@ -1,9 +1,0 @@
-- Arreglar colores de estado de la pcb (ejecución = green, finalizado = blue, fallo = red)
-- Implementar semaforos
-
-- Mejorar menu
-- Verificar proceso de colas 
-- Que el texto principal diga "BENITO"
-- Reorganizar carpetas
-- Revisar consultar_saldo.py
-

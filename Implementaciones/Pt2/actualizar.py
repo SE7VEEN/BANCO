@@ -4,18 +4,26 @@ import json, time, os, shutil, sys
 from datetime import datetime  # Corrección aquí
 from pathlib import Path
 
+# Lock de hilos para controlar acceso concurrente al PCB
 pcb_lock = threading.Lock()
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from general.utils.utils import PCB_PATH
 
+
+"""
+Actualiza el estado de un proceso en el archivo PCB.
+Puede modificar el estado, prioridad, destino, operación y timestamp de un proceso identificado por su PID.
+"""
 def actualizar_estado_pcb(pid, estado=None, prioridad=None, destino=None, operacion=None):
     with pcb_lock:
         try:
-            # Leer el archivo PCB
+            # Leemos el archivo PCB
             with open(PCB_PATH, 'r+') as f:
                 pcb = json.load(f)
                 
-                # Buscar y actualizar el proceso correspondiente
+                # Buscamos y actualizamos el proceso correspondiente
                 for proceso in pcb:
                     if str(proceso["PID"]) == str(pid):
                         if estado is not None:
@@ -27,11 +35,11 @@ def actualizar_estado_pcb(pid, estado=None, prioridad=None, destino=None, operac
                         if operacion is not None:
                             proceso["Operacion"] = operacion
 
-                        # Agregar o actualizar el timestamp
+                        #Actualizamos el timestamp
                         proceso["Timestamp"] = datetime.now().strftime("%H:%M:%S")
                         break
                 
-                # Guardar los cambios
+                # Guardamos los cambios
                 f.seek(0)
                 f.truncate()
                 json.dump(pcb, f, indent=4)

@@ -7,7 +7,6 @@ import sys
 
 from cliente.cuentas.cuenta2 import Cuenta
 
-# Corregido: doble guion bajo en __file__ y cierre del paréntesis
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from general.utils.utils import cargar_cuentas, guardar_cuentas
 
@@ -18,7 +17,12 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # CLIENTES_PATH apunta a BANCO/general/datos/clientes.json
 CLIENTES_PATH = os.path.join(BASE_DIR, 'general', 'datos', 'clientes.json')
-                  
+
+
+"""
+Crea una nueva cuenta para un cliente dado su ID de usuario.
+Verifica que el cliente exista antes de crear la cuenta y la guarda en el sistema.
+"""
 def crear_cuenta_para_cliente(id_usuario):
     if not os.path.exists(CLIENTES_PATH):
         return None
@@ -31,6 +35,7 @@ def crear_cuenta_para_cliente(id_usuario):
     if not cliente:
         return None
 
+    # Genera una nueva cuenta con saldo y adeudos aleatorios
     nueva_cuenta = Cuenta(
         id_usuario=id_usuario,
         saldo=round(random.uniform(500, 100000), 2),
@@ -43,6 +48,11 @@ def crear_cuenta_para_cliente(id_usuario):
 
     return nueva_cuenta
 
+"""
+Devuelve una lista de cuentas asociadas a un ID de usuario específico.
+Si el ID no es válido, retorna una lista vacía.
+"""
+
 def obtener_cuentas_por_usuario(id_usuario):
     try:
         id_usuario = int(id_usuario)
@@ -50,6 +60,15 @@ def obtener_cuentas_por_usuario(id_usuario):
         return [c for c in cuentas if c.id_usuario == id_usuario]
     except ValueError:
         return []
+    
+    
+
+"""
+Gestiona acciones sobre cuentas: agregar, eliminar o modificar.
+- 'agregar': Añade una nueva cuenta si no existe ya.
+- 'eliminar': Borra una cuenta existente.
+- 'modificar': Actualiza los atributos permitidos de una cuenta.
+"""
 
 def gestionar_cuenta(accion, cuenta=None, id_cuenta=None, nuevos_datos=None):
     try:
@@ -73,6 +92,7 @@ def gestionar_cuenta(accion, cuenta=None, id_cuenta=None, nuevos_datos=None):
                 return False
             cuenta = cuentas_dict[id_cuenta]
             for key, value in nuevos_datos.items():
+                # No se permite modificar el ID de la cuenta ni el ID del usuario
                 if hasattr(cuenta, key) and key not in ['id_cuenta', 'id_usuario']:
                     try:
                         if key in ['saldo', 'adeudos']:
@@ -89,6 +109,11 @@ def gestionar_cuenta(accion, cuenta=None, id_cuenta=None, nuevos_datos=None):
     except Exception as e:
         return False
 
+
+"""
+Crea cuentas automáticamente para todos los clientes que aún no tienen una cuenta asociada.
+Lee los clientes desde el archivo y verifica si ya tienen cuentas antes de crear una nueva.
+"""
 def crear_cuentas_automaticamente_por_clientes():
     if not os.path.exists(CLIENTES_PATH):
         return
@@ -104,7 +129,11 @@ def crear_cuentas_automaticamente_por_clientes():
         else:
             pass
             
-            
+
+
+"""
+Agrega una nueva tarjeta a una cuenta existente.
+"""            
 def agregar_tarjeta_a_cuenta(id_cuenta):
     cuentas = cargar_cuentas()
     cuenta_dict = {c.id_cuenta: c for c in cuentas}
@@ -114,11 +143,11 @@ def agregar_tarjeta_a_cuenta(id_cuenta):
 
     cuenta = cuenta_dict[id_cuenta]
 
-    # Generar nueva tarjeta usando el método de Cuenta
+    # Generamos una nueva tarjeta usando el método de Cuenta
     nueva_tarjeta = cuenta._generar_tarjetas(1)[0]
     cuenta.tarjetas.append(nueva_tarjeta)   
 
-    # Actualizar la cuenta usando gestionar_cuenta
+    # Actualizamos la cuenta usando gestionar_cuenta
     return gestionar_cuenta(
         accion="modificar",
         id_cuenta=id_cuenta,
