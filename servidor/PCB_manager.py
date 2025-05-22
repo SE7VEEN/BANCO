@@ -53,14 +53,16 @@ class mostrar_pcb:
     def _get_state_style(self, estado: str) -> str:
         """Devuelve el estilo Rich según el estado del proceso"""
         estados = {
-            "En espera": "yellow",
-            "Ejecutando": "green",
-            "Terminado": "blue",
-            "Bloqueado": "red",
+            "En ejecución": "green",
+            "Finalizado": "blue",
+            "Fallo": "red",
+            "Preparando": "orange3",
+            "Esperando": "yellow",
             "Error": "bold red",
             "N/A": "dim"
         }
         return estados.get(estado, "white")
+
     
     def generar_tabla(self) -> Table:
         """Genera una tabla Rich con la información de los PCBs"""
