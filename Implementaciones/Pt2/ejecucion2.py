@@ -104,7 +104,6 @@ def generar_solicitudes_automaticas():
     return solicitudes
 
 
-# === Despachar proceso (versión secuencial) ===
 def despachar_proceso_secuencial(proceso):
     """Ejecuta la operación correspondiente según el destino"""
     try: 
@@ -113,7 +112,9 @@ def despachar_proceso_secuencial(proceso):
         actualizar_estado_pcb(proceso.pid, estado="Preparando", operacion=mensaje)
         time.sleep(2)
         actualizar_estado_pcb(proceso.pid, estado="Esperando", operacion="Esperando acceso a cuentas") 
-
+        time.sleep(2)
+        actualizar_estado_pcb(proceso.pid, estado="En ejecución", operacion=proceso.operacion)
+        
         # Simular tiempo de operación
         tiempo = TIEMPOS_OPERACION.get(proceso.operacion, 3.0)
         time.sleep(tiempo)

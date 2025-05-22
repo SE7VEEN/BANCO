@@ -20,7 +20,7 @@ def operacion_retiroPersonal(proceso, monto, cuentas_lock):
         with cuentas_lock:
             # 2. Estado: Lock adquirido
             actualizar_estado_pcb(pid,
-                estado="En ejecucion",
+                estado="En ejecución",
                 operacion="Procesando retiro"
             )
 
