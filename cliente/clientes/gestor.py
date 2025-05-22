@@ -48,26 +48,20 @@ def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
 
         if accion == 'agregar':
             if cliente.id_usuario in clientes_dict:
-                print(f"Error: El ID de usuario {cliente.id_usuario} ya existe.")
                 return False
             clientes_dict[cliente.id_usuario] = cliente.to_dict()
-            print(f"Cliente {cliente.nombre} agregado correctamente.")
         
         elif accion == 'eliminar':
             if id_usuario not in clientes_dict:
-                print(f"Error: El ID de usuario {id_usuario} no existe.")
                 return False
             del clientes_dict[id_usuario]
-            print(f"Cliente con ID {id_usuario} eliminado correctamente.")
 
         elif accion == 'modificar':
             if id_usuario not in clientes_dict:
-                print(f"Error: El ID de usuario {id_usuario} no existe.")
                 return False
             for key, value in nuevo_data.items():
                 if key in clientes_dict[id_usuario]:
                     clientes_dict[id_usuario][key] = value
-            print(f"Cliente con ID {id_usuario} modificado correctamente.")
 
         # Operación: Generar clientes aleatorios
         elif accion == 'generar':
@@ -75,10 +69,8 @@ def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
             for _ in range(cantidad):
                 cliente = Client()
                 clientes_dict[cliente.id_usuario] = cliente.to_dict()
-                print(f"Cliente {cliente.nombre} generado con ID {cliente.id_usuario}")
         # Acción no reconocida
         else:
-            print("Error: Acción no válida.")
             return False
         # Guardamos cambios en el archivo JSON
         with open(archivo, 'w', encoding='utf-8') as f:
@@ -87,5 +79,4 @@ def gestionar_clientes(accion, cliente=None, id_usuario=None, nuevo_data=None):
         return True
 
     except Exception as e:
-        print(f"Error al gestionar clientes: {str(e)}")
         return False

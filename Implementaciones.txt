@@ -1,19 +1,9 @@
-- Si hay un cliente deja cuenta, pues no se procese, indicar proceso no realizado no permitido
-- Eliminar un cliente se elimine la cuenta
 - Arreglar colores de estado de la pcb (ejecución = green, finalizado = blue, fallo = red)
 - Implementar semaforos
-- Operaciones de visitante (
-                    retiro,
-                        )
-- Operaciones de asesor (
-                    Consulta de cuenta, 
-                    cliente -id cuenta   modificación de datos, yo 
-                    cliente -id cuenta   baja de cuenta, yo - temporal o definitiva 
-                    agregar nueva cuenta, 
-                    agregar nuevo cliente
-                        ) 
+
 - Mejorar menu
 - Verificar proceso de colas 
 - Que el texto principal diga "BENITO"
 - Reorganizar carpetas
+- Revisar consultar_saldo.py
 

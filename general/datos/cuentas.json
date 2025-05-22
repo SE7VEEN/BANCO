@@ -1,212 +1,276 @@
 [
     {
-        "id_cuenta": "CTA-F5E6B53F",
-        "id_usuario": 7978,
+        "id_cuenta": "CTA-D35CD175",
+        "id_usuario": 5785,
         "estado_cuenta": "activa",
         "tipo_cuenta": "estandar",
         "tarjetas": [
             {
-                "VISA": "2215-9294-7705-8246",
-                "cvv": "317"
+                "VISA": "9229-5925-1160-5971",
+                "cvv": "177"
             }
         ],
-        "saldo": 1861.99,
-        "adeudos": 896.32
+        "saldo": 30794.21,
+        "adeudos": 1637.34
     },
     {
-        "id_cuenta": "CTA-81CB4EEA",
-        "id_usuario": 8396,
+        "id_cuenta": "CTA-18EE3DC8",
+        "id_usuario": 1916,
         "estado_cuenta": "activa",
         "tipo_cuenta": "estandar",
         "tarjetas": [
             {
-                "VISA": "9621-6126-5314-7090",
-                "cvv": "722"
+                "VISA": "3745-4851-1475-7466",
+                "cvv": "516"
             }
         ],
-        "saldo": 2063.12,
-        "adeudos": 1376.04
+        "saldo": 46863.33,
+        "adeudos": 344.92
     },
     {
-        "id_cuenta": "CTA-DD924871",
-        "id_usuario": 4247,
+        "id_cuenta": "CTA-89E3FE67",
+        "id_usuario": 1905,
         "estado_cuenta": "activa",
         "tipo_cuenta": "estandar",
         "tarjetas": [
             {
-                "VISA": "8790-2289-2598-1383",
-                "cvv": "118"
+                "VISA": "6273-7189-3233-7674",
+                "cvv": "114"
             }
         ],
-        "saldo": 91637.19,
-        "adeudos": 533.31
+        "saldo": 69324.09,
+        "adeudos": 1861.19
     },
     {
-        "id_cuenta": "CTA-FA5704A7",
-        "id_usuario": 8012,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "5438-3934-7305-0307",
-                "cvv": "109"
-            }
-        ],
-        "saldo": 66851.86,
-        "adeudos": 1299.4
-    },
-    {
-        "id_cuenta": "CTA-92269DA1",
-        "id_usuario": 4107,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "5588-8811-2560-0218",
-                "cvv": "395"
-            }
-        ],
-        "saldo": 78626.92,
-        "adeudos": 1218.94
-    },
-    {
-        "id_cuenta": "CTA-9A900B33",
-        "id_usuario": 5612,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "2057-4278-2460-9437",
-                "cvv": "261"
-            }
-        ],
-        "saldo": 21220.72,
-        "adeudos": 1897.06
-    },
-    {
-        "id_cuenta": "CTA-883AF07B",
-        "id_usuario": 8663,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "3185-8940-5891-0271",
-                "cvv": "377"
-            }
-        ],
-        "saldo": 32197.12,
-        "adeudos": 1035.06
-    },
-    {
-        "id_cuenta": "CTA-83DE3E61",
-        "id_usuario": 1138,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "2663-9272-1422-8282",
-                "cvv": "238"
-            }
-        ],
-        "saldo": 23825.69,
-        "adeudos": 410.21
-    },
-    {
-        "id_cuenta": "CTA-3B3BE9F3",
-        "id_usuario": 2999,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "2568-4090-6053-2540",
-                "cvv": "900"
-            }
-        ],
-        "saldo": 2878.61,
-        "adeudos": 1076.05
-    },
-    {
-        "id_cuenta": "CTA-49DD504F",
-        "id_usuario": 7398,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "4413-7706-8392-4816",
-                "cvv": "303"
-            }
-        ],
-        "saldo": 1469.57,
-        "adeudos": 372.42
-    },
-    {
-        "id_cuenta": "CTA-5D3F309E",
-        "id_usuario": 5567,
-        "estado_cuenta": "activa",
-        "tipo_cuenta": "estandar",
-        "tarjetas": [
-            {
-                "VISA": "9379-0854-3038-7518",
-                "cvv": "273"
-            }
-        ],
-        "saldo": 52168.84,
-        "adeudos": 1034.06
-    },
-    {
-        "id_cuenta": "CTA-612EDA5A",
-        "id_usuario": 8736,
+        "id_cuenta": "CTA-A275B3F3",
+        "id_usuario": 6361,
         "estado_cuenta": "activa",
         "tipo_cuenta": "premium",
         "tarjetas": [
             {
-                "VISA": "9461-5117-0011-3740",
-                "cvv": "563"
+                "VISA": "5359-4033-9642-6179",
+                "cvv": "645"
             }
         ],
-        "saldo": 22516.21,
-        "adeudos": 1631.55
+        "saldo": 33989.22,
+        "adeudos": 190.06
     },
     {
-        "id_cuenta": "CTA-3374D15B",
-        "id_usuario": 4668,
+        "id_cuenta": "CTA-D4E98E92",
+        "id_usuario": 7008,
         "estado_cuenta": "activa",
         "tipo_cuenta": "estandar",
         "tarjetas": [
             {
-                "VISA": "3186-8926-7679-9001",
-                "cvv": "725"
+                "VISA": "6833-5680-0910-0583",
+                "cvv": "589"
             }
         ],
-        "saldo": 87273.95,
-        "adeudos": 742.31
+        "saldo": 22081.43,
+        "adeudos": 485.3
     },
     {
-        "id_cuenta": "CTA-932CB2E4",
-        "id_usuario": 1861,
+        "id_cuenta": "CTA-A467484B",
+        "id_usuario": 3593,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "7021-7641-6078-1520",
+                "cvv": "682"
+            }
+        ],
+        "saldo": 64001.6,
+        "adeudos": 1232.83
+    },
+    {
+        "id_cuenta": "CTA-76F30985",
+        "id_usuario": 1640,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "0063-8358-9006-6401",
+                "cvv": "772"
+            }
+        ],
+        "saldo": 62650.31,
+        "adeudos": 23.53
+    },
+    {
+        "id_cuenta": "CTA-FA38A20D",
+        "id_usuario": 6837,
         "estado_cuenta": "activa",
         "tipo_cuenta": "estandar",
         "tarjetas": [
             {
-                "VISA": "7383-2298-7212-8086",
-                "cvv": "414"
+                "VISA": "4552-9856-0737-8797",
+                "cvv": "254"
             }
         ],
-        "saldo": 68759.18,
-        "adeudos": 1913.69
+        "saldo": 23967.59,
+        "adeudos": 1041.4
     },
     {
-        "id_cuenta": "CTA-A20863CE",
-        "id_usuario": 4260,
+        "id_cuenta": "CTA-0343ADE5",
+        "id_usuario": 2117,
         "estado_cuenta": "activa",
         "tipo_cuenta": "estandar",
         "tarjetas": [
             {
-                "VISA": "5544-1876-7288-9495",
-                "cvv": "360"
+                "VISA": "4806-8620-3940-3008",
+                "cvv": "843"
+            },
+            {
+                "VISA": "2715-6198-9246-9298",
+                "cvv": "672"
             }
         ],
-        "saldo": 36107.26,
-        "adeudos": 108.72
+        "saldo": 45323.42,
+        "adeudos": 1817.26
+    },
+    {
+        "id_cuenta": "CTA-1229E9F9",
+        "id_usuario": 1590,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "5285-0794-1516-4714",
+                "cvv": "018"
+            }
+        ],
+        "saldo": 75220.19,
+        "adeudos": 1590.15
+    },
+    {
+        "id_cuenta": "CTA-88799726",
+        "id_usuario": 8537,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "2173-8298-6570-9815",
+                "cvv": "351"
+            }
+        ],
+        "saldo": 69500.21856612868,
+        "adeudos": 1152.84
+    },
+    {
+        "id_cuenta": "CTA-3DC21B14",
+        "id_usuario": 1735,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "9580-3250-5012-2304",
+                "cvv": "830"
+            }
+        ],
+        "saldo": 18835.81,
+        "adeudos": 1218.75
+    },
+    {
+        "id_cuenta": "CTA-76F21CDF",
+        "id_usuario": 9520,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "0831-8576-3556-7452",
+                "cvv": "119"
+            },
+            {
+                "VISA": "5860-7525-4281-7280",
+                "cvv": "049"
+            }
+        ],
+        "saldo": 85201.94,
+        "adeudos": 895.51
+    },
+    {
+        "id_cuenta": "CTA-3C14CF9B",
+        "id_usuario": 5544,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "7519-5669-3380-1111",
+                "cvv": "588"
+            }
+        ],
+        "saldo": 25138.12,
+        "adeudos": 893.56
+    },
+    {
+        "id_cuenta": "CTA-ED8C65BC",
+        "id_usuario": 6571,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "0395-7271-7075-1837",
+                "cvv": "302"
+            }
+        ],
+        "saldo": 36451.65,
+        "adeudos": 1851.48
+    },
+    {
+        "id_cuenta": "CTA-5F8F4D48",
+        "id_usuario": 4081,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "4609-1218-1123-0326",
+                "cvv": "836"
+            }
+        ],
+        "saldo": 15407.8,
+        "adeudos": 1072.43
+    },
+    {
+        "id_cuenta": "CTA-203F8FCC",
+        "id_usuario": 5886,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "estandar",
+        "tarjetas": [
+            {
+                "VISA": "5269-6275-2766-8099",
+                "cvv": "301"
+            }
+        ],
+        "saldo": 45915.62,
+        "adeudos": 154.4
+    },
+    {
+        "id_cuenta": "CTA-818C0DAE",
+        "id_usuario": 9076,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "2612-8820-1221-3622",
+                "cvv": "505"
+            }
+        ],
+        "saldo": 78594.85,
+        "adeudos": 54.15
+    },
+    {
+        "id_cuenta": "CTA-F1050191",
+        "id_usuario": 3003,
+        "estado_cuenta": "activa",
+        "tipo_cuenta": "premium",
+        "tarjetas": [
+            {
+                "VISA": "8396-3728-3105-7131",
+                "cvv": "158"
+            }
+        ],
+        "saldo": 2341.17,
+        "adeudos": 136.17
     }
 ]

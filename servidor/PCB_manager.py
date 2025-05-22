@@ -76,10 +76,10 @@ class mostrar_pcb:
             ("PID", "cyan", "center"),
             ("PPID", "magenta", "center"),
             ("Estado", self._get_state_style, "left"),
-            ("Usuario", "green", "center"),
             ("Tipo", "blue", "center"),
-            ("Prioridad", "green", "center"),  # Asegúrate que está como "green" y "center"
+            ("Prioridad", "green", "center"),  
             ("Destino", "blue", "center"),
+            ("Usuario", "green", "center"),
             ("Operación", "yellow", "left"),
             ("Timestamp", "cyan", "center")
         ]
@@ -110,10 +110,10 @@ class mostrar_pcb:
                 pcb.get("PID", "N/A"),
                 str(pcb.get("PPID", "N/A")),
                 Text(estado, style=self._get_state_style(estado)),
-                str(pcb.get("IDUsuario", "N/A")),
                 pcb.get("TipoUsuario", "N/A"),
                 prioridad,  # Ahora es string
                 pcb.get("Destino", "N/A"),
+                str(pcb.get("IDUsuario", "N/A")),
                 pcb.get("Operacion", "N/A"),
                 pcb.get("Timestamp", "N/A")
             ]

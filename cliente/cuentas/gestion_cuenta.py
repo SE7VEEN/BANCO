@@ -21,7 +21,6 @@ CLIENTES_PATH = os.path.join(BASE_DIR, 'general', 'datos', 'clientes.json')
                   
 def crear_cuenta_para_cliente(id_usuario):
     if not os.path.exists(CLIENTES_PATH):
-        print("Error: No existe el archivo de clientes")
         return None
 
     with open(CLIENTES_PATH, 'r') as f:
@@ -30,7 +29,6 @@ def crear_cuenta_para_cliente(id_usuario):
     id_usuario = int(id_usuario)
     cliente = next((c for c in clientes if c['id_usuario'] == id_usuario), None)
     if not cliente:
-        print(f"Error: No existe cliente con ID {id_usuario}")
         return None
 
     nueva_cuenta = Cuenta(
@@ -43,7 +41,6 @@ def crear_cuenta_para_cliente(id_usuario):
     cuentas.append(nueva_cuenta)
     guardar_cuentas(cuentas)
 
-    print(f"Cuenta {nueva_cuenta.id_cuenta} creada para cliente {id_usuario}")
     return nueva_cuenta
 
 def obtener_cuentas_por_usuario(id_usuario):
@@ -52,7 +49,6 @@ def obtener_cuentas_por_usuario(id_usuario):
         cuentas = cargar_cuentas()
         return [c for c in cuentas if c.id_usuario == id_usuario]
     except ValueError:
-        print(f"Error: ID de usuario inválido {id_usuario}")
         return []
 
 def gestionar_cuenta(accion, cuenta=None, id_cuenta=None, nuevos_datos=None):
@@ -62,24 +58,18 @@ def gestionar_cuenta(accion, cuenta=None, id_cuenta=None, nuevos_datos=None):
 
         if accion == 'agregar':
             if not cuenta or not cuenta.id_usuario:
-                print("Error: Falta información para agregar la cuenta")
                 return False
             if cuenta.id_cuenta in cuentas_dict:
-                print(f"Error: La cuenta {cuenta.id_cuenta} ya existe")
                 return False
             cuentas_dict[cuenta.id_cuenta] = cuenta
-            print(f"Cuenta {cuenta.id_cuenta} agregada correctamente")
 
         elif accion == 'eliminar':
             if not id_cuenta or id_cuenta not in cuentas_dict:
-                print("Error: Cuenta no encontrada para eliminar")
                 return False
             del cuentas_dict[id_cuenta]
-            print(f"Cuenta {id_cuenta} eliminada correctamente")
 
         elif accion == 'modificar':
             if not id_cuenta or not nuevos_datos or id_cuenta not in cuentas_dict:
-                print("Error: Datos inválidos para modificar")
                 return False
             cuenta = cuentas_dict[id_cuenta]
             for key, value in nuevos_datos.items():
@@ -89,23 +79,18 @@ def gestionar_cuenta(accion, cuenta=None, id_cuenta=None, nuevos_datos=None):
                             value = float(value)
                         setattr(cuenta, key, value)
                     except Exception as e:
-                        print(f"Error al actualizar {key}: {str(e)}")
                         return False
-            print(f"Cuenta {id_cuenta} modificada correctamente")
         else:
-            print("Error: Acción no válida")
             return False
 
         guardar_cuentas(list(cuentas_dict.values()))
         return True
 
     except Exception as e:
-        print(f"Error al gestionar cuenta: {str(e)}")
         return False
 
 def crear_cuentas_automaticamente_por_clientes():
     if not os.path.exists(CLIENTES_PATH):
-        print("Error: No existe el archivo de clientes")
         return
     
     with open(CLIENTES_PATH, 'r') as f:
@@ -117,7 +102,7 @@ def crear_cuentas_automaticamente_por_clientes():
         if not cuentas_existentes:
             crear_cuenta_para_cliente(id_usuario)
         else:
-            print(f"Cliente {id_usuario} ya tiene una cuenta. No se crea una nueva.")
+            pass
             
             
 def agregar_tarjeta_a_cuenta(id_cuenta):
@@ -125,14 +110,13 @@ def agregar_tarjeta_a_cuenta(id_cuenta):
     cuenta_dict = {c.id_cuenta: c for c in cuentas}
 
     if id_cuenta not in cuenta_dict:
-        print(f"No se encontró la cuenta con ID {id_cuenta}")
         return False
 
     cuenta = cuenta_dict[id_cuenta]
 
     # Generar nueva tarjeta usando el método de Cuenta
     nueva_tarjeta = cuenta._generar_tarjetas(1)[0]
-    cuenta.tarjetas.append(nueva_tarjeta)
+    cuenta.tarjetas.append(nueva_tarjeta)   
 
     # Actualizar la cuenta usando gestionar_cuenta
     return gestionar_cuenta(

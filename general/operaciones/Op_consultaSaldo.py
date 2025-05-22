@@ -34,6 +34,7 @@ def operacion_consulta_saldo(proceso, cuentas_lock):
                         estado="Finalizado",
                         operacion=f"Saldo consultado: ${saldo:.2f}"
                     )
+                return saldo
 
         # Estado: Cuenta no encontrada
         actualizar_estado_pcb(pid,

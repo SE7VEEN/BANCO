@@ -9,17 +9,17 @@ from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from general.utils.utils import CUENTAS_PATH, inicializar_archivo
 from servidor.hilos.pcb import safe_json_read
 
-from Implementaciones.Pt2.Op_depositoPersonal import operacion_depositoPersonal
-from Implementaciones.Pt2.Op_retiroPersonal import operacion_retiroPersonal
-from Implementaciones.Pt2.Op_deposito import operacion_deposito
-from Implementaciones.Pt2.Op_retiro import operacion_retiro
-from Implementaciones.Pt2.Op_consultaDatos import operacion_consulta_datos
-from Implementaciones.Pt2.Op_transferencia import operacion_transferencia
-from Implementaciones.Pt2.Op_consultaSaldo import operacion_consulta_saldo
-from Implementaciones.Pt2.agregarCliente import agregarCliente
-from Implementaciones.Pt2.agregarTarjeta import agregarTarjeta
-from Implementaciones.Pt2.Op_modificacionDatos import operacion_modificacion_datos
-from Implementaciones.Pt2.Op_bajaCuenta import operacion_baja_cuenta
+from general.operaciones.Op_depositoPersonal import operacion_depositoPersonal
+from general.operaciones.Op_retiroPersonal import operacion_retiroPersonal
+from general.operaciones.Op_deposito import operacion_deposito
+from general.operaciones.Op_retiro import operacion_retiro
+from general.operaciones.Op_consultaDatos import operacion_consulta_datos
+from general.operaciones.Op_transferencia import operacion_transferencia
+from general.operaciones.Op_consultaSaldo import operacion_consulta_saldo
+from general.operaciones.agregarCliente import agregarCliente
+from general.operaciones.agregarTarjeta import agregarTarjeta
+from general.operaciones.Op_modificacionDatos import operacion_modificacion_datos
+from general.operaciones.Op_bajaCuenta import operacion_baja_cuenta
 
 
 # Configuraciones
@@ -27,7 +27,6 @@ cuentas_lock = Lock()
 
 #OPERACIONES EN VENTANILLAS
 OPERACIONES_VENTANILLA_CLIENTE = ["Deposito Personal", "Retiro Personal", "Transferencia", "Consulta Saldo", "Consulta Datos"]
-#OPERACIONES_VENTANILLA_CLIENTE = ["Retiro"]
 OPERACIONES_VENTANILLA_VISITANTE = ["Deposito", "Retiro"]
 
 #OPERACIONES DISPONIBLES CON ASESOR

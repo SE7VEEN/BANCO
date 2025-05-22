@@ -5,16 +5,15 @@ import json, sys, os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
-from cliente.clientes.gestor import gestionar_clientes  
-from cliente.cuentas.gestion_cuenta import crear_cuentas_automaticamente_por_clientes
+from cliente.cuentas.gestion_cuenta import agregar_tarjeta_a_cuenta
 from general.utils.utils import CUENTAS_PATH
 
-def agregarCliente(proceso, cuentas_lock):
-    tipo_usuario = str(proceso.tipo_usuario)
+def agregarTarjeta(proceso, cuentas_lock):
+    id_cuenta = str(proceso.id_cuenta)
     pid = str(proceso.pid)
     try:
-        if tipo_usuario == "Visitante":
-            actualizar_estado_pcb(pid, estado="Fallido", operacion="No se pudo agregar el Cliente, ya tiene cuenta")
+        if id_cuenta == "Visitante":
+            actualizar_estado_pcb(pid, estado="Fallido", operacion="No se pudo agregar la nueva tarjeta")
             return False
 
         with cuentas_lock:
@@ -24,15 +23,7 @@ def agregarCliente(proceso, cuentas_lock):
                 operacion="Procesando solicitud"
             )
 
-
-        actualizar_estado_pcb(pid,
-                estado="En ejecución",
-                operacion="Procesando solicitud"
-            )
-
-        gestionar_clientes('generar', nuevo_data={'cantidad': 1})
-        crear_cuentas_automaticamente_por_clientes()
-        time.sleep(2)
+        agregar_tarjeta_a_cuenta(id_cuenta)
 
             
         # f.seek(0)
@@ -42,7 +33,7 @@ def agregarCliente(proceso, cuentas_lock):
         # 4. Estado: Finalizado
         actualizar_estado_pcb(pid,
             estado="Finalizado",
-            operacion=f"Usuario registrado: Es un placer tenerlo con nosotros)",
+            operacion=f"El usuario cuenta con una tarjeta nueva (cuenta: {id_cuenta})",
         )
         return True
 

@@ -13,7 +13,7 @@ def operacion_transferencia(proceso, id_cuenta_destino, monto, cuentas_lock):
 
     try:
         if monto <= 0:
-            actualizar_estado_pcb(pid, estado="Fallido", operacion="Monto inválido")
+            actualizar_estado_pcb(proceso, estado="Fallido", operacion="Monto inválido")
             return False
 
         with cuentas_lock:
@@ -39,11 +39,11 @@ def operacion_transferencia(proceso, id_cuenta_destino, monto, cuentas_lock):
                     return False
 
                 if cuenta_origen.get("estado_cuenta") != "activa":
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta origen inactiva")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion=f"Cuenta origen inactiva ({id_cuenta_origen})")
                     return False
 
                 if cuenta_destino.get("estado_cuenta") != "activa":
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta destino inactiva")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion=f"Cuenta destino inactiva ({id_cuenta_destino})")
                     return False
 
                 saldo_origen = cuenta_origen.get("saldo", 0)

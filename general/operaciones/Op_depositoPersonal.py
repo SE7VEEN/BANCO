@@ -28,7 +28,7 @@ def operacion_depositoPersonal(proceso, monto, cuentas_lock):
                 cuenta = next((c for c in cuentas if c["id_cuenta"] == id_cuenta), None)
 
                 if not cuenta:
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta no encontrada")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta no encontrada - DP")
                     return False
 
                 # 4. Simular procesamiento

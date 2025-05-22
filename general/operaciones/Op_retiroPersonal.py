@@ -34,7 +34,7 @@ def operacion_retiroPersonal(proceso, monto, cuentas_lock):
                     return False
 
                 if cuenta.get("estado_cuenta") != "activa":
-                    actualizar_estado_pcb(pid, estado="Fallido", operacion="Cuenta inactiva")
+                    actualizar_estado_pcb(pid, estado="Fallido", operacion=f"Cuenta inactiva ({id_cuenta})")
                     return False
 
                 saldo_actual = cuenta.get("saldo", 0)
