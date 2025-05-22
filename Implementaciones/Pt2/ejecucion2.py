@@ -69,14 +69,14 @@ def seleccionar_operacion_y_destino(tipo_usuario):
     """Selecciona aleatoriamente operación y destino según tipo de usuario"""
     if tipo_usuario == "Cliente":
         # Decidir si va a ventanilla o asesor
-        if random.random() < 0.2:  # 70% probabilidad de ventanilla
+        if random.random() < 0.6:  # 70% probabilidad de ventanilla
             operacion = random.choice(OPERACIONES_VENTANILLA_CLIENTE)
             destino = "Ventanilla"
         else:
             operacion = random.choice(OPERACIONES_ASESOR_CLIENTE)
             destino = "Asesor"
     else:  # Visitante
-        if random.random() < 0.9:  # 50% probabilidad de ventanilla
+        if random.random() < 0.4:  # 50% probabilidad de ventanilla
             operacion = random.choice(OPERACIONES_VENTANILLA_VISITANTE)
             destino = "Ventanilla"
         else:
