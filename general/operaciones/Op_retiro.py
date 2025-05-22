@@ -1,5 +1,3 @@
-# transferencia.py
-
 import time
 import json, sys, os
 
@@ -7,22 +5,31 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 from Implementaciones.Pt2.actualizar import actualizar_estado_pcb
 from general.utils.utils import CUENTAS_PATH
 
+""" 
+    La función definida operacion_deposito, realiza un retiro para un visitante que no tiene con una cuenta bancaria asociada,
+    este puede realizar un retiro a alguna cuenta existente en la simulación de la base de datos, para ello
+    el visitante debe de contar con el identificador de la cuenta destino, se le confirma al visitante de su retiro
+    a la cuenta destino
+"""
+
 def operacion_retiro(proceso, id_cuenta_destino, monto, cuentas_lock):
     pid = str(proceso.pid)
 
     try:
+        # Monto mayor a cero para realizar el retiro
         if monto <= 0:
             actualizar_estado_pcb(pid, estado="Fallido", operacion="Monto inválido")
             return False
 
+        # Hacemos uso de cuentas -> lock() para garantizar la protección de la simulación de la base de datos
         with cuentas_lock:
-            # 2. Estado: Lock adquirido
+            # Proceso en Ejecución
             actualizar_estado_pcb(pid,
                 estado="En ejecución",
                 operacion="Procesando retiro"
             )
 
-            # 3. Cargar cuentas
+            # Accedemos a las cuentas, buscamos la cuenta destino y accedemos a sus fondos 
             with open(CUENTAS_PATH, 'r+') as f:
                 cuentas = json.load(f)
                 
@@ -50,7 +57,7 @@ def operacion_retiro(proceso, id_cuenta_destino, monto, cuentas_lock):
                 f.truncate()
                 json.dump(cuentas, f, indent=4)
 
-        # 6. Estado: Finalizado
+        # Proceso finalizado: retiro con éxito
         actualizar_estado_pcb(pid,
             estado="Finalizado",
             operacion=f"Retiro completado (${monto:.2f} de {id_cuenta_destino})",
