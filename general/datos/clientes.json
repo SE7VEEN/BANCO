@@ -1,107 +1,100 @@
 [
     {
-        "id_usuario": 8909,
-        "nombre": "Carmen Concepcion Sanchez Ochoa",
-        "contrasena": "MgPoah!e7u7F",
-        "num_telefono": "601-850-9110",
-        "direccion": "Calzada Aguascalientes 193 009, San Maria de la Montana, TLAX 01944-7725"
-    },
-    {
-        "id_usuario": 1046,
-        "nombre": "Maria del Carmen Munguia Rael",
-        "contrasena": "phWB50ZBFN4e",
-        "num_telefono": "073-722-4947",
-        "direccion": "Calle Montoya 270 733, San Karina de la Montana, AGS 19229-0880"
-    },
-    {
-        "id_usuario": 2966,
-        "nombre": "Gabriela Sergio Espinosa",
-        "contrasena": "XJRJ!Dcd^oBM",
-        "num_telefono": "127-585-7806",
-        "direccion": "Periferico San Marino 587 440, Vieja Austria, TAMPS 25212"
-    },
-    {
-        "id_usuario": 2310,
-        "nombre": "Felix Herrera",
-        "contrasena": "Bjrwl!OYdPIg",
-        "num_telefono": "583-108-8376",
-        "direccion": "Periferico Cabo Verde 736 222, San Elvira de la Montana, BC 42002"
-    },
-    {
-        "id_usuario": 5727,
-        "nombre": "Margarita Lucero Granado",
-        "contrasena": "8PUQD9Oi*lVK",
-        "num_telefono": "868-491-9301",
-        "direccion": "Periferico Cruz 136 Interior 471, Vieja Noruega, CHIH 56549"
-    },
-    {
-        "id_usuario": 7183,
-        "nombre": "Lic. Cecilia Villegas",
-        "contrasena": "SowFXOrXjNHy",
-        "num_telefono": "053-022-2619",
-        "direccion": "Viaducto Republica Unida de Tanzania 455 696, San Frida los bajos, QRO 79509-7951"
-    },
-    {
-        "id_usuario": 1732,
-        "nombre": "Olivia Barbara Fuentes",
-        "contrasena": "ywZkc5*INbW0",
-        "num_telefono": "555-919-5916",
-        "direccion": "Prolongacion Almanza 598 Interior 608, San Jorge Luis de la Montana, GRO 00947-9327"
-    },
-    {
-        "id_usuario": 1279,
-        "nombre": "Rene Madera Gastelum",
-        "contrasena": "KET6giK^!3I1",
-        "num_telefono": "453-458-6032",
-        "direccion": "Viaducto Tlaxcala 115 827, San Maria Eugenia de la Montana, DGO 16097"
-    },
-    {
-        "id_usuario": 8995,
-        "nombre": "Mtro. Rufino Zuniga",
-        "contrasena": "8ks8dPJve31x",
-        "num_telefono": "033-436-9579",
-        "direccion": "Boulevard Republica de Moldova 277 Edif. 213 , Depto. 335, San Jose Carlos los bajos, CAMP 38689"
-    },
-    {
-        "id_usuario": 9100,
-        "nombre": "Florencia Genaro Menchaca Aranda",
-        "contrasena": "L9r3KY87ysWV",
-        "num_telefono": "327-725-0888",
-        "direccion": "Viaducto Botello 116 870, Vieja San Marino, HGO 65497"
-    },
-    {
-        "id_usuario": 8499,
-        "nombre": "Sr(a). Cornelio Alba",
-        "contrasena": "PV0Ow9urZbGq",
-        "num_telefono": "884-796-0130",
-        "direccion": "Viaducto Sur Baez 107 Interior 916, San Estela los bajos, MEX 53068"
+        "id_usuario": 3242,
+        "nombre": "Nancy Caraballo",
+        "contrasena": "eekqZT4ZOmvN",
+        "num_telefono": "340-442-0444",
+        "direccion": "Calzada Islas Marshall 522 049, San Esteban los bajos, SLP 50188"
     },
     {
         "id_usuario": 5068,
-        "nombre": "Miguel Aguirre Ceja",
-        "contrasena": "AVZeCOnoOpXK",
-        "num_telefono": "963-826-7840",
-        "direccion": "Andador Farias 474 579, San Estela de la Montana, MICH 85976-3758"
+        "nombre": "Karla Cristobal Trujillo Alarcon",
+        "contrasena": "PYfHeBnpeqDn",
+        "num_telefono": "217-664-1235",
+        "direccion": "Continuacion Liechtenstein 554 Edif. 819 , Depto. 466, Nueva Ecuador, QRO 25906-3708"
     },
     {
-        "id_usuario": 2032,
-        "nombre": "Geronimo Mariana Morales Quinonez",
-        "contrasena": "mAmfOlMlhRoO",
-        "num_telefono": "597-605-8703",
-        "direccion": "Continuacion Solorio 044 423, Nueva Belice, SIN 75349"
+        "id_usuario": 9325,
+        "nombre": "Wilfrido Leonel Moreno Salas",
+        "contrasena": "JdGTb*Ol7lun",
+        "num_telefono": "417-703-8180",
+        "direccion": "Pasaje Brito 165 560, San Magdalena los bajos, CAMP 92391"
     },
     {
-        "id_usuario": 9707,
-        "nombre": "Dr. Marisela Cordero",
-        "contrasena": "xlXnhptAEOiF",
-        "num_telefono": "640-668-9262",
-        "direccion": "Peatonal Liberia 460 Interior 681, San Adan los altos, BCS 67410-8505"
+        "id_usuario": 6484,
+        "nombre": "Samuel Jose Carlos Sevilla Pizarro",
+        "contrasena": "H!KQJ4*HsvrZ",
+        "num_telefono": "804-859-5698",
+        "direccion": "Cerrada Montalvo 698 Interior 934, San Joaquin los bajos, HGO 56440-1323"
     },
     {
-        "id_usuario": 8577,
-        "nombre": "Cristina Mena",
-        "contrasena": "jzuW7cQnsNRs",
-        "num_telefono": "134-089-1959",
-        "direccion": "Avenida Cordero 087 Edif. 817 , Depto. 583, Nueva Kuwait, OAX 94042"
+        "id_usuario": 9944,
+        "nombre": "Mariana Vargas",
+        "contrasena": "TOKPXj7e0AGB",
+        "num_telefono": "168-016-1209",
+        "direccion": "Ampliacion Sur Echeverria 089 579, San Pilar de la Montana, YUC 07792-7310"
+    },
+    {
+        "id_usuario": 1426,
+        "nombre": "Mtro. Raquel Tello",
+        "contrasena": "7B8kuRwY*Ap4",
+        "num_telefono": "151-583-3314",
+        "direccion": "Privada Guerrero 471 Edif. 757 , Depto. 131, San Rosa de la Montana, TLAX 42198-4886"
+    },
+    {
+        "id_usuario": 6015,
+        "nombre": "Estefania Jose Manuel Benavides",
+        "contrasena": "EWLLqlKXtzo4",
+        "num_telefono": "144-698-0648",
+        "direccion": "Calle Sonora 187 253, Nueva Guyana, NAY 05318"
+    },
+    {
+        "id_usuario": 9881,
+        "nombre": "Sr(a). Marcos Valenzuela",
+        "contrasena": "7ZkXjXsmHRFn",
+        "num_telefono": "129-092-7173",
+        "direccion": "Privada Norte Castaneda 669 Edif. 113 , Depto. 082, San Isabel los bajos, HGO 96875"
+    },
+    {
+        "id_usuario": 1359,
+        "nombre": "Celia Armas Samaniego",
+        "contrasena": "gsTZKhZxFzd!",
+        "num_telefono": "965-759-8762",
+        "direccion": "Calzada Zacatecas 976 Interior 290, Vieja Vietman, BCS 32167-0174"
+    },
+    {
+        "id_usuario": 6123,
+        "nombre": "Soledad Bonilla Montano",
+        "contrasena": "*i58dRnEIwrQ",
+        "num_telefono": "082-515-1821",
+        "direccion": "Privada Guatemala 449 Interior 316, San Silvia los altos, DGO 29048-3901"
+    },
+    {
+        "id_usuario": 3118,
+        "nombre": "Luz Urena Muniz",
+        "contrasena": "MfYc1wmWQovP",
+        "num_telefono": "706-672-0273",
+        "direccion": "Calle Borrego 096 Interior 724, Nueva Mauritania, JAL 56212-7325"
+    },
+    {
+        "id_usuario": 2850,
+        "nombre": "Reynaldo Maya Vargas",
+        "contrasena": "PS2NE1oQTHbW",
+        "num_telefono": "264-718-3907",
+        "direccion": "Ampliacion Norte Garica 714 630, San David de la Montana, VER 45104-5643"
+    },
+    {
+        "id_usuario": 2014,
+        "nombre": "Irma Oscar Merino",
+        "contrasena": "sVD9eFN^OiYH",
+        "num_telefono": "405-068-6749",
+        "direccion": "Corredor Nino 597 290, Nueva Kazajstan, COAH 42016-2539"
+    },
+    {
+        "id_usuario": 6709,
+        "nombre": "Jeronimo Parra Garcia",
+        "contrasena": "^nXUcddL0RzU",
+        "num_telefono": "275-561-5243",
+        "direccion": "Ampliacion Norte Soria 112 Edif. 186 , Depto. 451, Vieja Rumania, SON 65913-1161"
     }
 ]
